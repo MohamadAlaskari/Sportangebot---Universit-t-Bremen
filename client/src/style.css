@@ -600,8 +600,8 @@ fl-filter-btn:focus {
 }
 
 .fl-select-dropdown input:checked~label {
-    background: #eadbd2 !important;
-    color: #ff4000 !important;
+    background: #00326d !important;
+    color: #c60c2b !important;
 
 }
 
