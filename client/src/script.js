@@ -314,30 +314,47 @@ function createCourseCard(kurs) {
     const readMoreLink = kurs.beschreibung.length > 150 ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : '';
     const courseId = 'course-' + kurs.nummer;
     return `
-        <div class="blog-card">
-            <div class="image-wrapper">
-                <div class="image" style="background-image: url('${kurs.pfadbild}')"></div>
+    <div class="blog-card">
+    <div class="image-wrapper">
+        <div class="image" style="background-image: url('${kurs.pfadbild}')"></div>
+    </div>
+    <div class="description">
+        <h1>${kurs.titel}</h1>
+        <h2>${kurs.kategorie}</h2>
+        <p class="course-description">${shortDescription}${readMoreLink}</p>
+        <hr>
+      
+        
+        <div class="card-block course-info">
+        <div class="card-course-info">
+        <span><i class="fa-regular fa-clock"></i>${kurs.zeit}</span>
+        <span class="tutor-description"><i class="fa-solid fa-calendar-days"></i>${kurs.tag}</span>
+        </div>
+
+        <div class="card-course-info">
+        <span><i class="fa-solid fa-location-dot"></i>  ${kurs.ort} </span>
+        <span> </span>
+        </div>
+    </div>
+        <div class="card-block course-info">
+            <div class="card-course-info">
+                <span class="card-text tutor-name"><i class="fa-solid fa-user-tie"></i>${kurs.leitung}</span>
+                <span class="tutor-description"><i class="fa-regular fa-registered"></i>${kurs.details.join(', ')}</span>
             </div>
-            <div class="description">
-                <h1>${kurs.titel}</h1>
-                <h2>${kurs.kategorie}</h2>
-                <p class="course-description">${shortDescription}${readMoreLink}</p>
-                
-                <p>Preis: ${kurs.preis}€</p>
-                <p>Tag: ${kurs.tag}</p>
-                <p>Zeit: ${kurs.zeit}</p>
-                <p>Zielgruppe: ${kurs.zielgruppe}</p>
-                <p>Ort: ${kurs.ort}</p>
-                <p>Leitung: ${kurs.leitung}</p>
-                <p>Details: ${kurs.details.join(', ')}</p>
-                <p class="card-actions">
-                <a href="#" class="has-text-grey">
-                  kurs Buchen
-                  <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                </a>
-              </p>
+            <div class="card-course-info">
+               
+                <p>${kurs.preis} <i class="fa-solid fa-euro-sign" aria-hidden="true"></i></p>
             </div>
         </div>
+        <hr>
+        <p class="card-actions">
+           <b><a href="#" class="has-text-grey">
+                Kurs Buchen
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </a></b> 
+        </p>
+    </div>
+</div>
     `;
 }
 

@@ -792,7 +792,7 @@ fl-filter-btn:focus {
     margin-top: 1.25rem;
 }
 
-.blog-card p:first-of-type:before {
+.blog-card .course-description:first-of-type:before {
     content: "";
     position: absolute;
     height: 5px;
@@ -827,7 +827,7 @@ fl-filter-btn:focus {
     }
 
     .blog-card .description:before {
-        transform: skewX(-3deg);
+      /*  transform: skewX(-3deg);*/
         content: "";
         border-radius: 10px;
         background: #fff;
@@ -853,6 +853,57 @@ fl-filter-btn:focus {
     }
 }
 
+
+/*info leitung */
+.card-course-info:first-child {
+    width: 60%;
+    
+  }
+  
+   .card-course-info {
+    display: inline-block;
+    heigt: 100px;
+  }
+  
+   .card-course-info figure {
+    max-width: 54px;
+    height: 54px;
+    text-align: center;
+    margin: 0 10px;
+    float: left;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+   .card-course-info figure img {
+  max-width: 100px;
+  margin-left: -10px;
+  }
+  
+  .card-course-info span {
+    display: block;
+    font-size: 0.9em;
+    text-align: left;
+  }
+  
+   .card-course-info span i {
+    padding-right: 10px;
+  }
+  
+  .icon {
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    margin-right: 10px;
+  }
+  
+  .icon.icon-icon-heart {
+    height: 1em;
+  }
+  
 /*----------------
                     Ende card course 
 
