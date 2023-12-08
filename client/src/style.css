@@ -289,7 +289,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .slider .progress {
     height: 100%;
-    left: 25%;
+    left: 0%;
     right: 25%;
     position: absolute;
     border-radius: 5px;
@@ -306,7 +306,7 @@ input[type="number"]::-webkit-inner-spin-button {
     position: absolute;
     width: 100%;
     height: 5px;
-    top: -7px;
+    top: -5px;
     background: none;
     pointer-events: none;
     -webkit-appearance: none;
