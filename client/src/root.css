@@ -50,3 +50,10 @@
     --color-fingerprint-image: #FFFFFF;
     --color-fingerprint-background: #143D59;
 }
+
+*:before,
+*:after {
+    -webkit-box-sizing: unset;
+
+    -moz-box-sizing: unset;
+}

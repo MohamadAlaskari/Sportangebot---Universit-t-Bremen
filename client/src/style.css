@@ -151,7 +151,7 @@ button.btn-reset {
 }
 
 .accordion {
-    background-color: #e30613;
+    background-color: #00326d;
     color: white;
     cursor: pointer;
     padding: 1rem;
@@ -166,7 +166,7 @@ button.btn-reset {
 
 .active,
 .accordion:hover {
-    background-color: #e30613;
+    background-color: #d50c2f;
 }
 
 .accordion:after {
@@ -181,7 +181,7 @@ button.btn-reset {
     content: "\2212";
 }
 
-.panel {
+.accordion-panel {
     padding: 0 18px;
     background-color: white;
     max-height: 0;
@@ -190,12 +190,12 @@ button.btn-reset {
 }
 
 
-
 input[type=checkbox]+label {
     display: block;
     margin: 0.2em;
     cursor: pointer;
     padding: 0.2em;
+    font-weight: normal;
 }
 
 input[type=checkbox] {
@@ -221,21 +221,21 @@ input[type=checkbox]+label:active:before {
     transform: scale(0);
 }
 
-input[type=checkbox]:checked+label:before {
-    background-color: MediumSeaGreen;
-    border-color: MediumSeaGreen;
+ input[type=checkbox]:checked+label:before {
+    background-color: #d50c2f;
     color: #fff;
+    border: none;
 }
 
-input[type=checkbox]:disabled+label:before {
+ input[type=checkbox]:disabled+label:before {
     transform: scale(1);
     border-color: #aaa;
 }
 
 input[type=checkbox]:checked:disabled+label:before {
     transform: scale(1);
-    background-color: #bfb;
-    border-color: #bfb;
+    background-color: #d50c2f;
+    border-color: #d50c2f;
 }
 
 
