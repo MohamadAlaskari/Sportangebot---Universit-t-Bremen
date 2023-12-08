@@ -408,7 +408,7 @@ fl-filter-btn:focus {
 
 .fl-filter-buttons {
     position: relative;
-    z-index: 1;
+    z-index: 100;
     display: grid;
     grid-template: 1fr / 1fr 1fr;
     grid-gap: 40px;
