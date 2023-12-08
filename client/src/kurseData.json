@@ -8,7 +8,7 @@
             "zielgruppe": "Einsteiger",
             "ort": "Yoga Studio Zentrum",
             "leitung": "Sophie Lang",
-            "pfadbild": "../assets/img/yoga.jpg",
+            "pfadbild": "assets/img/yoga.jpg",
             "preis": 45,
             "zeiten": [
                 {
@@ -29,7 +29,7 @@
             "zielgruppe": "Mittleres Niveau",
             "ort": "Waldpark Trails",
             "leitung": "Lukas Berg",
-            "pfadbild": "../assets/img/mountainbike.jpg",
+            "pfadbild": "assets/img/mountainbike.jpg",
             "preis": 60,
             "zeiten": [
                 {
@@ -49,7 +49,7 @@
             "zielgruppe": "Alle Niveaus",
             "ort": "City Gym",
             "leitung": "Nina Krämer",
-            "pfadbild": "../assets/img/gym.jpg",
+            "pfadbild": "assets/img/gym.jpg",
             "preis": 50,
             "zeiten": [
                 {
@@ -70,7 +70,7 @@
             "zielgruppe": "Alle Altersgruppen",
             "ort": "Stadtpark Fußballplatz",
             "leitung": "Marco Fischer",
-            "pfadbild": "../assets/img/strassenfussball.jpg",
+            "pfadbild": "assets/img/strassenfussball.jpg",
             "preis": 30,
             "zeiten": [
                 {
@@ -90,7 +90,7 @@
             "zielgruppe": "Anfänger",
             "ort": "Tanzstudio City",
             "leitung": "Elena Schwarz",
-            "pfadbild": "../assets/img/tanz.jpg",
+            "pfadbild": "assets/img/tanz.jpg",
             "preis": 40,
             "zeiten": [
                 {
@@ -111,7 +111,7 @@
             "zielgruppe": "Anfänger",
             "ort": "Kampfsportzentrum West",
             "leitung": "David Neuer",
-            "pfadbild": "../assets/img/kickboxen.jpg",
+            "pfadbild": "assets/img/kickboxen.jpg",
             "preis": 55,
             "zeiten": [
                 {
@@ -131,7 +131,7 @@
             "zielgruppe": "Erwachsene",
             "ort": "Städtisches Schwimmbad",
             "leitung": "Sarah Lang",
-            "pfadbild": "../assets/img/schwimmen.jpg",
+            "pfadbild": "assets/img/schwimmen.jpg",
             "preis": 50,
             "zeiten": [
                 {
@@ -151,7 +151,7 @@
             "zielgruppe": "Alle Niveaus",
             "ort": "Stadtpark",
             "leitung": "Tom Winter",
-            "pfadbild": "../assets/img/cross-training.jpg",
+            "pfadbild": "assets/img/cross-training.jpg",
             "preis": 45,
             "zeiten": [
                 {
@@ -171,7 +171,7 @@
             "zielgruppe": "Fortgeschrittene",
             "ort": "Fitnessstudio Zentral",
             "leitung": "Laura Meier",
-            "pfadbild": "../assets/img/pilates.jpg",
+            "pfadbild": "assets/img/pilates.jpg",
             "preis": 60,
             "zeiten": [
                 {
@@ -196,7 +196,7 @@
             "zielgruppe": "Anfänger",
             "ort": "Golfplatz Greenfield",
             "leitung": "Peter Schwarz",
-            "pfadbild": "../assets/img/golf.jpg",
+            "pfadbild": "assets/img/golf.jpg",
             "preis": 70,
             "zeiten": [
                 {
@@ -220,7 +220,7 @@
             "zielgruppe": "Alle Niveaus",
             "ort": "Bogenplatz Waldpark",
             "leitung": "Julia Stein",
-            "pfadbild": "../assets/img/bogenschiessen.jpg",
+            "pfadbild": "assets/img/bogenschiessen.jpg",
             "preis": 55,
             "zeiten": [
                 {
@@ -240,7 +240,7 @@
             "zielgruppe": "Jugendliche",
             "ort": "Sportplatz Nord",
             "leitung": "Marie Weber",
-            "pfadbild": "../assets/img/volleyball.jpg",
+            "pfadbild": "assets/img/volleyball.jpg",
             "preis": 35,
             "zeiten": [
                 {
@@ -260,7 +260,7 @@
             "zielgruppe": "Anfänger",
             "ort": "Sporthalle Zentral",
             "leitung": "Tom Müller",
-            "pfadbild": "../assets/img/basketball.jpg",
+            "pfadbild": "assets/img/basketball.jpg",
             "preis": 40,
             "zeiten": [
                 {
@@ -281,7 +281,7 @@
             "zielgruppe": "Kinder",
             "ort": "Sportplatz Süd",
             "leitung": "Lena Schmidt",
-            "pfadbild": "../assets/img/fussball.jpg",
+            "pfadbild": "assets/img/fussball.jpg",
             "preis": 30,
             "zeiten": [
                 {

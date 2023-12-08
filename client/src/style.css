@@ -1,23 +1,11 @@
 @import url('root.css');
 
-h1,
-h1,
-h3 {
-
-    color: #00326d;
-    margin-bottom: 15px;
-    font-family: "SharpSansWeb-Bold", "Arial", Arial, sans-serif;
-}
-
 
 .main-section {
     position: relative;
 }
 
-
-
-
-.sidenav {
+.filter-sidenav {
     height: 100%;
     width: 0;
     position: absolute;
@@ -37,11 +25,11 @@ h3 {
     width: 35%;
 }
 
-.sidenav .title-filter {
+.filter-sidenav .title-filter {
     margin-left: 5px;
 }
 
-.sidenav a {
+.filter-sidenav a {
     padding: 8px 8px 20px 20px;
     text-decoration: none;
     font-size: 20px;
@@ -54,22 +42,17 @@ h3 {
 }
 
 
-.sidenav a:hover {
+.filter-sidenav a:hover {
     color: #333;
 }
 
-.sidenav .closebtn {
+.filter-sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 5px;
     font-size: 36px;
     margin-left: 50px;
 }
-
-
-/*acc*/
-
-
 
 
 /*search button*/
