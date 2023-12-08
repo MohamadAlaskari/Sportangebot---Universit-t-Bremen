@@ -2,23 +2,22 @@
     "kurse": [
         {
             "nummer": 201,
-            "titel": "Yoga für Einsteiger",
-            "beschreibung": "Entdecken Sie die Welt des Yogas in diesem Einsteigerkurs. Lernen Sie die Grundlagen der verschiedenen Yogastellungen und Atemtechniken. Dieser Kurs ist ideal für alle, die Stress abbauen und Flexibilität verbessern möchten. Keine Vorerfahrung ist nötig, da der Kurs Schritt für Schritt durch die Grundlagen führt. Erleben Sie die beruhigende Wirkung von Yoga auf Körper und Geist. Bringen Sie eine Yoga-Matte und bequeme Kleidung mit.",
-            "kategorie": "Entspannung",
-            "zielgruppe": "Einsteiger",
-            "ort": "Yoga Studio Zentrum",
-            "leitung": "Sophie Lang",
-            "pfadbild": "assets/img/yoga.jpg",
-            "preis": 45,
+            "titel": "Volleyball-Training für Jugendliche",
+            "beschreibung": "Dieser Volleyballkurs ist perfekt für Jugendliche, die ihre Fähigkeiten im Volleyball verbessern möchten. Lernen Sie die Techniken des Aufschlags, des Baggerns und des Pritschens. Der Kurs fördert Teamarbeit und Strategie im Spiel. Spieler aller Erfahrungsstufen sind willkommen. Wir legen einen Schwerpunkt auf Fair Play und Sportsgeist. Der Kurs findet auf einem Outdoor-Volleyballfeld statt, daher ist sportgerechte Kleidung erforderlich.",
+            "kategorie": "Mannschaftssport",
+            "zielgruppe": "Jugendliche",
+            "ort": "Sportplatz Nord",
+            "leitung": "Marie Weber",
+            "pfadbild": "assets/img/volleyball.jpg",
+            "preis": 35,
             "zeiten": [
                 {
-                    "tag": "Montag",
-                    "zeit": "18:00-19:30 Uhr"
+                    "tag": "Mittwoch",
+                    "zeit": "16:00-17:30 Uhr"
                 }
             ],
             "details": [
-                "Anmeldefrei",
-                "Barrierefrei"
+                "Anmeldefrei"
             ]
         },
         {
@@ -232,26 +231,7 @@
                 "Barrierefrei"
             ]
         },
-        {
-            "nummer": 212,
-            "titel": "Volleyball-Training für Jugendliche",
-            "beschreibung": "Dieser Volleyballkurs ist perfekt für Jugendliche, die ihre Fähigkeiten im Volleyball verbessern möchten. Lernen Sie die Techniken des Aufschlags, des Baggerns und des Pritschens. Der Kurs fördert Teamarbeit und Strategie im Spiel. Spieler aller Erfahrungsstufen sind willkommen. Wir legen einen Schwerpunkt auf Fair Play und Sportsgeist. Der Kurs findet auf einem Outdoor-Volleyballfeld statt, daher ist sportgerechte Kleidung erforderlich.",
-            "kategorie": "Mannschaftssport",
-            "zielgruppe": "Jugendliche",
-            "ort": "Sportplatz Nord",
-            "leitung": "Marie Weber",
-            "pfadbild": "assets/img/volleyball.jpg",
-            "preis": 35,
-            "zeiten": [
-                {
-                    "tag": "Mittwoch",
-                    "zeit": "16:00-17:30 Uhr"
-                }
-            ],
-            "details": [
-                "Anmeldefrei"
-            ]
-        },
+       
         {
             "nummer": 213,
             "titel": "Basketball-Workshop für Anfänger",
@@ -291,6 +271,27 @@
             ],
             "details": [
                 "Anmeldefrei"
+            ]
+        },
+        {
+            "nummer": 214,
+            "titel": "Yoga für Einsteiger",
+            "beschreibung": "Entdecken Sie die Welt des Yogas in diesem Einsteigerkurs. Lernen Sie die Grundlagen der verschiedenen Yogastellungen und Atemtechniken. Dieser Kurs ist ideal für alle, die Stress abbauen und Flexibilität verbessern möchten. Keine Vorerfahrung ist nötig, da der Kurs Schritt für Schritt durch die Grundlagen führt. Erleben Sie die beruhigende Wirkung von Yoga auf Körper und Geist. Bringen Sie eine Yoga-Matte und bequeme Kleidung mit.",
+            "kategorie": "Entspannung",
+            "zielgruppe": "Einsteiger",
+            "ort": "Yoga Studio Zentrum",
+            "leitung": "Sophie Lang",
+            "pfadbild": "assets/img/yoga.jpg",
+            "preis": 45,
+            "zeiten": [
+                {
+                    "tag": "Montag",
+                    "zeit": "18:00-19:30 Uhr"
+                }
+            ],
+            "details": [
+                "Anmeldefrei",
+                "Barrierefrei"
             ]
         }
     ]
