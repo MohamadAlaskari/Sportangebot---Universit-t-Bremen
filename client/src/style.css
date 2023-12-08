@@ -9,7 +9,7 @@
     height: 100%;
     width: 0;
     position: absolute;
-    z-index: 100;
+    z-index: 300;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -408,7 +408,7 @@ fl-filter-btn:focus {
 
 .fl-filter-buttons {
     position: relative;
-    z-index: 100;
+    z-index: 800;
     display: grid;
     grid-template: 1fr / 1fr 1fr;
     grid-gap: 40px;
@@ -559,7 +559,7 @@ fl-filter-btn:focus {
 
 .fl-select-dropdown {
     position: absolute;
-    z-index: 1;
+    z-index: 700;
     box-sizing: border-box;
     width: 100%;
     min-width: 180px;
