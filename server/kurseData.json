@@ -1,0 +1,179 @@
+{
+    "kurse": [
+        {
+            "nummer": 101,
+            "titel": "Einführung in Ballsportarten",
+            "beschreibung": " Lerne die Grundlagen, verschiedener Ballsportarten in diesem Einführungskurs.  Lerne die Grundlagen, verschiedener Ballsportarten in diesem Einführungskurs. Lerne die Grundlagen, verschiedener Ballsportarten in diesem Einführungskurs. Lerne die Grundlagen, verschiedener Ballsportarten in diesem Einführungskurs. Lerne die Grundlagen, verschiedener Ballsportarten in diesem Einführungskurs.",
+            "kategorie": "Ballsportarten",
+            "zielgruppe": "Anfänger",
+            "ort": "Sporthalle Nord",
+            "leitung": "Max Müller",
+            "pfadbild": "../assets/img/Vollyball.jpg",
+            "preis": 50,
+            "zeiten": [
+                {
+                    "tag": "Dienstag",
+                    "zeit": "15-18 Uhr"
+                }
+            ],
+            "details": [
+                "Anmeldefrei",
+                "Barrierefrei"
+            ]
+        },
+        {
+            "nummer": 102,
+            "titel": "Fortgeschrittener Wassersport",
+            "beschreibung": "Verbessere deine Fähigkeiten im Wassersport mit erfahrenen Trainern.",
+            "kategorie": "Wassersport",
+            "zielgruppe": "Fortgeschrittene",
+            "ort": "Freibad Süd",
+            "leitung": "Anna Schmidt",
+            "pfadbild": "../assets/img/schwimmen.jpg",
+            "preis": 70,
+            "zeiten": [
+                {
+                    "tag": "Montag",
+                    "zeit": "10-13 Uhr"
+                },
+                {
+                    "tag": "Mittwoch",
+                    "zeit": "14:00-15:00 Uhr"
+                }
+            ],
+            "details": [
+                "Ausgebucht",
+                "Barrierefrei"
+            ]
+        },
+        {
+            "nummer": 103,
+            "titel": "Fitness für Anfänger",
+            "beschreibung": "Ein idealer Kurs für Einsteiger, um in Form zu kommen und fit zu bleiben.",
+            "kategorie": "Fitness",
+            "zielgruppe": "Einsteiger",
+            "ort": "Fitnessstudio FitPlus",
+            "leitung": "Julia Klein",
+            "pfadbild": "../assets/img/fussball.jpg",
+            "preis": 40,
+            "tag": "Mittwoch",
+            "zeit": "Nach 18 Uhr",
+            "details": [
+                "Ausgebucht"
+            ]
+        },
+        {
+            "nummer": 104,
+            "titel": "Racketsportarten für alle",
+            "beschreibung": "Erlebe den Spaß und die Herausforderung verschiedener Racketsportarten.",
+            "kategorie": "Racketsportarten",
+            "zielgruppe": "Jugendliche und Erwachsene",
+            "ort": "Tennishalle City",
+            "leitung": "Lars Hofmann",
+            "pfadbild": "../assets/img/basketball.jpg",
+            "preis": 60,
+            "tag": "Donnerstag",
+            "zeit": "10-13 Uhr",
+            "details": [
+                "Barrierefrei"
+            ]
+        },
+        {
+            "nummer": 105,
+            "titel": "Morgendliches Lauftraining",
+            "beschreibung": "Starte deinen Tag mit einem erfrischenden Lauf im Stadtpark.",
+            "kategorie": "Laufsportarten",
+            "zielgruppe": "Frühaufsteher",
+            "ort": "Stadtpark",
+            "leitung": "Nora Weber",
+            "pfadbild": "../assets/img/laufen.jpg",
+            "preis": 30,
+            "tag": "Freitag",
+            "zeit": "Vor 10 Uhr",
+            "details": [
+                "Anmeldefrei",
+                "Barrierefrei"
+            ]
+        },
+        {
+            "nummer": 106,
+            "titel": "Kampfsportarten Basics",
+            "beschreibung": "Erlernen Sie die Grundlagen der Selbstverteidigung und Kampfsportarten.",
+            "kategorie": "Kampfsportarten",
+            "zielgruppe": "Anfänger",
+            "ort": "Dojo Zentrum",
+            "leitung": "Karim El-Hassan",
+            "pfadbild": "../assets/img/kampfsport.jpg",
+            "preis": 55,
+            "tag": "Samstag",
+            "zeit": "Nach 18 Uhr",
+            "details": []
+        },
+        {
+            "nummer": 107,
+            "titel": "Wintersportarten für Einsteiger",
+            "beschreibung": "Entdecke die Freude am Wintersport in einer freundlichen und unterstützenden Umgebung.",
+            "kategorie": "Wintersportarten",
+            "zielgruppe": "Familien",
+            "ort": "Skigebiet Alpen",
+            "leitung": "Bettina Berg",
+            "pfadbild": "../assets/img/ski.jpg",
+            "preis": 80,
+            "tag": "Sonntag",
+            "zeit": "10-13 Uhr",
+            "details": [
+                "Ausgebucht",
+                "Barrierefrei"
+            ]
+        },
+        {
+            "nummer": 108,
+            "titel": "Radsport für Fortgeschrittene",
+            "beschreibung": "Verbessere deine Radsportfähigkeiten auf malerischen Strecken.",
+            "kategorie": "Radsport",
+            "zielgruppe": "Erwachsene",
+            "ort": "Radweg Seeufer",
+            "leitung": "Frank Meyer",
+            "pfadbild": "../assets/img/radfahren.jpg",
+            "preis": 45,
+            "tag": "Montag",
+            "zeit": "15-18 Uhr",
+            "details": [
+                "Anmeldefrei"
+            ]
+        },
+        {
+            "nummer": 109,
+            "titel": "Outdoor-Abenteuer",
+            "beschreibung": "Erlebe Abenteuer und Spaß im Freien mit unseren Outdoor-Aktivitäten.",
+            "kategorie": "Outdoorsportarten",
+            "zielgruppe": "Abenteuerlustige",
+            "ort": "Bergpark",
+            "leitung": "Sandra Huber",
+            "pfadbild": "../assets/img/wandern.jpg",
+            "preis": 65,
+            "tag": "Dienstag",
+            "zeit": "Vor 10 Uhr",
+            "details": [
+                "Barrierefrei"
+            ]
+        },
+        {
+            "nummer": 110,
+            "titel": "Teamgeist in Mannschaftssportarten",
+            "beschreibung": "Fördere Teamarbeit und Sportsgeist durch Mannschaftssport.",
+            "kategorie": "Mannschaftssportarten",
+            "zielgruppe": "Jugendliche",
+            "ort": "Sportzentrum West",
+            "leitung": "Tim Neumann",
+            "pfadbild": "../assets/img/mannschaftssport.jpg",
+            "preis": 50,
+            "tag": "Mittwoch",
+            "zeit": "Nach 18 Uhr",
+            "details": [
+                "Anmeldefrei",
+                "Ausgebucht"
+            ]
+        }
+    ]
+}
