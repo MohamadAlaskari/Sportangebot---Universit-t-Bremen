@@ -191,8 +191,17 @@ function filterKurse(data, filters) {
         const withinPriceRange = (!filters.price.min || kurs.preis >= filters.price.min) &&
             (!filters.price.max || kurs.preis <= filters.price.max);
 
-        const matchesDetails = filters.details.length === 0 || filters.details.every(detail => kurs.details.includes(detail));
-
+        // Filterung nach Angebotsdetails
+        const matchesDetails = filters.details.every(detailFilter => {
+            if (detailFilter === "auch anmeldefreie Angebote anzeigen") {
+                return kurs.details.includes("Anmeldefrei");
+            } else if (detailFilter === "auch ausgebuchte Angebote anzeigen") {
+                return kurs.details.includes("Ausgebucht");
+            } else if (detailFilter === "nur Angebote in barrierefreien Räumen/Orten anzeigen") {
+                return kurs.details.includes("Barrierefrei");
+            }
+            return true;
+        });
         return matchesCategory && matchesDay && matchesTime && withinPriceRange && matchesDetails;
     });
 }
