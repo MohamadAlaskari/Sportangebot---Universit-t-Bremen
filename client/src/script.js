@@ -288,7 +288,7 @@ function renderCourses(courses) {
 
     if (courses.length === 0) {
         // Zeige eine Nachricht an, wenn keine Kurse gefunden wurden
-        coursesContainer.innerHTML = '<p class="no-courses-message">Keine Kurse gefunden.</p>';
+        coursesContainer.innerHTML = '<h5 class="no-courses-message">Keine Kurse gefunden.</h5>';
     } else {
         // Rendern der Kurskarten, wenn Kurse vorhanden sind
         courses.forEach(kurs => {
