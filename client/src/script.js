@@ -62,7 +62,9 @@ function initializeAccordions() {
     });
 }
 
-
+document.addEventListener('DOMContentLoaded', () => {
+    initializePriceRange();
+});
 /* ------------------
 =======>  Filter-Related Functions
    -----------------
@@ -70,70 +72,80 @@ function initializeAccordions() {
 
 
 
-async function findMaxCoursePrice() {
+   async function findMaxCoursePrice() {
     try {
-        const data = await loadKurseData();
-        const maxPrice = data.kurse.reduce((max, kurs) => Math.max(max, kurs.preis), 0);
-        return maxPrice;
+        const response = await fetch('assets/data/kurseData.json'); // Pfad zu Ihrer JSON-Datei
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const kurseData = await response.json();
+        return kurseData.kurse.reduce((max, kurs) => Math.max(max, kurs.preis), 0);
     } catch (e) {
         console.error('Fehler beim Ermitteln des Höchstpreises:', e);
         return 0; // oder einen Standardwert zurückgeben
     }
 }
 
+
 async function initializePriceRange() {
-    const rangeInput = document.querySelectorAll(".range-input input"),
-        priceInput = document.querySelectorAll(".price-input input"),
+    const rangeMinInput = document.querySelector(".range-input .range-min"),
+        rangeMaxInput = document.querySelector(".range-input .range-max"),
+        priceMinInput = document.querySelector(".price-input .input-min"),
+        priceMaxInput = document.querySelector(".price-input .input-max"),
         range = document.querySelector(".slider .progress");
     let priceGap = 5;
 
+    // Ermittle den höchsten Preis aus den Kursdaten
     const maxPrice = await findMaxCoursePrice();
-    if (rangeInput[1]) rangeInput[1].max = maxPrice;
-    if (priceInput[1]) priceInput[1].max = maxPrice;
+    if (priceMaxInput) priceMaxInput.value = maxPrice; // Setze den Wert im Textfeld
+    // Hier sollten Sie auch den Maximalwert für den Slider anpassen
+    if (rangeMaxInput) rangeMaxInput.max = maxPrice;
 
-    priceInput.forEach((input) => {
+    
+
+    // Event-Listener für die Preisinputs
+    [priceMinInput, priceMaxInput].forEach(input => {
         input.addEventListener("input", (e) => {
-            let minPrice = parseInt(priceInput[0].value),
-                maxPrice = parseInt(priceInput[1].value);
+            let minPrice = parseInt(priceMinInput.value),
+                maxPrice = parseInt(priceMaxInput.value);
 
-            if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
-                if (e.target.className === "input-min") {
-                    rangeInput[0].value = minPrice;
-                    range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+            if (maxPrice - minPrice >= priceGap) {
+                if (e.target === priceMinInput) {
+                    rangeMinInput.value = minPrice;
+                    range.style.left = (minPrice / rangeMaxInput.max) * 100 + "%";
                 } else {
-                    rangeInput[1].value = maxPrice;
-                    range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+                    rangeMaxInput.value = maxPrice;
+                    range.style.right = 100 - (maxPrice / rangeMaxInput.max) * 100 + "%";
                 }
             }
         });
     });
 
-    rangeInput.forEach((input) => {
+    // Event-Listener für die Range-Inputs
+    [rangeMinInput, rangeMaxInput].forEach(input => {
         input.addEventListener("input", (e) => {
-            let minVal = parseInt(rangeInput[0].value),
-                maxVal = parseInt(rangeInput[1].value);
+            let minVal = parseInt(rangeMinInput.value),
+                maxVal = parseInt(rangeMaxInput.value);
 
-            if (maxVal - minVal < priceGap) {
-                if (e.target.className === "range-min") {
-                    rangeInput[0].value = maxVal - priceGap;
+            if (maxVal - minVal >= priceGap) {
+                if (e.target === rangeMinInput) {
+                    priceMinInput.value = minVal;
                 } else {
-                    rangeInput[1].value = minVal + priceGap;
+                    priceMaxInput.value = maxVal;
                 }
-            } else {
-                priceInput[0].value = minVal;
-                priceInput[1].value = maxVal;
-                range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
-                range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                range.style.left = (minVal / rangeMaxInput.max) * 100 + "%";
+                range.style.right = 100 - (maxVal / rangeMaxInput.max) * 100 + "%";
             }
         });
     });
 
+    // Hilfsfunktionen zur Ermittlung der Werte
     function getMinValue() {
-        return parseInt(priceInput[0].value);
+        return parseInt(priceMinInput.value);
     }
 
     function getMaxValue() {
-        return parseInt(priceInput[1].value);
+        return parseInt(priceMaxInput.value);
     }
 
     return {
@@ -141,6 +153,7 @@ async function initializePriceRange() {
         getMaxValue
     };
 }
+
 
 
 
@@ -431,7 +444,6 @@ async function loadKurseData() {
         return null; // oder geeignete Fehlerbehandlung
     }
 }
-
 
 
 
