@@ -1,5 +1,5 @@
 //ältere search input aktivieren 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var toggleButton = document.getElementById('search');
     var closeButton = document.getElementById('searchNav-close'); // Annahme, dass dies der Schließen-Button ist
     var searchContainer = document.getElementById('search-container');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.addEventListener('click', toggleSearchVisibility);
 
     // Event-Listener für den Schließen-Button
-    closeButton.addEventListener('click', function() {
+    closeButton.addEventListener('click', function () {
         searchContainer.style.display = 'none';
         searchFlyout.style.right = '-100%';
     });
@@ -175,7 +175,26 @@ function addCheckboxListeners() {
     }
 }
 
+function filterKurse(data, filters) {
+    if (!data || !data.kurse) {
+        console.error('Keine Kursdaten zum Filtern verfügbar.');
+        return [];
+    }
 
+    return data.kurse.filter(kurs => {
+        const matchesCategory = filters.categories.length === 0 || filters.categories.includes(kurs.kategorie);
+        const matchesDay = filters.days.length === 0 || filters.days.includes(kurs.tag);
+        const matchesTime = filters.times.length === 0 || filters.times.includes(kurs.zeit);
+
+        // Hier nehmen wir an, dass die Preisfilter als Zahlen bereitgestellt werden
+        const withinPriceRange = (!filters.price.min || kurs.preis >= filters.price.min) &&
+            (!filters.price.max || kurs.preis <= filters.price.max);
+
+        const matchesDetails = filters.details.length === 0 || filters.details.every(detail => kurs.details.includes(detail));
+
+        return matchesCategory && matchesDay && matchesTime && withinPriceRange && matchesDetails;
+    });
+}
 
 /* ------------------
 =======>   Sort-Related Functions  
@@ -190,7 +209,7 @@ function manageSortDropdown() {
     const sortDropdown = document.querySelector('.fl-select-dropdown');
     const sortBtnText = document.querySelector('.fl-select-btn__text');
     const radioButtons = sortDropdown.querySelectorAll('input[type="radio"]');
-    let selectedSortValue = ''; // Variable zum Speichern des ausgewählten Werts
+    let selectedSortValue = '';
 
     function updateSortText(selectedOption) {
         if (selectedOption && selectedOption.value !== 'none') {
@@ -204,7 +223,6 @@ function manageSortDropdown() {
 
     const wrapper = document.querySelector('.fl-select-wrapper');
     wrapper.addEventListener('click', function (event) {
-        // Verhindert, dass das Event zum document-Objekt weitergegeben wird
         event.stopPropagation();
         this.classList.toggle('open');
     });
@@ -213,18 +231,29 @@ function manageSortDropdown() {
         wrapper.classList.remove('open');
     });
 
-    sortDropdown.addEventListener('click', (event) => {
-        if (event.target.type === 'radio') {
+    Array.from(radioButtons).forEach(radio => {
+        radio.addEventListener('change', (event) => {
             updateSortText(event.target);
+            applySort(event.target.value); // Aufrufen der Sortierfunktion bei Änderung
             wrapper.classList.remove('open');
-            event.stopPropagation(); // Verhindert, dass das Klicken auf einen Radio-Button das wrapper click-Event auslöst
-        }
+        });
     });
 
-    updateSortText(Array.from(radioButtons).find(radio => radio.checked));
+    function applySort(sortValue) {
+        loadKurseData().then(kurseData => {
+            const sortedKurse = sortKurse(kurseData.kurse, sortValue);
+            renderCourses(sortedKurse);
+        }).catch(error => console.error('Fehler beim Sortieren der Kurse:', error));
+    }
 
     function getSelectedSortValue() {
         return selectedSortValue;
+    }
+
+    // Initialisiere das Dropdown mit dem aktuell ausgewählten Wert
+    const initialSelectedRadio = Array.from(radioButtons).find(radio => radio.checked);
+    if (initialSelectedRadio) {
+        updateSortText(initialSelectedRadio);
     }
 
     return {
@@ -232,6 +261,49 @@ function manageSortDropdown() {
     };
 }
 
+
+// Implementierung der sortKurse Funktion
+function sortKurse(kurse, sortValue) {
+    if (sortValue === 'preis-aufsteigend') {
+        return [...kurse].sort((a, b) => a.preis - b.preis);
+    } else if (sortValue === 'preis-absteigend') {
+        return [...kurse].sort((a, b) => b.preis - a.preis);
+    }
+    // Fügen Sie hier zusätzliche Sortierkriterien hinzu, z.B. nach Titel, Datum, etc.
+    return kurse;
+}
+
+// Implementierung der renderCourses Funktion
+function renderCourses(courses) {
+    // ... Ihr Code zum Rendern der Kurse ...
+}
+
+
+function sortKurse(kurse, sortValue) {
+    let sortedKurse = [...kurse]; // Erstellen einer Kopie des Arrays
+
+    if (sortValue === 'Niedriger Preis') {
+        sortedKurse.sort((a, b) => a.preis - b.preis);
+    } else if (sortValue === 'Höchster Preis') {
+        sortedKurse.sort((a, b) => b.preis - a.preis);
+    } else if (sortValue === 'Kategorie') {
+        sortedKurse.sort((a, b) => a.kategorie.localeCompare(b.kategorie));
+    } else if (sortValue === 'alpha') {
+        sortedKurse.sort((a, b) => a.titel.localeCompare(b.titel));
+    }
+    // Keine Sortierung für 'none'
+
+    return sortedKurse;
+}
+function renderCourses(courses) {
+    const coursesContainer = document.querySelector('.coursecards-container');
+    coursesContainer.innerHTML = ''; // Leeren des Containers vor dem Hinzufügen neuer Karten
+
+    courses.forEach(kurs => {
+        const courseCard = createCourseCard(kurs);
+        coursesContainer.innerHTML += courseCard;
+    });
+}
 
 /* ------------------
 =======>   Course Create and Display Functions
@@ -364,6 +436,9 @@ function app() {
     } else {
         console.error('Element meineCheckbox wurde nicht gefunden.');
     }
+
+    loadKurseData().then(data => renderCourses(data.kurse));
+
 }
 
 // App initialisieren
@@ -371,30 +446,6 @@ document.addEventListener('DOMContentLoaded', app);
 
 
 
-
-
-
-
-function filterKurse(data, filters) {
-    if (!data || !data.kurse) {
-        console.error('Keine Kursdaten zum Filtern verfügbar.');
-        return [];
-    }
-
-    return data.kurse.filter(kurs => {
-        const matchesCategory = filters.categories.length === 0 || filters.categories.includes(kurs.kategorie);
-        const matchesDay = filters.days.length === 0 || filters.days.includes(kurs.tag);
-        const matchesTime = filters.times.length === 0 || filters.times.includes(kurs.zeit);
-
-        // Hier nehmen wir an, dass die Preisfilter als Zahlen bereitgestellt werden
-        const withinPriceRange = (!filters.price.min || kurs.preis >= filters.price.min) &&
-            (!filters.price.max || kurs.preis <= filters.price.max);
-
-        const matchesDetails = filters.details.length === 0 || filters.details.every(detail => kurs.details.includes(detail));
-
-        return matchesCategory && matchesDay && matchesTime && withinPriceRange && matchesDetails;
-    });
-}
 
 // Beispiel: Event-Listener für ein Dropdown-Menü
 document.getElementById('meinFilterDropdown').addEventListener('change', applyFilters);
@@ -418,10 +469,6 @@ async function applyFilters() {
         console.log('Keine Kurse gefunden.');
     }
 }
-
-
-//cards
-
 
 
 
