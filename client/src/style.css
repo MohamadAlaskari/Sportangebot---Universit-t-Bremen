@@ -827,7 +827,7 @@ fl-filter-btn:focus {
     }
 
     .blog-card .description:before {
-      /*  transform: skewX(-3deg);*/
+       transform: skewX(-3deg);
         content: "";
         border-radius: 10px;
         background: #fff;
