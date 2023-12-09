@@ -1,11 +1,12 @@
 //ältere search input aktivieren 
 document.addEventListener('DOMContentLoaded', function() {
     var toggleButton = document.getElementById('search');
+    var closeButton = document.getElementById('searchNav-close'); // Annahme, dass dies der Schließen-Button ist
     var searchContainer = document.getElementById('search-container');
     var searchFlyout = document.getElementById('searchFlyoutt');
 
-    toggleButton.addEventListener('click', function() {
-        // Umschalten der Sichtbarkeit des search-container
+    // Funktion zum Umschalten der Sichtbarkeit
+    function toggleSearchVisibility() {
         if (searchContainer.style.display === 'block') {
             searchContainer.style.display = 'none';
             searchFlyout.style.right = '-100%';
@@ -13,8 +14,18 @@ document.addEventListener('DOMContentLoaded', function() {
             searchContainer.style.display = 'block';
             searchFlyout.style.right = '0';
         }
+    }
+
+    // Event-Listener für den Toggle-Button
+    toggleButton.addEventListener('click', toggleSearchVisibility);
+
+    // Event-Listener für den Schließen-Button
+    closeButton.addEventListener('click', function() {
+        searchContainer.style.display = 'none';
+        searchFlyout.style.right = '-100%';
     });
 });
+
 
 /* ------------------
 =======> Sidebar-Related Functions
