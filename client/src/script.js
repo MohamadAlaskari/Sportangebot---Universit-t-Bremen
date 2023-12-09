@@ -171,6 +171,7 @@ function addCheckboxListeners() {
         checkbox.addEventListener('change', () => {
             const filters = updateSelectedFilters();
             console.log(filters); // Hier können Sie die Filterwerte anzeigen oder verarbeiten
+            applyFilters(); // Aktualisiere die Kursliste basierend auf den neuen Filtern
         });
     }
 }
@@ -461,13 +462,7 @@ async function applyFilters() {
     const filteredKurse = filterKurse(kurseData, filters);
 
     console.log('filteredKurse: ' + JSON.stringify(filteredKurse, null, 2));
-
-    if (filteredKurse.length > 0) {
-        const ersteKursKategorie = filteredKurse[0].kategorie;
-        console.log('Kategorie des ersten Kurses:', ersteKursKategorie);
-    } else {
-        console.log('Keine Kurse gefunden.');
-    }
+    renderCourses(filteredKurse); // Zeige die gefilterten Kurse an
 }
 
 
