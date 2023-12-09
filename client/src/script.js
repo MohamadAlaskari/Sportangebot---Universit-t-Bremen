@@ -304,14 +304,18 @@ async function applyFilters() {
 
 
 function createCourseCard(kurs) {
+    const firstTimeSlot = kurs.zeiten && kurs.zeiten[0];
+    const kursTag = firstTimeSlot ? firstTimeSlot.tag : 'Kein Tag angegeben';
+    const kursZeit = firstTimeSlot ? firstTimeSlot.zeit : 'Keine Zeit angegeben';
+
     // Funktion, um die Beschreibung auf maximal 150 Zeichen zu kürzen
     function getShortDescription(description) {
-        return description.length > 150 ? description.substring(0, 150) + '...' : description;
+        return description.length > 100 ? description.substring(0, 100) + '...' : description;
     }
 
     const shortDescription = getShortDescription(kurs.beschreibung);
     // Prüfen, ob ein "Mehr lesen"-Link benötigt wird
-    const readMoreLink = kurs.beschreibung.length > 150 ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : '';
+    const readMoreLink = kurs.beschreibung.length > 100 ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : '';
     const courseId = 'course-' + kurs.nummer;
     return `
     <div class="blog-card">
@@ -327,8 +331,8 @@ function createCourseCard(kurs) {
         
         <div class="card-block course-info">
         <div class="card-course-info">
-        <span><i class="fa-regular fa-clock"></i>${kurs.zeit}</span>
-        <span class="tutor-description"><i class="fa-solid fa-calendar-days"></i>${kurs.tag}</span>
+        <span><i class="fa-regular fa-clock"></i>${kursZeit}</span>
+        <span class="tutor-description"><i class="fa-solid fa-calendar-days"></i>${kursTag}</span>
         </div>
 
         <div class="card-course-info">
