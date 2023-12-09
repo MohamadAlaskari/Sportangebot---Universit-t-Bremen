@@ -1,5 +1,23 @@
+//ältere search input aktivieren 
+document.addEventListener('DOMContentLoaded', function() {
+    var toggleButton = document.getElementById('search');
+    var searchContainer = document.getElementById('search-container');
+    var searchFlyout = document.getElementById('searchFlyoutt');
+
+    toggleButton.addEventListener('click', function() {
+        // Umschalten der Sichtbarkeit des search-container
+        if (searchContainer.style.display === 'block') {
+            searchContainer.style.display = 'none';
+            searchFlyout.style.right = '-100%';
+        } else {
+            searchContainer.style.display = 'block';
+            searchFlyout.style.right = '0';
+        }
+    });
+});
+
 /* ------------------
-=======>  Sidenavbar 
+=======> Sidebar-Related Functions
 navbar open and close 
    -----------------
     */
@@ -10,7 +28,7 @@ function toggleNav() {
 }
 
 /* ------------------
-=======>  accordion 
+=======>  Accordion-Related Functions 
 accordion open and close 
    -----------------
     */
@@ -35,12 +53,7 @@ function initializeAccordions() {
 
 
 /* ------------------
-=======>  Filtern
-*preis
-Beispiel für den Abruf der minimalen und maximalen Werte
-console.log("Min Wert: ", priceRange.getMinValue());
-console.log("Max Wert: ", priceRange.getMaxValue());
-
+=======>  Filter-Related Functions
    -----------------
     */
 
@@ -154,7 +167,7 @@ function addCheckboxListeners() {
 
 
 /* ------------------
-=======>  sortieren  
+=======>   Sort-Related Functions  
 Beispiel für den Abruf des ausgewählten Sortierwerts
  Später können Sie diese Funktion aufrufen, um den Wert für Datenbankabfragen zu erhalten
  console.log(sortDropdownManager.getSelectedSortValue());
@@ -209,6 +222,115 @@ function manageSortDropdown() {
 }
 
 
+/* ------------------
+=======>   Course Create and Display Functions
+   -----------------
+    */
+
+function createCourseCard(kurs) {
+    // Funktion, um die Beschreibung auf maximal 150 Zeichen zu kürzen
+    function getShortDescription(description) {
+        return description.length > 90 ? description.substring(0, 90) + '...' : description;
+    }
+
+    const shortDescription = getShortDescription(kurs.beschreibung);
+    // Prüfen, ob ein "Mehr lesen"-Link benötigt wird
+    const readMoreLink = kurs.beschreibung.length > 90 ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : '';
+
+    // Erstelle Strings für jeden Zeitpunkt im Array
+    let zeitenStrings = kurs.zeiten.map(zeitpunkt => {
+        return `<span class=""><i class="fa-solid fa-calendar-days"></i>${zeitpunkt.tag}</span> <span><i class="fa-regular fa-clock"></i>${zeitpunkt.zeit}</span> `;
+    }).join('<br>');
+
+    // Fallback, falls keine Zeiten vorhanden sind
+    if (kurs.zeiten.length === 0) {
+        zeitenStrings = `<span>Keine Zeiten angegeben</span>`;
+    }
+
+    // Überprüfen, ob der Kurs ausgebucht ist oder anmeldefrei ist
+    let coursLink = '';
+    if (kurs.details.includes("Ausgebucht")) {
+        coursLink = '<p class="card-actions ausgebucht">Kurs Ausgebucht</p>';
+    } else if (kurs.details.includes("Anmeldefrei")) {
+        coursLink = '<p class="card-actions"><b><a href="#" class="has-text-grey">Kurs Buchen <i class="fa fa-chevron-down" aria-hidden="true"></i></a></b></p>';
+    } else {
+        coursLink = '<p class="card-actions ausgebucht">Kurs Ausgebucht</p>';
+    }
+
+    return `
+        <div class="blog-card">
+            <div class="image-wrapper">
+                <div class="image" style="background-image: url('${kurs.pfadbild}')"></div>
+            </div>
+            <div class="description">
+                <h1>${kurs.titel}</h1>
+                <h2>${kurs.kategorie}</h2>
+                <p class="course-description">${shortDescription}${readMoreLink}</p>
+                <hr>
+
+                <div class="card-block course-info">
+                    <div class="card-course-info">
+                        ${zeitenStrings}
+                    </div>
+
+                    <div class="card-course-info">
+                        <span><i class="fa-solid fa-location-dot"></i>  ${kurs.ort} </span>
+                        <span> </span>
+                    </div>
+                </div>
+
+                <div class="card-block course-info">
+                    <div class="card-course-info">
+                        <span class="card-text tutor-name"><i class="fa-solid fa-user-tie"></i>${kurs.leitung}</span>
+                        <span class="tutor-description"><i class="fa-regular fa-registered"></i>${kurs.details.join(', ')}</span>
+                    </div>
+                    <div class="card-course-info">
+                        <p>${kurs.preis} <i class="fa-solid fa-euro-sign" aria-hidden="true"></i></p>
+                    </div>
+                </div>
+                <hr>
+                ${coursLink}
+            </div>
+        </div>
+    `;
+}
+
+async function displayCourses() {
+    try {
+        const data = await loadKurseData();
+        console.log("Geladene Kurse:", data); // Überprüfe die geladenen Daten
+        const coursesContainer = document.querySelector('.coursecards-container');
+        if (!coursesContainer) {
+            console.error("Kurscontainer nicht gefunden!");
+            return;
+        }
+
+        data.kurse.forEach(kurs => {
+            const courseCard = createCourseCard(kurs);
+            coursesContainer.innerHTML += courseCard;
+        });
+    } catch (error) {
+        console.error("Fehler beim Anzeigen der Kurse:", error);
+    }
+}
+
+
+async function loadKurseData() {
+    try {
+        const response = await fetch('assets/data/kurseData.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (e) {
+        console.error('Fehler beim Laden der Kursdaten:', e);
+        return null; // oder geeignete Fehlerbehandlung
+    }
+}
+
+
+
+
 function app() {
     manageSortDropdown();
     initializeAccordions();
@@ -241,18 +363,6 @@ document.addEventListener('DOMContentLoaded', app);
 
 
 
-async function loadKurseData() {
-    try {
-        const response = await fetch('kurseData.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-    } catch (e) {
-        console.error('Fehler beim Laden der Kursdaten:', e);
-        return null; // oder geeignete Fehlerbehandlung
-    }
-}
 
 function filterKurse(data, filters) {
     if (!data || !data.kurse) {
@@ -303,89 +413,6 @@ async function applyFilters() {
 
 
 
-function createCourseCard(kurs) {
-    // Funktion, um die Beschreibung auf maximal 150 Zeichen zu kürzen
-    function getShortDescription(description) {
-        return description.length > 150 ? description.substring(0, 150) + '...' : description;
-    }
-
-    const shortDescription = getShortDescription(kurs.beschreibung);
-    // Prüfen, ob ein "Mehr lesen"-Link benötigt wird
-    const readMoreLink = kurs.beschreibung.length > 150 ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : '';
-
-    // Erstelle Strings für jeden Zeitpunkt im Array
-    let zeitenStrings = kurs.zeiten.map(zeitpunkt => {
-        return `<span class=""><i class="fa-solid fa-calendar-days"></i>${zeitpunkt.tag}</span> <span><i class="fa-regular fa-clock"></i>${zeitpunkt.zeit}</span> `;
-    }).join('<br>');
-
-    // Fallback, falls keine Zeiten vorhanden sind
-    if (kurs.zeiten.length === 0) {
-        zeitenStrings = `<span>Keine Zeiten angegeben</span>`;
-    }
-
-    return `
-        <div class="blog-card">
-            <div class="image-wrapper">
-                <div class="image" style="background-image: url('${kurs.pfadbild}')"></div>
-            </div>
-            <div class="description">
-                <h1>${kurs.titel}</h1>
-                <h2>${kurs.kategorie}</h2>
-                <p class="course-description">${shortDescription}${readMoreLink}</p>
-                <hr>
-
-                <div class="card-block course-info">
-                    <div class="card-course-info">
-                        ${zeitenStrings}
-                    </div>
-
-                    <div class="card-course-info">
-                        <span><i class="fa-solid fa-location-dot"></i>  ${kurs.ort} </span>
-                        <span> </span>
-                    </div>
-                </div>
-
-                <div class="card-block course-info">
-                    <div class="card-course-info">
-                        <span class="card-text tutor-name"><i class="fa-solid fa-user-tie"></i>${kurs.leitung}</span>
-                        <span class="tutor-description"><i class="fa-regular fa-registered"></i>${kurs.details.join(', ')}</span>
-                    </div>
-                    <div class="card-course-info">
-                        <p>${kurs.preis} <i class="fa-solid fa-euro-sign" aria-hidden="true"></i></p>
-                    </div>
-                </div>
-                <hr>
-                <p class="card-actions">
-                    <b><a href="#" class="has-text-grey">
-                        Kurs Buchen
-                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </a></b> 
-                </p>
-            </div>
-        </div>
-    `;
-}
-
-
-
-async function displayCourses() {
-    try {
-        const data = await loadKurseData();
-        console.log("Geladene Kurse:", data); // Überprüfe die geladenen Daten
-        const coursesContainer = document.querySelector('.coursecards-container');
-        if (!coursesContainer) {
-            console.error("Kurscontainer nicht gefunden!");
-            return;
-        }
-
-        data.kurse.forEach(kurs => {
-            const courseCard = createCourseCard(kurs);
-            coursesContainer.innerHTML += courseCard;
-        });
-    } catch (error) {
-        console.error("Fehler beim Anzeigen der Kurse:", error);
-    }
-}
 
 
 

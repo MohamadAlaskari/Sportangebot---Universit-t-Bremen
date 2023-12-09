@@ -829,7 +829,7 @@ fl-filter-btn:focus {
     .blog-card .description:before {
        transform: skewX(-3deg);
         content: "";
-        border-radius: 10px;
+        border-radius: 100px;
         background: #fff;
         width: 40px;
         position: absolute;
@@ -865,20 +865,7 @@ fl-filter-btn:focus {
     heigt: 100px;
   }
   
-   .card-course-info figure {
-    max-width: 54px;
-    height: 54px;
-    text-align: center;
-    margin: 0 10px;
-    float: left;
-    overflow: hidden;
-    border-radius: 50%;
-  }
-  
-   .card-course-info figure img {
-  max-width: 100px;
-  margin-left: -10px;
-  }
+ 
   
   .card-course-info span {
     display: block;
@@ -904,6 +891,10 @@ fl-filter-btn:focus {
     height: 1em;
   }
   
+  .ausgebucht{
+    color: #c60c2b;
+    font-weight: bold;
+  }
 /*----------------
                     Ende card course 
 
