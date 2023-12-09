@@ -184,7 +184,7 @@ function filterKurse(data, filters) {
 
     return data.kurse.filter(kurs => {
         const matchesCategory = filters.categories.length === 0 || filters.categories.includes(kurs.kategorie);
-        const matchesDay = filters.days.length === 0 || filters.days.some(day => kurs.tage.includes(day));
+        const matchesDay = filters.days.length === 0 || kurs.zeiten.some(zeit => filters.days.includes(zeit.tag));
         const matchesTime = filters.times.length === 0 || filters.times.includes(kurs.zeit);
 
         // Hier nehmen wir an, dass die Preisfilter als Zahlen bereitgestellt werden
