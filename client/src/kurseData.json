@@ -12,7 +12,7 @@
             "preis": 35,
             "zeiten": [
                 {
-                    "tag": "Mittwoch",
+                    "tag": "Montag & Mittwoch",
                     "zeit": "16:00-17:30 Uhr"
                 }
             ],
@@ -54,6 +54,10 @@
                 {
                     "tag": "Mittwoch",
                     "zeit": "17:00-18:30 Uhr"
+                },
+                {
+                    "tag": "Samstag",
+                    "zeit": "09:00-12:00 Uhr"
                 }
             ],
             "details": [
@@ -231,7 +235,6 @@
                 "Barrierefrei"
             ]
         },
-       
         {
             "nummer": 213,
             "titel": "Basketball-Workshop für Anfänger",

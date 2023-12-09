@@ -304,61 +304,65 @@ async function applyFilters() {
 
 
 function createCourseCard(kurs) {
-    const firstTimeSlot = kurs.zeiten && kurs.zeiten[0];
-    const kursTag = firstTimeSlot ? firstTimeSlot.tag : 'Kein Tag angegeben';
-    const kursZeit = firstTimeSlot ? firstTimeSlot.zeit : 'Keine Zeit angegeben';
-
     // Funktion, um die Beschreibung auf maximal 150 Zeichen zu kürzen
     function getShortDescription(description) {
-        return description.length > 100 ? description.substring(0, 100) + '...' : description;
+        return description.length > 150 ? description.substring(0, 150) + '...' : description;
     }
 
     const shortDescription = getShortDescription(kurs.beschreibung);
     // Prüfen, ob ein "Mehr lesen"-Link benötigt wird
-    const readMoreLink = kurs.beschreibung.length > 100 ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : '';
-    const courseId = 'course-' + kurs.nummer;
-    return `
-    <div class="blog-card">
-    <div class="image-wrapper">
-        <div class="image" style="background-image: url('${kurs.pfadbild}')"></div>
-    </div>
-    <div class="description">
-        <h1>${kurs.titel}</h1>
-        <h2>${kurs.kategorie}</h2>
-        <p class="course-description">${shortDescription}${readMoreLink}</p>
-        <hr>
-      
-        
-        <div class="card-block course-info">
-        <div class="card-course-info">
-        <span><i class="fa-regular fa-clock"></i>${kursZeit}</span>
-        <span class="tutor-description"><i class="fa-solid fa-calendar-days"></i>${kursTag}</span>
-        </div>
+    const readMoreLink = kurs.beschreibung.length > 150 ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : '';
 
-        <div class="card-course-info">
-        <span><i class="fa-solid fa-location-dot"></i>  ${kurs.ort} </span>
-        <span> </span>
-        </div>
-    </div>
-        <div class="card-block course-info">
-            <div class="card-course-info">
-                <span class="card-text tutor-name"><i class="fa-solid fa-user-tie"></i>${kurs.leitung}</span>
-                <span class="tutor-description"><i class="fa-regular fa-registered"></i>${kurs.details.join(', ')}</span>
+    // Erstelle Strings für jeden Zeitpunkt im Array
+    let zeitenStrings = kurs.zeiten.map(zeitpunkt => {
+        return `<span class=""><i class="fa-solid fa-calendar-days"></i>${zeitpunkt.tag}</span> <span><i class="fa-regular fa-clock"></i>${zeitpunkt.zeit}</span> `;
+    }).join('<br>');
+
+    // Fallback, falls keine Zeiten vorhanden sind
+    if (kurs.zeiten.length === 0) {
+        zeitenStrings = `<span>Keine Zeiten angegeben</span>`;
+    }
+
+    return `
+        <div class="blog-card">
+            <div class="image-wrapper">
+                <div class="image" style="background-image: url('${kurs.pfadbild}')"></div>
             </div>
-            <div class="card-course-info">
-               
-                <p>${kurs.preis} <i class="fa-solid fa-euro-sign" aria-hidden="true"></i></p>
+            <div class="description">
+                <h1>${kurs.titel}</h1>
+                <h2>${kurs.kategorie}</h2>
+                <p class="course-description">${shortDescription}${readMoreLink}</p>
+                <hr>
+
+                <div class="card-block course-info">
+                    <div class="card-course-info">
+                        ${zeitenStrings}
+                    </div>
+
+                    <div class="card-course-info">
+                        <span><i class="fa-solid fa-location-dot"></i>  ${kurs.ort} </span>
+                        <span> </span>
+                    </div>
+                </div>
+
+                <div class="card-block course-info">
+                    <div class="card-course-info">
+                        <span class="card-text tutor-name"><i class="fa-solid fa-user-tie"></i>${kurs.leitung}</span>
+                        <span class="tutor-description"><i class="fa-regular fa-registered"></i>${kurs.details.join(', ')}</span>
+                    </div>
+                    <div class="card-course-info">
+                        <p>${kurs.preis} <i class="fa-solid fa-euro-sign" aria-hidden="true"></i></p>
+                    </div>
+                </div>
+                <hr>
+                <p class="card-actions">
+                    <b><a href="#" class="has-text-grey">
+                        Kurs Buchen
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </a></b> 
+                </p>
             </div>
         </div>
-        <hr>
-        <p class="card-actions">
-           <b><a href="#" class="has-text-grey">
-                Kurs Buchen
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </a></b> 
-        </p>
-    </div>
-</div>
     `;
 }
 
