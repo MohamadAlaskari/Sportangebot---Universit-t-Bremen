@@ -68,11 +68,28 @@ function initializeAccordions() {
    -----------------
     */
 
-function initializePriceRange() {
+
+
+async function findMaxCoursePrice() {
+    try {
+        const data = await loadKurseData();
+        const maxPrice = data.kurse.reduce((max, kurs) => Math.max(max, kurs.preis), 0);
+        return maxPrice;
+    } catch (e) {
+        console.error('Fehler beim Ermitteln des Höchstpreises:', e);
+        return 0; // oder einen Standardwert zurückgeben
+    }
+}
+
+async function initializePriceRange() {
     const rangeInput = document.querySelectorAll(".range-input input"),
         priceInput = document.querySelectorAll(".price-input input"),
         range = document.querySelector(".slider .progress");
-    let priceGap = 50;
+    let priceGap = 5;
+
+    const maxPrice = await findMaxCoursePrice();
+    if (rangeInput[1]) rangeInput[1].max = maxPrice;
+    if (priceInput[1]) priceInput[1].max = maxPrice;
 
     priceInput.forEach((input) => {
         input.addEventListener("input", (e) => {
@@ -124,6 +141,7 @@ function initializePriceRange() {
         getMaxValue
     };
 }
+
 
 
 function addPriceRangeListeners() {
