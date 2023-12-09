@@ -99,7 +99,7 @@ async function initializePriceRange() {
     const maxPrice = await findMaxCoursePrice();
     if (priceMaxInput) priceMaxInput.value = maxPrice; // Setze den Wert im Textfeld
     // Hier sollten Sie auch den Maximalwert für den Slider anpassen
-    if (rangeMaxInput) rangeMaxInput.max = maxPrice;
+    if (rangeMaxInput) rangeMaxInput.value = maxPrice;
 
     
 
