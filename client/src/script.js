@@ -397,10 +397,10 @@ function filterKurse(data, filters) {
 }
 
 // Beispiel: Event-Listener für ein Dropdown-Menü
-//document.getElementById('meinFilterDropdown').addEventListener('change', applyFilters);
+document.getElementById('meinFilterDropdown').addEventListener('change', applyFilters);
 
 // Beispiel: Event-Listener für eine Checkbox
-//document.getElementById('meineCheckbox').addEventListener('change', applyFilters);
+document.getElementById('meineCheckbox').addEventListener('change', applyFilters);
 
 async function applyFilters() {
     const kurseData = await loadKurseData();
