@@ -264,20 +264,6 @@ function manageSortDropdown() {
 
 
 // Implementierung der sortKurse Funktion
-function sortKurse(kurse, sortValue) {
-    if (sortValue === 'preis-aufsteigend') {
-        return [...kurse].sort((a, b) => a.preis - b.preis);
-    } else if (sortValue === 'preis-absteigend') {
-        return [...kurse].sort((a, b) => b.preis - a.preis);
-    }
-    // Fügen Sie hier zusätzliche Sortierkriterien hinzu, z.B. nach Titel, Datum, etc.
-    return kurse;
-}
-
-// Implementierung der renderCourses Funktion
-function renderCourses(courses) {
-    // ... Ihr Code zum Rendern der Kurse ...
-}
 
 
 function sortKurse(kurse, sortValue) {
@@ -300,11 +286,18 @@ function renderCourses(courses) {
     const coursesContainer = document.querySelector('.coursecards-container');
     coursesContainer.innerHTML = ''; // Leeren des Containers vor dem Hinzufügen neuer Karten
 
-    courses.forEach(kurs => {
-        const courseCard = createCourseCard(kurs);
-        coursesContainer.innerHTML += courseCard;
-    });
+    if (courses.length === 0) {
+        // Zeige eine Nachricht an, wenn keine Kurse gefunden wurden
+        coursesContainer.innerHTML = '<p class="no-courses-message">Keine Kurse gefunden.</p>';
+    } else {
+        // Rendern der Kurskarten, wenn Kurse vorhanden sind
+        courses.forEach(kurs => {
+            const courseCard = createCourseCard(kurs);
+            coursesContainer.innerHTML += courseCard;
+        });
+    }
 }
+
 
 /* ------------------
 =======>   Course Create and Display Functions
