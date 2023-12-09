@@ -616,7 +616,7 @@ fl-filter-btn:focus {
 --------------*/
 .coursecards-container {
     margin-top: 5px 0px;
-    min-height: 200px;
+    min-height: 100vh;
 }
 
 .blog-card {
