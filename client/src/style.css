@@ -3,6 +3,7 @@
 
 .main-section {
     position: relative;
+    padding-top: 10px;
 }
 
 .filter-sidenav {
@@ -350,7 +351,6 @@ input[type="range"]::-moz-range-thumb {
 
 .fl-filter-button-wrapper {
     display: flex;
-    justify-content: flex-start;
 }
 
 .fl-filter-btn {
