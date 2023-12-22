@@ -1,0 +1,262 @@
+
+/*main section*/
+/*filter & sortieren btns*/
+.fl-filter-container {
+    margin-top: 5px;
+}
+
+.coursecards-container {
+    margin-top: 5px;
+}
+
+.fl-filter-button-wrapper {
+    display: flex;
+}
+
+.fl-filter-btn {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: left;
+    background: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.fl-filter-btn:hover,
+fl-filter-btn:focus {
+    box-shadow: 0 0 0 4px rgba(0, 51, 109, 0.084);
+    background: white;
+
+}
+
+.fl-sort-icon,
+.fl-filter-icon {
+    margin-right: 8px;
+    width: 20px;
+    fill: #5f6368;
+}
+
+
+/*für die span neben filter Zahl */
+.fl-filters-active {
+    display: inline-grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    background: #3c4043;
+    color: white;
+}
+
+.fl-filters-active.empty {
+    display: none;
+}
+
+.fl-filter-button-wrapper>*~* {
+    margin-left: 10px;
+}
+
+.fl-filter-buttons {
+    position: relative;
+    z-index: 800;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    grid-gap: 40px;
+    background: white;
+}
+
+
+.fl-filter-button-wrapper:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fl-view-btn,
+.fl-sort-btn {
+    box-sizing: border-box;
+    height: 40px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+}
+
+.fl-filter-dropdown {
+    height: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.fl-filter-dropdown.open {
+    pointer-events: all;
+}
+
+.fl-filter-dropdown-wrapper {
+    display: grid;
+    grid-gap: 40px;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    padding-top: 40px;
+}
+
+
+
+.fl-filter-title {
+    font: 16px sans-serif;
+}
+
+.fl-filter-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+}
+
+
+
+.fl-select-filter {
+    border: 1px solid #dadce0;
+}
+
+
+/*
+|---------------------------------------
+| Select
+|---------------------------------------
+*/
+
+.fl-select-label {
+    margin-bottom: 10px;
+}
+
+.fl-select-reset {
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    background: none;
+    color: #9aa0a6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fl-select-reset:hover {
+    color: #3c4043;
+}
+
+.fl-select-reset.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fl-select-wrapper {
+    position: relative;
+}
+
+/* Button */
+
+.fl-select-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 20px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: left;
+    background: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.fl-select-btn:hover {
+    box-shadow: 0 0 0 4px rgba(0, 50, 107, 0.1);
+    border-color: rgba(0, 50, 107, 0.1);
+}
+
+.fl-select-btn__arrow {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    fill: gray;
+    width: 10px;
+    height: 10px;
+    margin: 0;
+    transition: transform 0.2s ease;
+}
+
+.fl-select-wrapper.open .fl-select-btn__arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown */
+
+.fl-select-dropdown {
+    position: absolute;
+    z-index: 700;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 180px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    margin-top: 15px;
+    background: white;
+    opacity: 0;
+    transform: translatey(-10px);
+    pointer-events: none;
+    transition: all 0.1s ease;
+}
+
+.fl-select-wrapper.open .fl-select-dropdown {
+    opacity: 1;
+    transform: translatey(0);
+    pointer-events: all;
+}
+
+.fl-select-dropdown ul {
+    padding: 20px 10px;
+    margin: 0;
+    list-style: none;
+}
+
+.fl-select-dropdown input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.fl-select-dropdown label {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: #9aa0a6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fl-select-dropdown input:checked~label {
+    background: #c60c2b !important;
+    color: #fff !important;
+
+}
+
+.fl-select-dropdown label:hover {
+    background: #eadbd2 !important;
+    color: #ff4000 !important;
+}
+
+
+
