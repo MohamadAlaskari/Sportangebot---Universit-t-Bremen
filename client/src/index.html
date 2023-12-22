@@ -409,6 +409,10 @@
         }
         //]]>
     </script>
+    <!--Mabpox scripte-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
     <!--my css-->
     <link rel="stylesheet" href="style.css" />
@@ -1016,6 +1020,22 @@
                                     </form>
                                 </div>
 
+                                <button class="accordion">Umkreissuche</button>
+                                <div class="accordion-panel">
+                                    <div class="map-overlay">
+                                        <p>Klicken Sie auf einen beliebigen Punkt auf der Karte.
+                                            Angezeigt werden dann alle Angebote im Umkreis von:
+                                            <span>
+                                                <input id="radiusInput" type="number" placeholder="Radius in Metern"
+                                                    value="20">
+                                            </span>
+                                            um diesen Punkt.
+                                        </p>
+
+                                    </div>
+                                    <div id='map'></div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1023,7 +1043,7 @@
 
 
                     <div class="filter-sort-container ">
-                       
+
                         <div class="fl-filter-button-wrapper">
                             <button class='fl-filter-btn' onclick="toggleNav()">
                                 <svg class='fl-filter-icon' xmlns="http://www.w3.org/2000/svg" height="24"
@@ -1045,8 +1065,8 @@
 
                                     <span class='fl-select-btn__text'>Sortieren</span>
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" role="img" class="fl-select-btn__arrow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" role="img" class="fl-select-btn__arrow">
                                         <path
                                             d="M21.5265 8.77171C22.1578 8.13764 22.1578 7.10962 21.5265 6.47555C20.8951 5.84148 19.8714 5.84148 19.24 6.47555L11.9999 13.7465L4.75996 6.47573C4.12858 5.84166 3.10492 5.84166 2.47354 6.47573C1.84215 7.10979 1.84215 8.13782 2.47354 8.77188L10.8332 17.1671C10.8408 17.1751 10.8486 17.183 10.8565 17.1909C11.0636 17.399 11.313 17.5388 11.577 17.6103C11.5834 17.6121 11.5899 17.6138 11.5964 17.6154C12.132 17.7536 12.7242 17.6122 13.1435 17.1911C13.1539 17.1807 13.1641 17.1702 13.1742 17.1596L21.5265 8.77171Z">
                                         </path>
@@ -1092,7 +1112,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
 
 
@@ -1168,7 +1188,10 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <!--my js script-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+
     <script src="script.js"></script>
+    <script type="module" src="./mapbox/index.js"></script>
 </body>
 
 </html>

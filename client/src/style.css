@@ -337,7 +337,41 @@ input[type="range"]::-moz-range-thumb {
 
 /*ende preis*/
 
+/***********************************************
++++++++++++++++  Mapbox  +++++++++++++++++++
+********************************************/
 
+
+.map-overlay {
+    margin-bottom: 10px;
+}
+
+#map {
+    width: 30vw;  /* 100% der Viewport-Breite */
+    height: 60vh; /* 100% der Viewport-Höhe */
+}
+
+
+
+
+
+.custom-popup {
+    background: none;
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+    font-size: 14px;
+    padding: 12px;
+}
+
+.custom-popup .mapboxgl-popup-tip {
+    border-top-color: #00326d;
+}
+
+
+/***********************************************
++++++++++++++   EndeMabox  ++++++++++++++++++++
+********************************************/
 
 /*main section*/
 /*filter & sortieren btns*/
@@ -609,6 +643,9 @@ fl-filter-btn:focus {
     background: #eadbd2 !important;
     color: #ff4000 !important;
 }
+
+
+
 
 /*----------------
             card course 
