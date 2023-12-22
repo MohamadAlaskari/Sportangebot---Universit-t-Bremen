@@ -223,13 +223,13 @@ input[type=checkbox]+label:active:before {
     transform: scale(0);
 }
 
- input[type=checkbox]:checked+label:before {
+input[type=checkbox]:checked+label:before {
     background-color: #d50c2f;
     color: #fff;
     border: none;
 }
 
- input[type=checkbox]:disabled+label:before {
+input[type=checkbox]:disabled+label:before {
     transform: scale(1);
     border-color: #aaa;
 }
@@ -600,8 +600,8 @@ fl-filter-btn:focus {
 }
 
 .fl-select-dropdown input:checked~label {
-    background: #c60c2b!important;
-    color:  #fff !important;
+    background: #c60c2b !important;
+    color: #fff !important;
 
 }
 
@@ -831,7 +831,7 @@ fl-filter-btn:focus {
     }
 
     .blog-card .description:before {
-       transform: skewX(-3deg);
+        transform: skewX(-3deg);
         content: "";
         border-radius: 100px;
         background: #fff;
@@ -861,27 +861,27 @@ fl-filter-btn:focus {
 /*info leitung */
 .card-course-info:first-child {
     width: 60%;
-    
-  }
-  
-   .card-course-info {
+
+}
+
+.card-course-info {
     display: inline-block;
     heigt: 100px;
-  }
-  
- 
-  
-  .card-course-info span {
+}
+
+
+
+.card-course-info span {
     display: block;
     font-size: 0.9em;
     text-align: left;
-  }
-  
-   .card-course-info span i {
+}
+
+.card-course-info span i {
     padding-right: 10px;
-  }
-  
-  .icon {
+}
+
+.icon {
     display: inline-block;
     width: 1.3em;
     height: 1.3em;
@@ -889,16 +889,17 @@ fl-filter-btn:focus {
     stroke: currentColor;
     fill: currentColor;
     margin-right: 10px;
-  }
-  
-  .icon.icon-icon-heart {
+}
+
+.icon.icon-icon-heart {
     height: 1em;
-  }
-  
-  .ausgebucht{
+}
+
+.ausgebucht {
     color: #c60c2b;
     font-weight: bold;
-  }
+}
+
 /*----------------
                     Ende card course 
 
@@ -909,42 +910,4 @@ fl-filter-btn:focus {
 
 
 
-@media (max-width: 980px) {
-    .fl-filter-dropdown-wrapper {
-        grid-template-columns: 1fr 1fr;
-        grid-auto-flow: row;
-    }
-
-    /* Stil für die aktive sidenav */
-    .sideNavBar-active {
-        width: 60%;
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* Stil für die aktive sidenav */
-    .sideNavBar-active {
-        width: 70%;
-    }
-
-    .fl-filter-dropdown-wrapper {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
-    .sidenav a {
-        font-size: 18px;
-    }
-
-    /* Stil für die aktive sidenav */
-    .sideNavBar-active {
-        width: 100%;
-    }
-
-}
+@import url('./styles/media.css');

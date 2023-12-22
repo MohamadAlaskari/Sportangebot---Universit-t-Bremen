@@ -1,0 +1,39 @@
+@media (max-width: 980px) {
+    .fl-filter-dropdown-wrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: row;
+    }
+
+    /* Stil für die aktive sidenav */
+    .sideNavBar-active {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Stil für die aktive sidenav */
+    .sideNavBar-active {
+        width: 70%;
+    }
+
+    .fl-filter-dropdown-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+
+    /* Stil für die aktive sidenav */
+    .sideNavBar-active {
+        width: 100%;
+    }
+
+}
