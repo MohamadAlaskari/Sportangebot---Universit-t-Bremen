@@ -814,48 +814,6 @@ fl-filter-btn:focus {
     left: 0%;
 }
 
-@media (min-width: 640px) {
-    .blog-card {
-        flex-direction: row;
-        max-width: 700px;
-        min-height: 160px
-    }
-
-    .blog-card .image-wrapper {
-        flex-basis: 40%;
-        height: auto;
-    }
-
-    .blog-card .description {
-        flex-basis: 60%;
-    }
-
-    .blog-card .description:before {
-        transform: skewX(-3deg);
-        content: "";
-        border-radius: 100px;
-        background: #fff;
-        width: 40px;
-        position: absolute;
-        left: -10px;
-        top: 0;
-        bottom: 0;
-        z-index: -1;
-    }
-
-    .blog-card.alt {
-        flex-direction: row-reverse;
-    }
-
-    .blog-card.alt .description:before {
-        left: inherit;
-        right: -10px;
-    }
-
-    .blog-card.alt .details {
-        padding-left: 25px;
-    }
-}
 
 
 /*info leitung */
