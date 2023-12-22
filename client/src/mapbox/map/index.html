@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mapbox</title>
     <!--scripte-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
     <link rel="stylesheet" href="style.css">
@@ -19,20 +21,26 @@
     <h1>Mapbox</h1>
     <p>hier ist die Mapbox von alle Sportkurse</p>
 
-    <div id='map' style='width: 400px; height: 300px;'></div>
-    <script>
-        mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11'
-        });
-    </script>
+   
+
+    <div class="map-overlay">
+        <h4>Umkreissuche:</h4>
+        <p>Klicken Sie auf einen beliebigen Punkt auf der Karte.
+            Angezeigt werden dann alle Angebote im Umkreis von: 
+            <span>
+                <input id="radiusInput" type="number" placeholder="Radius in Metern" value="20">
+            </span>
+            um diesen Punkt.
+        </p>
+        
+    </div>
+    <div id='map' ></div>
 
 
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
 
-    <script src="script.js"></script>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>

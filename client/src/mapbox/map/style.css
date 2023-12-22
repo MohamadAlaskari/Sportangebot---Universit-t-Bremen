@@ -1,0 +1,32 @@
+body {
+    margin: 8px;
+    padding: 0;
+}
+
+
+
+.map-overlay {
+    margin-bottom: 10px;
+}
+
+#map {
+    width: 40vw;  /* 100% der Viewport-Breite */
+    height: 40vh; /* 100% der Viewport-Höhe */
+}
+
+
+
+
+
+.custom-popup {
+    background: none;
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+    font-size: 14px;
+    padding: 12px;
+}
+
+.custom-popup .mapboxgl-popup-tip {
+    border-top-color: #00326d;
+}
