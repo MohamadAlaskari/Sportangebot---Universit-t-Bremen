@@ -1,0 +1,249 @@
+/*----------------
+            card course 
+            
+--------------*/
+.coursecards-container {
+    margin-top: 5px 0px;
+    min-height: 100vh;
+}
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem auto;
+    box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.6%;
+    background: #fff;
+    line-height: 1.4;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.blog-card a {
+    color: #00326d;
+}
+
+.blog-card a:hover {
+    color: #00326d;
+}
+
+
+
+.blog-card .image-wrapper {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+}
+
+.blog-card .image-wrapper .image::before {
+    content: "Kurs buchen";
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 51, 109, 0.4);
+    transition: all 0.7s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.blog-card .image-wrapper .image:hover::before {
+    opacity: 1;
+}
+
+.blog-card .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s;
+}
+
+.blog-card .details,
+.blog-card .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+}
+
+.blog-card .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left 0.2s;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.blog-card .details a {
+    text-decoration: dotted underline;
+}
+
+.blog-card .details ul li {
+    display: inline-block;
+}
+
+.blog-card .details .author:before {
+    font-family: FontAwesome;
+    margin-right: 10px;
+    content: "";
+}
+
+.blog-card .details .date:before {
+    font-family: FontAwesome;
+    margin-right: 10px;
+    content: "";
+}
+
+.blog-card .details .tags ul:before {
+    font-family: FontAwesome;
+    content: "";
+    margin-right: 10px;
+}
+
+.blog-card .details .tags li {
+    margin-right: 2px;
+}
+
+.blog-card .details .tags li:first-child {
+    margin-left: -4px;
+}
+
+.blog-card .description {
+    padding: 1rem;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-card .description:before {
+    content: "";
+    border-radius: 10px;
+    background: #fff;
+    width: 100%;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+.blog-card .description h1 {
+    line-height: 1;
+    margin: 0;
+    font-size: 1.7rem;
+}
+
+.blog-card .description h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #a2a2a2;
+    margin-top: 5px;
+}
+
+.blog-card .description .card-actions {
+    text-align: center;
+}
+
+.blog-card .description .card-actions a {
+    display: inline-block;
+    position: relative;
+}
+
+.blog-card .description .card-actions a:hover {
+    color: black !important;
+}
+
+.blog-card p {
+    position: relative;
+    margin: 1rem 0 0;
+}
+
+.blog-card p:first-of-type {
+    margin-top: 1.25rem;
+}
+
+.blog-card .course-description:first-of-type:before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    background: #5ad67d;
+    width: 35px;
+    top: -0.75rem;
+    border-radius: 3px;
+    text-align: left;
+    height: 3px;
+    border-radius: 50px;
+    background: #d52623;
+}
+
+.blog-card:hover .details {
+    left: 0%;
+}
+
+
+
+/*info leitung */
+.card-course-info:first-child {
+    width: 60%;
+
+}
+
+.card-course-info {
+    display: inline-block;
+    heigt: 100px;
+}
+
+
+
+.card-course-info span {
+    display: block;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.card-course-info span i {
+    padding-right: 10px;
+}
+
+.icon {
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    margin-right: 10px;
+}
+
+.icon.icon-icon-heart {
+    height: 1em;
+}
+
+.ausgebucht {
+    color: #c60c2b;
+    font-weight: bold;
+}
+
+/*----------------
+                    Ende card course 
+
+--------------*/

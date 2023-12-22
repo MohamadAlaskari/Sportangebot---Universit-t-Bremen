@@ -1,0 +1,53 @@
+@import url('./search/search-btn.css');
+@import url('./accordion/accordion.css');
+
+
+.filter-sidenav {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: 300;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 25px;
+
+    list-style-type: none;
+}
+
+/* Stil für die aktive sidenav */
+.sideNavBar-active {
+    width: 40vw;
+}
+
+.filter-sidenav .title-filter {
+    margin-left: 5px;
+}
+
+.filter-sidenav a {
+    padding: 8px 8px 20px 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    list-style-type: none;
+    cursor: pointer;
+    list-style-position: inside;
+    transition: 0.3s;
+}
+
+
+.filter-sidenav a:hover {
+    color: #333;
+}
+
+.filter-sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+

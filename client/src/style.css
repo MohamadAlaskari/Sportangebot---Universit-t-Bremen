@@ -1,342 +1,12 @@
 @import url('root.css');
-@import url('./styles/map.css');
+@import url('./styles/sidebar/sidebar.css');
+@import url('./styles/courseCard.css');
 
 
 .main-section {
     position: relative;
     padding-top: 10px;
 }
-
-.filter-sidenav {
-    height: 100%;
-    width: 0;
-    position: absolute;
-    z-index: 300;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 25px;
-
-    list-style-type: none;
-}
-
-/* Stil für die aktive sidenav */
-.sideNavBar-active {
-    width: 35%;
-}
-
-.filter-sidenav .title-filter {
-    margin-left: 5px;
-}
-
-.filter-sidenav a {
-    padding: 8px 8px 20px 20px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    list-style-type: none;
-    cursor: pointer;
-    list-style-position: inside;
-    transition: 0.3s;
-}
-
-
-.filter-sidenav a:hover {
-    color: #333;
-}
-
-.filter-sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 5px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-
-/*search button*/
-
-.sample.nine button {
-    text-align: center;
-}
-
-.sample.nine button:focus {
-    outline: none;
-}
-
-button.btn-search,
-button.btn-reset {
-    border: none;
-    height: 30px;
-    font-size: 12px;
-    padding: 4px;
-    position: absolute;
-    width: 30px;
-}
-
-.sample {
-    height: 40px;
-    position: relative;
-    padding-left: 5px;
-
-
-}
-
-.sample.nine input {
-    border: 1px solid #ccc;
-    font-size: 12px;
-    height: 30px;
-    padding: 4px 8px;
-    position: absolute;
-    border-radius: 5px;
-    transition: all 0.6s ease-in-out 0.3s;
-    width: calc(100% - 7px);
-}
-
-.sample.nine input:focus {
-    transition-delay: 0;
-    outline: none !important;
-    outline-offset: 0px !important;
-}
-
-
-
-.sample.nine input:focus~button.btn-search {
-    background: #c60c2b;
-    color: #fff;
-    width: 30px;
-
-    transition-delay: 0;
-}
-
-.sample.nine input:focus~button.btn-reset {
-    left: 202px;
-    transition-delay: 0.3s;
-}
-
-.sample.nine button {
-    transition: all 0.6s ease-in-out;
-}
-
-.sample.nine button.btn-search {
-    background: #00326d;
-    color: #fff;
-    height: 30px;
-    width: 50%;
-    right: 0px;
-    transition: all 0.6s ease-in-out;
-}
-
-.sample.nine button.btn-reset {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    font-size: 10px;
-    height: 20px;
-    left: 92px;
-    line-height: 20px;
-    padding: 0;
-    top: 5px;
-    width: 20px;
-    z-index: -1;
-}
-
-
-
-/*acc*/
-
-.accordion_container {
-    width: 100%;
-}
-
-.accordion {
-    background-color: #00326d;
-    color: white;
-    cursor: pointer;
-    padding: 1rem;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 1.25rem;
-    transition: 0.4s;
-    margin-top: 0.2rem;
-}
-
-.active,
-.accordion:hover {
-    background-color: #d50c2f;
-}
-
-.accordion:after {
-    content: "\002B";
-    color: white;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-}
-
-.active:after {
-    content: "\2212";
-}
-
-.accordion-panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-
-
-input[type=checkbox]+label {
-    display: block;
-    margin: 0.2em;
-    cursor: pointer;
-    padding: 0.2em;
-    font-weight: normal;
-}
-
-input[type=checkbox] {
-    display: none;
-}
-
-input[type=checkbox]+label:before {
-    content: "\2714";
-    border: 0.1em solid #000;
-    border-radius: 0.2em;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    padding-left: 0.2em;
-    padding-bottom: 0.3em;
-    margin-right: 0.2em;
-    vertical-align: bottom;
-    color: transparent;
-    transition: .2s;
-}
-
-input[type=checkbox]+label:active:before {
-    transform: scale(0);
-}
-
-input[type=checkbox]:checked+label:before {
-    background-color: #d50c2f;
-    color: #fff;
-    border: none;
-}
-
-input[type=checkbox]:disabled+label:before {
-    transform: scale(1);
-    border-color: #aaa;
-}
-
-input[type=checkbox]:checked:disabled+label:before {
-    transform: scale(1);
-    background-color: #d50c2f;
-    border-color: #d50c2f;
-}
-
-
-
-
-/*preis*/
-.price-input {
-    width: 100%;
-    display: flex;
-    margin: 10px 0 20px;
-}
-
-.price-input .field {
-    display: flex;
-    width: 100%;
-    height: 45px;
-    align-items: center;
-}
-
-.field input {
-    width: 100%;
-    height: 100%;
-    outline: none;
-    font-size: 19px;
-    margin-left: 12px;
-    border-radius: 5px;
-    text-align: center;
-    border: 1px solid #999;
-    -moz-appearance: textfield;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-
-.price-input .separator {
-    width: 130px;
-    display: flex;
-    font-size: 19px;
-    align-items: center;
-    justify-content: center;
-}
-
-.slider {
-    height: 5px;
-    position: relative;
-    background: #ddd;
-    border-radius: 5px;
-}
-
-.slider .progress {
-    height: 100%;
-    left: 0%;
-    right: 25%;
-    position: absolute;
-    border-radius: 5px;
-    background: #e30613;
-}
-
-.range-input {
-    position: relative;
-    margin-bottom: 10px;
-
-}
-
-.range-input input {
-    position: absolute;
-    width: 100%;
-    height: 5px;
-    top: -5px;
-    background: none;
-    pointer-events: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    height: 17px;
-    width: 17px;
-    border-radius: 50%;
-    background: #e30613;
-    pointer-events: auto;
-    -webkit-appearance: none;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-}
-
-input[type="range"]::-moz-range-thumb {
-    height: 17px;
-    width: 17px;
-    border: none;
-    border-radius: 50%;
-    background: #e30613;
-    pointer-events: auto;
-    -moz-appearance: none;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-}
-
-/*ende preis*/
 
 
 /*main section*/
@@ -464,19 +134,7 @@ fl-filter-btn:focus {
     background: white;
 }
 
-.fl-search-filter {
-    padding: 0 20px 0 50px;
-    border: none;
-    background: #f1f3f4;
-    outline: none;
-    transition: all 0.2s ease;
-}
 
-.fl-search-filter:hover,
-.fl-search-filter:focus {
-    box-shadow: 0 0 0 4px rgba(255, 64, 0, 0.1);
-    background: white;
-}
 
 .fl-select-filter {
     border: 1px solid #dadce0;
@@ -613,259 +271,113 @@ fl-filter-btn:focus {
 
 
 
-/*----------------
-            card course 
-            
---------------*/
-.coursecards-container {
-    margin-top: 5px 0px;
-    min-height: 100vh;
-}
 
-.blog-card {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem auto;
-    box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.6%;
-    background: #fff;
-    line-height: 1.4;
-    border-radius: 10px;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.blog-card a {
-    color: #00326d;
-}
-
-.blog-card a:hover {
-    color: #00326d;
-}
-
-
-
-.blog-card .image-wrapper {
-    position: relative;
-    z-index: 0;
-    height: 200px;
-}
-
-.blog-card .image-wrapper .image::before {
-    content: "Kurs buchen";
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 51, 109, 0.4);
-    transition: all 0.7s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-}
-
-.blog-card .image-wrapper .image:hover::before {
-    opacity: 1;
-}
-
-.blog-card .image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.2s;
-}
-
-.blog-card .details,
-.blog-card .details ul {
-    margin: auto;
-    padding: 0;
-    list-style: none;
-}
-
-.blog-card .details {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -100%;
-    margin: auto;
-    transition: left 0.2s;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 10px;
-    width: 100%;
-    font-size: 0.9rem;
-}
-
-.blog-card .details a {
-    text-decoration: dotted underline;
-}
-
-.blog-card .details ul li {
-    display: inline-block;
-}
-
-.blog-card .details .author:before {
-    font-family: FontAwesome;
-    margin-right: 10px;
-    content: "";
-}
-
-.blog-card .details .date:before {
-    font-family: FontAwesome;
-    margin-right: 10px;
-    content: "";
-}
-
-.blog-card .details .tags ul:before {
-    font-family: FontAwesome;
-    content: "";
-    margin-right: 10px;
-}
-
-.blog-card .details .tags li {
-    margin-right: 2px;
-}
-
-.blog-card .details .tags li:first-child {
-    margin-left: -4px;
-}
-
-.blog-card .description {
-    padding: 1rem;
-    background: #fff;
-    position: relative;
-    z-index: 1;
-}
-
-.blog-card .description:before {
-    content: "";
-    border-radius: 10px;
-    background: #fff;
-    width: 100%;
-    position: absolute;
-    top: -10px;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-}
-
-
-.blog-card .description h1 {
-    line-height: 1;
-    margin: 0;
-    font-size: 1.7rem;
-}
-
-.blog-card .description h2 {
-    font-size: 1rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    color: #a2a2a2;
-    margin-top: 5px;
-}
-
-.blog-card .description .card-actions {
-    text-align: center;
-}
-
-.blog-card .description .card-actions a {
-    display: inline-block;
-    position: relative;
-}
-
-.blog-card .description .card-actions a:hover {
-    color: black !important;
-}
-
-.blog-card p {
-    position: relative;
-    margin: 1rem 0 0;
-}
-
-.blog-card p:first-of-type {
-    margin-top: 1.25rem;
-}
-
-.blog-card .course-description:first-of-type:before {
-    content: "";
-    position: absolute;
-    height: 5px;
-    background: #5ad67d;
-    width: 35px;
-    top: -0.75rem;
-    border-radius: 3px;
-    text-align: left;
-    height: 3px;
-    border-radius: 50px;
-    background: #d52623;
-}
-
-.blog-card:hover .details {
-    left: 0%;
-}
-
-
-
-/*info leitung */
-.card-course-info:first-child {
-    width: 60%;
-
-}
-
-.card-course-info {
-    display: inline-block;
-    heigt: 100px;
-}
-
-
-
-.card-course-info span {
-    display: block;
-    font-size: 0.9em;
-    text-align: left;
-}
-
-.card-course-info span i {
-    padding-right: 10px;
-}
-
-.icon {
-    display: inline-block;
-    width: 1.3em;
-    height: 1.3em;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
-    margin-right: 10px;
-}
-
-.icon.icon-icon-heart {
-    height: 1em;
-}
-
-.ausgebucht {
-    color: #c60c2b;
-    font-weight: bold;
-}
-
-/*----------------
-                    Ende card course 
-
---------------*/
 
 /*end cards section*/
 
 
 
+/*only this media for course card*/
+@media (min-width: 640px) {
+    .blog-card {
+        flex-direction: row;
+        max-width: 700px;
+        min-height: 160px
+    }
 
-@import url('./styles/media.css');
+    .blog-card .image-wrapper {
+        flex-basis: 40%;
+        height: auto;
+    }
+
+    .blog-card .description {
+        flex-basis: 60%;
+    }
+
+    .blog-card .description:before {
+        transform: skewX(-3deg);
+        content: "";
+        border-radius: 100px;
+        background: #fff;
+        width: 40px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    .blog-card.alt {
+        flex-direction: row-reverse;
+    }
+
+    .blog-card.alt .description:before {
+        left: inherit;
+        right: -10px;
+    }
+
+    .blog-card.alt .details {
+        padding-left: 25px;
+    }
+}
+
+
+@media (max-width: 980px) {
+
+    /* Stil für die aktive sidenav */
+    .sideNavBar-active {
+        width: 50vw;
+    }
+
+    .fl-filter-dropdown-wrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: row;
+    }
+    #map {
+        width: 45vw;  /* 100% der Viewport-Breite */
+        height: 60vh; /* 100% der Viewport-Höhe */
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Stil für die aktive sidenav */
+    .sideNavBar-active {
+        width: 70vw;
+    }
+
+    .fl-filter-dropdown-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    #map {
+        width: 65vw;
+        /* 100% der Viewport-Breite */
+        height: 60vh;
+        /* 100% der Viewport-Höhe */
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    /* Stil für die aktive sidenav */
+    .sideNavBar-active {
+        width: 100vw;
+    }
+
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+
+
+    #map {
+        width: 90vw;
+        /* 100% der Viewport-Breite */
+        height: 60vh;
+        /* 100% der Viewport-Höhe */
+    }
+}
