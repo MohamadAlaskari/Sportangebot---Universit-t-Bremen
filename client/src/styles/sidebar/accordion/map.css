@@ -2,9 +2,16 @@
     margin-bottom: 10px;
 }
 
+#radiusInput {
+    outline: none !important;
+    outline-offset: 0px !important;
+}
+
 #map {
-    width: 38vw;  /* 100% der Viewport-Breite */
-    height: 60vh; /* 100% der Viewport-Höhe */
+    width: 38vw;
+    /* 100% der Viewport-Breite */
+    height: 60vh;
+    /* 100% der Viewport-Höhe */
 }
 
 .custom-popup {
