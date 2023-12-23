@@ -1,0 +1,27 @@
+{
+  "name": "uni-bremen-sportcourses",
+  "version": "1.0.0",
+  "description": "A web application for displaying and managing sport courses at the University of Bremen",
+  "main": "client/src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohamadAlaskari/Sportangebot---Universit-t-Bremen.git"
+  },
+  "keywords": [
+    "university",
+    "bremen",
+    "sports",
+    "courses",
+    "web",
+    "application"
+  ],
+  "author": "Mohamad Alaskari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MohamadAlaskari/Sportangebot---Universit-t-Bremen/issues"
+  },
+  "homepage": "https://github.com/MohamadAlaskari/Sportangebot---Universit-t-Bremen#readme"
+}

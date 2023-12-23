@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function findMaxCoursePrice() {
   try {
-    const response = await fetch("assets/data/kurseData.json"); // Pfad zu Ihrer JSON-Datei
+    const response = await fetch("data/kurseData.json"); // Pfad zu Ihrer JSON-Datei
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -467,7 +467,7 @@ async function displayCourses() {
 
 async function loadKurseData() {
   try {
-    const response = await fetch("assets/data/kurseData.json");
+    const response = await fetch("data/kurseData.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -510,7 +510,6 @@ document.addEventListener("DOMContentLoaded", app);
 // Beispiel: Event-Listener für ein Dropdown-Menü
 document
   .getElementById("meinFilterDropdown")
-  .addEventListener("change", applyFilters);
 
 // Beispiel: Event-Listener für eine Checkbox
 document

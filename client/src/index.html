@@ -6,7 +6,7 @@
     <!-- This website is powered by TYPO3 - inspiring people to share! TYPO3 is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL. TYPO3 is copyright 1998-2023 of Kasper Skaarhoj. Extensions are copyright of their respective owners. Information and contribution at https://typo3.org/ -->
     <link href="//www.uni-bremen.de/typo3conf/ext/package/Resources/Public/Icons/favicon.ico" rel="shortcut icon"
         type="image/vnd.microsoft.icon" />
-    <title>Sportangebot - Universität Bremen</title>
+    <title>Sportangebot - Universit &auml;t Bremen</title>
     <meta content="IE=edge" http-equiv="x-ua-compatible" />
     <meta content="TYPO3 CMS" name="generator" />
     <meta content="Das ist die Seite Sportangebot des Vereins f&uuml;r Hochschulsport" name="description" />
@@ -17,11 +17,15 @@
     <meta content="no" name="apple-mobile-web-app-capable" />
     <meta content="zzDvgedLQ3kpCCHXNqoXuAARjUKef1FA3fHTr4hD--c" name="google-site-verification" />
     <link
-        href="//www.uni-bremen.de/typo3temp/assets/compressed/merged-68979d1fb7b27331ef49dd6a2537c484-min.css.gzip?1699836301"
+        href="//www.uni-bremen.de/typo3temp/assets/compressed/merged-68979d1fb7b27331ef49dd6a2537c484-min.css.gzip?1702601101"
         media="all" rel="stylesheet" type="text/css" />
-    <script
+    <!-- 
+
+        <script
         src="//www.uni-bremen.de/typo3temp/assets/compressed/merged-0ac6282b9fe882a26dcec088f8b20289-min.js.gzip?1701737102"
         type="text/javascript"></script>
+    -->
+
     <script defer="defer"
         src="//www.uni-bremen.de/typo3temp/assets/compressed/b7sectionindex.min-min.js.gzip?1701737102"
         type="text/javascript"></script>
@@ -61,13 +65,19 @@
     </script>
     <style type="text/css"></style>
     <link href="//www.uni-bremen.de/hospo/wir-ueber-uns" rel="prev" />
-    <link href="//www.uni-bremen.de/hospo/kursleitende" rel="next" />
-    <link as="style" crossorigin="anonymous"
-        href="https://www.uni-bremen.de/fileadmin/uploads/sg_cookie_optin/siteroot-1/cookieOptin.css?1701425417"
-        media="all" rel="preload" />
-    <link crossorigin="anonymous"
-        href="https://www.uni-bremen.de/fileadmin/uploads/sg_cookie_optin/siteroot-1/cookieOptin.css?1701425417"
-        media="all" rel="stylesheet" />
+    <!--
+
+        <link href="//www.uni-bremen.de/hospo/kursleitende" rel="next" />
+
+        <link as="style" crossorigin="anonymous"
+            href="https://www.uni-bremen.de/fileadmin/uploads/sg_cookie_optin/siteroot-1/cookieOptin.css?1701425417"
+            media="all" rel="preload" />
+            <link crossorigin="anonymous"
+                href="https://www.uni-bremen.de/fileadmin/uploads/sg_cookie_optin/siteroot-1/cookieOptin.css?1701425417"
+                media="all" rel="stylesheet" />
+    -->
+
+
     <script id="cookieOptinData" type="application/json">
             {
                 "cookieGroups": [
@@ -348,10 +358,15 @@
                 ]
             }
         }</script>
+<!-- 
+
     <link as="script" crossorigin="anonymous" data-ignore="1"
         href="https://www.uni-bremen.de/fileadmin/uploads/sg_cookie_optin/siteroot-1/cookieOptin.js" rel="preload" />
-    <script crossorigin="anonymous" data-ignore="1"
-        src="https://www.uni-bremen.de/fileadmin/uploads/sg_cookie_optin/siteroot-1/cookieOptin.js"></script>
+    
+        <script crossorigin="anonymous" data-ignore="1"
+            src="https://www.uni-bremen.de/fileadmin/uploads/sg_cookie_optin/siteroot-1/cookieOptin.js"></script>
+-->
+
     <link href="https://www.uni-bremen.de/hospo/sportangebot/rss.xml" rel="alternate" type="application/rss+xml" />
     <meta content="https://www.uni-bremen.de/hospo/sportangebot" property="og:url" />
     <meta content="website" property="og:type" />
@@ -372,50 +387,18 @@
     <meta content="no-cache, no-store, must-revalidate, max-age=0" http-equiv="cache-control" />
     <meta content="no-cache" http-equiv="Pragma" />
     <meta content="text/css" http-equiv="Content-Style-Type" />
-    <link href="/bremen/buchsys/lib/global/flyout_menu1.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/bremen/buchsys/lib/global/angebote.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/bremen/SysBilder/resex/bs_style.css" media="all" rel="stylesheet" type="text/css" />
-    <meta name="robots" content="noarchive,noimageindex,unavailable_after: 2024-02-04">
+    <meta name="robots" content="noarchive,noimageindex,unavailable_after: 2024-03-17">
     <meta name="robots" content="noindex,noarchive">
-    <link rel="stylesheet" href="../../buchsys/lib/leaflet/leaflet.css">
-    <script src="../../buchsys/lib/leaflet/leaflet.js"></script>
-    <script src="../../SysBilder/res/a01ac61303013e79c5254fcea91ef1dc.js"></script>
-    <script src="kurssuche.js?2023-12-08"></script>
-    <script>
-        //<![CDATA[ 	
-        var ks_oldonload = window.onload;
-        var kanzahl = 301;
-        var uks = 1;
-        var bs_lson = 0;
 
-        window.onload = function () {
-            bs_lstartks();
-            bs_lson = 1;
 
-            if (bs_oldonload)
-                bs_oldonload();
-        }
-        setTimeout(function () {
-            if (!bs_lson) {
-                bs_lstartks();
-            }
-        }, 800);
 
-        function bs_lstartks() {
-            bs_lson = 1;
-            bs_startks();
-            bs_show();
-            load_map(53.0755, 8.80717);
-        }
-        //]]>
-    </script>
     <!--Mabpox scripte-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
 
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
     <!--my css-->
-    <link rel="stylesheet" href="style.css" />
+    <link media="all" rel="stylesheet" type="text/css" href="index.css" />
 </head>
 
 <body>
@@ -1183,14 +1166,29 @@
         </section>
     </footer>
 
+    <!--to top-->
+    <button class="scroll btn btn-link typo3-search-exclude up" type="button"><span aria-hidden="true"
+            class="css-arrow"></span><span aria-hidden="true" class="css-arrow"></span><span
+            class="sr-only pageDown">Zum Seitenende springen</span><span class="sr-only pageUp">Zum Seitenanfang
+            springen</span></button>
+
+    <script data-condition-uri="https://www.uni-bremen.de/hospo/sportangebot/powermail_cond"
+        id="powermail_conditions_container"></script>
+  
+
+
+
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <!--my js script-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-
-    <script src="script.js"></script>
-    <script type="module" src="./mapbox/index.js"></script>
+<!-- 
+    
+-->
+<script src="index.js"></script>
+    <script type="module" src="./js/modules/mapbox/index.js"></script>
 </body>
 
 </html>

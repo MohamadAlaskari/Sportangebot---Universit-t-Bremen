@@ -1,0 +1,26 @@
+Die Struktur Ihres Projekts "Uni Bremen - SportCourses" ist wie folgt aufgebaut:
+UniBremen-SportCourses/
+|-- client
+|   |-- doc/
+|   |-- src/
+|       |-- assets/
+|           |-- images/
+|               |-- Vollyball.jpg
+|               |-- schwimmen.jpg
+|       |-- css/
+|           |-- (style-spezifische css-Dateien)
+|       |-- js/
+|           |-- index.js
+|           |-- modules/
+|               |-- data.js
+|               |-- filters.js
+|               |-- sort.js
+|               |-- utils/
+|                   |-- constant.js
+|               |-- mapbox/
+|                   |-- (Mapbox-spezifische JS-Dateien)
+|       |-- index.html
+|       |-- index.css
+|       |-- index.js
+|-- data/
+    |-- kurseData.json
