@@ -1,4 +1,4 @@
-let currentRadius = 20;
+let currentRadius = 60;
 let currentCircle;
 
 export function addCircleControl(map) {
