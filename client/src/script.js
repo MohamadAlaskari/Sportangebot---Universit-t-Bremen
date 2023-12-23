@@ -219,7 +219,7 @@ function filterKurse(data, filters) {
     const matchesCategory =
       filters.categories.length === 0 ||
       filters.categories.includes(kurs.kategorie);
-    const matchesTitle= filters.titel
+    const matchesTitle = filters.titel
     const matchesDay =
       filters.days.length === 0 ||
       kurs.zeiten.some((zeit) => filters.days.includes(zeit.tag));
@@ -263,8 +263,8 @@ Beispiel für den Abruf des ausgewählten Sortierwerts
     */
 
 function manageSortDropdown() {
-  const sortDropdown = document.querySelector(".fl-select-dropdown");
-  const sortBtnText = document.querySelector(".fl-select-btn__text");
+  const sortDropdown = document.querySelector(".sortDropdown");
+  const sortBtnText = document.querySelector(".sort-btn__text");
   const radioButtons = sortDropdown.querySelectorAll('input[type="radio"]');
   let selectedSortValue = "";
 
@@ -278,7 +278,7 @@ function manageSortDropdown() {
     }
   }
 
-  const wrapper = document.querySelector(".fl-select-wrapper");
+  const wrapper = document.querySelector(".sort-menu-container");
   wrapper.addEventListener("click", function (event) {
     event.stopPropagation();
     this.classList.toggle("open");
@@ -405,9 +405,8 @@ function createCourseCard(kurs) {
   return `
         <div class="blog-card">
             <div class="image-wrapper">
-                <div class="image" style="background-image: url('${
-                  kurs.pfadbild
-                }')"></div>
+                <div class="image" style="background-image: url('${kurs.pfadbild
+    }')"></div>
             </div>
             <div class="description">
                 <h1>${kurs.titel}</h1>
@@ -421,26 +420,23 @@ function createCourseCard(kurs) {
                     </div>
 
                     <div class="card-course-info">
-                        <span><i class="fa-solid fa-location-dot"></i>  ${
-                          kurs.ort
-                        } </span>
+                        <span><i class="fa-solid fa-location-dot"></i>  ${kurs.ort
+    } </span>
                         <span> </span>
                     </div>
                 </div>
 
                 <div class="card-block course-info">
                     <div class="card-course-info">
-                        <span class="card-text tutor-name"><i class="fa-solid fa-user-tie"></i>${
-                          kurs.leitung
-                        }</span>
+                        <span class="card-text tutor-name"><i class="fa-solid fa-user-tie"></i>${kurs.leitung
+    }</span>
                         <span class="tutor-description"><i class="fa-regular fa-registered"></i>${kurs.details.join(
-                          ", "
-                        )}</span>
+      ", "
+    )}</span>
                     </div>
                     <div class="card-course-info">
-                        <p>${
-                          kurs.preis
-                        } <i class="fa-solid fa-euro-sign" aria-hidden="true"></i></p>
+                        <p>${kurs.preis
+    } <i class="fa-solid fa-euro-sign" aria-hidden="true"></i></p>
                     </div>
                 </div>
                 <hr>
