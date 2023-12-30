@@ -45,10 +45,14 @@ const toggleSortDropMenu = () => {
     });
 }
 
+
+
+
 function setupUI() {
     toggleNav();
     toggleAccordion();
     toggleSortDropMenu();
+
     map();
 
 }

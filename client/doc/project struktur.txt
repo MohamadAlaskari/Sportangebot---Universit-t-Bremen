@@ -15,6 +15,9 @@ UniBremen-SportCourses/
 |               |-- data.js
 |               |-- filters.js
 |               |-- sort.js
+|               |-- search_course.js
+|               |-- setupUI/
+|                   |-- setupUI.js
 |               |-- utils/
 |                   |-- constant.js
 |               |-- mapbox/
@@ -22,5 +25,5 @@ UniBremen-SportCourses/
 |       |-- index.html
 |       |-- index.css
 |       |-- index.js
-|-- data/
-    |-- kurseData.json
+|       |-- data/
+|           |-- kurseData.json

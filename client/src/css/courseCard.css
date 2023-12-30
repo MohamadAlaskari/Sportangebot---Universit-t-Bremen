@@ -129,6 +129,13 @@
     position: relative;
     z-index: 1;
 }
+.long-description {
+    display: none;
+  }
+  
+  .long-description.show {
+    display: block;
+  }
 
 .blog-card .description:before {
     content: "";

@@ -550,5 +550,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 // JavaScript for the scroll to top button
 document.querySelector('.scroll-to-top-btn').addEventListener('click', () => {
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
