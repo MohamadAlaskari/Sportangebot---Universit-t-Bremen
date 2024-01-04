@@ -1,7 +1,8 @@
 // Function to asynchronously load course data
+import { COURSES_JSON_URL } from "./utils/constant.js";
 async function loadKurseData() {
   try {
-    const response = await fetch("https://data-two-lovat.vercel.app/kurseData.json");
+    const response = await fetch(COURSES_JSON_URL);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

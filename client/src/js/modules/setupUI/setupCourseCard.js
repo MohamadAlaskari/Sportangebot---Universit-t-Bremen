@@ -21,7 +21,7 @@ document.addEventListener("click", function (event) {
 
 function createCourseCard(kurs) {
     // Bestimmen, ob ein "Mehr lesen"-Link benötigt wird
-    const limit = 90;
+    const limit = 70;
     const moreTextNeeded = kurs.beschreibung.length > limit;
     const shortDescription = moreTextNeeded ? kurs.beschreibung.substring(0, limit) + "..." : kurs.beschreibung;
     const moreText = moreTextNeeded ? kurs.beschreibung.substring(limit) : "";
