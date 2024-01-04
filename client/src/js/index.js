@@ -1,9 +1,9 @@
+import { loadKurseData } from "./modules/data.js";
 import { setupUI } from "./modules/setupUI/setupUI.js";
 import { sortKurse, getSelectedSortValue } from "./modules/sort.js";
 import { updateFiltersOnChange } from "./modules/filters.js";
-import { loadKurseData } from "./modules/data.js";
 import { filterKurse } from "./modules/filters.js";
-import { createCourseCard } from "./modules/setupUI/setupCourseCard.js";
+import { renderCourses } from "./modules/setupUI/setupCourseCard.js";
 
 let currentFilters = {};
 let currentSortValue = "";
@@ -40,7 +40,7 @@ function setupSortListener(courses) {
 function updateCourses(courses) {
     let gefilterteKurse = filterKurse(courses, currentFilters);
     let sortedKurse = sortKurse(gefilterteKurse, currentSortValue);
-    
+
     renderCourses(sortedKurse);
 
     //consol.log
@@ -48,22 +48,9 @@ function updateCourses(courses) {
     console.log('gefilterteKurse: ', gefilterteKurse)
     console.log('currentSortValue: ', currentSortValue)
     console.log('sortedKurse: ', sortedKurse)
-    
+
 }
 
 // Rendern der Kurskarten
-function renderCourses(courses) {
-    const coursesContainer = document.querySelector(".coursecards-container");
-    coursesContainer.innerHTML = "";
-
-    if (courses.length === 0) {
-        coursesContainer.innerHTML = '<h5 class="no-courses-message">Keine Kurse gefunden.</h5>';
-    } else {
-        courses.forEach((course) => {
-            const courseCard = createCourseCard(course);
-            coursesContainer.innerHTML += courseCard;
-        });
-    }
-}
 
 init();

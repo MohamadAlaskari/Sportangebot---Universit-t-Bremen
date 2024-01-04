@@ -61,8 +61,6 @@ function updateFiltersOnChange(onFiltersChanged) {
   filterInputs.forEach(input => {
     input.addEventListener('change', () => {
       const currentFilters = getSelectedFilters();
-
-      //  console.log("Updated Filters: ", currentFilters);
       onFiltersChanged(currentFilters);
     });
   });
