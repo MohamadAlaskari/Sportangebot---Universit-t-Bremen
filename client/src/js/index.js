@@ -1,5 +1,5 @@
 import { setupUI } from "./modules/setupUI/setupUI.js";
-import { currentSortOption, sortKurse } from "./modules/sort.js";
+import { sortKurse, getSelectedSortValue } from "./modules/sort.js";
 import { updateFiltersOnChange } from "./modules/filters.js";
 import { loadKurseData } from "./modules/data.js";
 import { filterKurse } from "./modules/filters.js";
@@ -10,17 +10,16 @@ let currentSortValue = "";
 
 async function init() {
     try {
-        const kurse = await loadKurseData();
-        console.log('Geladene Kursdaten: ', kurse);
-
+        const data = await loadKurseData();
+        const courses = data.kurse;
+        console.log('Geladene courses: ', courses);
         setupUI();
-       // setupSortListener(); // Funktion zum Einrichten des Sortier-Listeners
 
-        updateCourses(kurse);
+        setupSortListener(courses); // Funktion zum Einrichten des Sortier-Listeners
 
         updateFiltersOnChange((newFilters) => {
             currentFilters = newFilters;
-            updateCourses(kurse);
+            updateCourses(courses);
         });
 
     } catch (error) {
@@ -29,19 +28,27 @@ async function init() {
 }
 
 // Einrichten des Sortier-Listeners
-function setupSortListener() {
+function setupSortListener(courses) {
     const sortDropdown = document.querySelector(".sortDropdown");
     sortDropdown.addEventListener("change", () => {
-        currentSortValue = currentSortOption(); // Aktualisiere die aktuelle Sortieroption
-        updateCourses(kurse); // Aktualisiere und rendere die Kurse basierend auf der neuen Sortierung
+        currentSortValue = getSelectedSortValue(); // Aktualisiere die aktuelle Sortieroption
+        updateCourses(courses); // Aktualisiere und rendere die Kurse basierend auf der neuen Sortierung
     });
 }
 
 // Hilfsfunktion zum Filtern, Sortieren und Rendern der Kurse
-function updateCourses(kurse) {
-    let gefilterteKurse = filterKurse(kurse, currentFilters);
-   // let sortedKurse = sortKurse(gefilterteKurse, currentSortValue);
-    renderCourses(gefilterteKurse);
+function updateCourses(courses) {
+    let gefilterteKurse = filterKurse(courses, currentFilters);
+    let sortedKurse = sortKurse(gefilterteKurse, currentSortValue);
+    
+    renderCourses(sortedKurse);
+
+    //consol.log
+    console.log('currentFilters: ', currentFilters)
+    console.log('gefilterteKurse: ', gefilterteKurse)
+    console.log('currentSortValue: ', currentSortValue)
+    console.log('sortedKurse: ', sortedKurse)
+    
 }
 
 // Rendern der Kurskarten
@@ -52,8 +59,8 @@ function renderCourses(courses) {
     if (courses.length === 0) {
         coursesContainer.innerHTML = '<h5 class="no-courses-message">Keine Kurse gefunden.</h5>';
     } else {
-        courses.forEach((kurs) => {
-            const courseCard = createCourseCard(kurs);
+        courses.forEach((course) => {
+            const courseCard = createCourseCard(course);
             coursesContainer.innerHTML += courseCard;
         });
     }

@@ -67,72 +67,19 @@ function updateFiltersOnChange(onFiltersChanged) {
     });
   });
 }
-/*
-function filterKurse(data, filters) {
-  if (!data || !data.kurse) {
-    console.error("Keine Kursdaten zum Filtern verfügbar.");
-    return [];
-  }
 
-  // Überprüfen, ob die Filter definiert sind
-  if (!filters || !filters.categories || !filters.days || !filters.times) {
-    console.error("Ungültige Filter.");
-    return data.kurse; // Wenn die Filter nicht definiert sind, gib alle Kurse zurück.
-  }
 
-  return data.kurse.filter((kurs) => {
-    const matchesCategory =
-      filters.categories.length === 0 ||
-      filters.categories.includes(kurs.kategorie);
-
-    const matchesDay =
-      filters.days.length === 0 ||
-      kurs.zeiten.some((zeit) => filters.days.includes(zeit.tag));
-
-    const matchesTime =
-      filters.times.length === 0 || filters.times.includes(kurs.zeit);
-
-    // Hier nehmen wir an, dass die Preisfilter als Zahlen bereitgestellt werden
-    const withinPriceRange =
-      (!filters.price.min || kurs.preis >= filters.price.min) &&
-      (!filters.price.max || kurs.preis <= filters.price.max);
-
-    // Filterung nach Angebotsdetails
-    const matchesDetails = filters.details.every((detailFilter) => {
-      if (detailFilter === "auch anmeldefreie Angebote anzeigen") {
-        return kurs.details.includes("Anmeldefrei");
-      } else if (detailFilter === "auch ausgebuchte Angebote anzeigen") {
-        return kurs.details.includes("Ausgebucht");
-      } else if (
-        detailFilter === "nur Angebote in barrierefreien Räumen/Orten anzeigen"
-      ) {
-        return kurs.details.includes("Barrierefrei");
-      }
-      return true;
-    });
-
-    return (
-      matchesCategory &&
-      matchesDay &&
-      matchesTime &&
-      withinPriceRange &&
-      matchesDetails
-    );
-  });
-}
-*/
-
-function filterKurse(data, filters) {
-  // Überprüfen, ob gültige Daten und Filter vorhanden sind
-  if (!data || !data.kurse || !filters) {
-    console.error("Ungültige Daten oder Filter.");
+function filterKurse(courses, filters) {
+  // Überprüfen, ob gültige courses und Filter vorhanden sind
+  if (!Array.isArray(courses) || !filters) {
+    console.error("Ungültige courses oder Filter.");
     return [];
   }
 
   function convertTimeToWindow(time) {
-    const hour = parseInt(time.split(':')[0]);   // Extracts the hour from the time string (e.g., "10:00")
+    const hour = parseInt(time.split(':')[0]); // Extrahiert die Stunde aus dem Zeitstring (z.B. "10:00")
 
-    // Converts the specific time to a general time window
+    // Konvertiert die spezifische Zeit in ein allgemeines Zeitfenster
     if (hour < 10) return 'vor 10 Uhr';
     if (hour >= 10 && hour < 13) return '10-13 Uhr';
     if (hour >= 13 && hour < 15) return '13-15 Uhr';
@@ -140,32 +87,31 @@ function filterKurse(data, filters) {
     return 'nach 18 Uhr';
   }
 
-  return data.kurse.filter(kurs => {
+  return courses.filter(kurs => {
     // Kategorie-Filter
     const matchesCategory = !filters.categories || filters.categories.length === 0 || filters.categories.includes(kurs.kategorie);
 
-    // Days-Filter
+    // Tage-Filter
     const matchesDay = !filters.days || filters.days.length === 0 || kurs.zeiten.some(zeit => filters.days.includes(zeit.tag));
 
-    // Times-Filter: Hier prüfen wir, ob irgendeine der kurs.zeiten mit den ausgewählten Zeiten übereinstimmt
+    // Zeiten-Filter: Überprüft, ob eine der Kurszeiten mit den ausgewählten Zeiten übereinstimmt
     const matchesTime = !filters.times || filters.times.length === 0 || kurs.zeiten.some(zeit => {
-      // Converts start time of each course time to a general time window
+      // Konvertiert Startzeit jeder Kurszeit in ein allgemeines Zeitfenster
       const timeWindow = convertTimeToWindow(zeit.zeit.split('-')[0].trim());
       return filters.times.includes(timeWindow);
     });
+
     // Preis-Filter
     const withinPriceRange = (!filters.price || !filters.price.min || kurs.preis >= filters.price.min) &&
       (!filters.price || !filters.price.max || kurs.preis <= filters.price.max);
 
     // Details-Filter
-    const matchesDetails = !filters.details || filters.details.length === 0 || filters.details.every((detailFilter) => {
+    const matchesDetails = !filters.details || filters.details.length === 0 || filters.details.every(detailFilter => {
       if (detailFilter === "auch anmeldefreie Angebote anzeigen") {
         return kurs.details.includes("Anmeldefrei");
       } else if (detailFilter === "auch ausgebuchte Angebote anzeigen") {
         return kurs.details.includes("Ausgebucht");
-      } else if (
-        detailFilter === "nur Angebote in barrierefreien Räumen/Orten anzeigen"
-      ) {
+      } else if (detailFilter === "nur Angebote in barrierefreien Räumen/Orten anzeigen") {
         return kurs.details.includes("Barrierefrei");
       }
       return true;
