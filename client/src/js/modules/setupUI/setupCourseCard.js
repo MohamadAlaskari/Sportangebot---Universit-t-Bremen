@@ -1,48 +1,39 @@
+
 document.addEventListener("click", function (event) {
     if (event.target.classList.contains("more-link")) {
         event.preventDefault();
         const courseId = event.target.dataset.id;
-        const longDescription = document.getElementById(`moreDescription-${courseId}`);
+        const shortDescription = document.getElementById(`shortDescription-${courseId}`);
+        const moreText = document.getElementById(`more-${courseId}`);
 
-        if (longDescription) {
-            longDescription.classList.toggle("show");
-            // Aktualisiere den Link-Text basierend auf der Anzeige
-            event.target.textContent = longDescription.classList.contains("show") ? "Weniger lesen" : "Mehr lesen";
+        if (moreText) {
+            const isShowingMore = moreText.style.display === "none";
+
+            // Umschalten der Anzeige
+            moreText.style.display = isShowingMore ? "inline" : "none";
+            shortDescription.style.display = isShowingMore ? "none" : "inline";
+
+            // Aktualisieren des Link-Textes
+            event.target.textContent = isShowingMore ? "Weniger lesen" : "Mehr lesen";
         }
     }
 });
 
-
-//get Short And Long Description
-/*
-function getShortAndLongDescription(description) {
-    if (description.length > 90) {
-        const shortDescription = description.substring(0, 90);
-        const longDescription = description.substring(90);
-        return { shortDescription, longDescription };
-    } else {
-        return { shortDescription: description, longDescription: "" };
-    }
-}
-*/
-function getShortAndLongDescription(description) {
-    const limit = 90;
-    if (description.length > limit) {
-        const shortDescription = description.substring(0, limit) + "...";
-        const longDescription = description.substring(limit);
-        return { shortDescription, longDescription };
-    } else {
-        return { shortDescription: description, longDescription: "" };
-    }
-}
-
-
 function createCourseCard(kurs) {
-    const { shortDescription, longDescription } = getShortAndLongDescription(kurs.beschreibung);
-    const readMoreLink = kurs.beschreibung.length > 90 ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : "";
+    // Bestimmen, ob ein "Mehr lesen"-Link benötigt wird
+    const limit = 90;
+    const moreTextNeeded = kurs.beschreibung.length > limit;
+    const shortDescription = moreTextNeeded ? kurs.beschreibung.substring(0, limit) + "..." : kurs.beschreibung;
+    const moreText = moreTextNeeded ? kurs.beschreibung.substring(limit) : "";
+    const readMoreLink = moreTextNeeded ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : "";
+
+    // Erstellen von Zeichenketten für die Zeitangaben
     const zeitenStrings = createZeitenStrings(kurs.zeiten);
+
+    // Erstellen des Links für die Kursbuchung oder den Hinweis auf Ausbuchung
     const coursLink = createCourseLink(kurs.details);
 
+    // Zusammenstellen der gesamten Kurskarte
     return `
         <div class="blog-card">
             <div class="image-wrapper">
@@ -51,23 +42,26 @@ function createCourseCard(kurs) {
             <div class="description">
                 <h1>${kurs.titel} für <span class="zielgruppe">${kurs.zielgruppe}</span></h1>
                 <h2>${kurs.kategorie}</h2>
-                <p class="course-description">${shortDescription}<span class="long-description" id="moreDescription-${kurs.nummer}">${longDescription}</span>${readMoreLink}</p>
+                <p class="course-description">
+                    <span id="shortDescription-${kurs.nummer}">${shortDescription}</span>
+                    <span class="more-text" id="more-${kurs.nummer}" style="display: none;">${moreText}</span>
+                    ${readMoreLink}
+                </p>
                 <hr>
                 <div class="course-info">
                     <div class="course-time">${zeitenStrings}</div><br>
                     <div class="course-location"><i class="fa-solid fa-location-dot course-info-icon"></i>${kurs.map[0].ort}</div>
                     <br>
-                <div class="course-tutor-details-price">
+                    <div class="course-tutor-details-price">
 
-                    <div class="course-tutor-details card-course-info ">
-                        <div class="course-tutor"><i class="fa-solid fa-user-tie course-info-icon"></i>${kurs.leitung}</div>
-                        <div class="course-details"><i class="fa-regular fa-registered course-info-icon"></i>${kurs.details.join(", ")}</div>
+                        <div class="course-tutor-details card-course-info ">
+                            <div class="course-tutor"><i class="fa-solid fa-user-tie course-info-icon"></i>${kurs.leitung}</div>
+                            <div class="course-details"><i class="fa-regular fa-registered course-info-icon"></i>${kurs.details.join(", ")}</div>
+                        </div>
+                        <div class="card-course-info">
+                            <div class="course-price">${kurs.preis} <i class="fa-solid fa-euro-sign"></i></div>
+                        </div>
                     </div>
-
-                    <div class="card-course-info">
-                        <div class="course-price">${kurs.preis} <i class="fa-solid fa-euro-sign"></i></div>
-                    </div>
-                </div>
                 </div>
                 <hr>
                 ${coursLink}
@@ -96,10 +90,6 @@ function createCourseLink(details) {
     }
     return '<p class="card-actions ausgebucht">Kurs Ausgebucht</p>';
 }
-
-
-// setupCourseCard.js
-
 
 function renderCourses(courses) {
     const coursesContainer = document.querySelector(".coursecards-container");
