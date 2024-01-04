@@ -6,12 +6,15 @@ document.addEventListener("click", function (event) {
 
         if (longDescription) {
             longDescription.classList.toggle("show");
+            // Aktualisiere den Link-Text basierend auf der Anzeige
+            event.target.textContent = longDescription.classList.contains("show") ? "Weniger lesen" : "Mehr lesen";
         }
     }
 });
 
 
 //get Short And Long Description
+/*
 function getShortAndLongDescription(description) {
     if (description.length > 90) {
         const shortDescription = description.substring(0, 90);
@@ -21,6 +24,18 @@ function getShortAndLongDescription(description) {
         return { shortDescription: description, longDescription: "" };
     }
 }
+*/
+function getShortAndLongDescription(description) {
+    const limit = 90;
+    if (description.length > limit) {
+        const shortDescription = description.substring(0, limit) + "...";
+        const longDescription = description.substring(limit);
+        return { shortDescription, longDescription };
+    } else {
+        return { shortDescription: description, longDescription: "" };
+    }
+}
+
 
 function createCourseCard(kurs) {
     const { shortDescription, longDescription } = getShortAndLongDescription(kurs.beschreibung);
