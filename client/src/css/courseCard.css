@@ -1,4 +1,3 @@
-
 .coursecards-container {
     margin-top: 5px;
     min-height: 100vh;
@@ -130,6 +129,14 @@
     z-index: 1;
 }
 
+.long-description {
+    display: none;
+}
+
+.long-description.show {
+    display: block;
+}
+
 .blog-card .description:before {
     content: "";
     border-radius: 10px;
@@ -193,43 +200,35 @@
     background: #d52623;
 }
 
-.blog-card:hover .details {
-    left: 0%;
+.course-time {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 
-
-/*info leitung */
-.card-course-info:first-child {
-    width: 60%;
-
+.course-tutor-details-price {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
 }
 
-.card-course-info {
-    display: inline-block;
-    heigt: 100px;
-}
-
-
-
-.card-course-info span {
-    display: block;
+.course-price {
     font-size: 0.9em;
-    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
-.card-course-info span i {
-    padding-right: 10px;
-}
 
-.icon {
+.course-info-icon {
     display: inline-block;
     width: 1.3em;
     height: 1.3em;
     stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .icon.icon-icon-heart {

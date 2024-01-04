@@ -2,18 +2,24 @@
     "kurse": [
         {
             "nummer": 201,
-            "titel": "Volleyball-Training für Jugendliche",
+            "titel": "Volleyball-Training",
             "beschreibung": "Dieser Volleyballkurs ist perfekt für Jugendliche, die ihre Fähigkeiten im Volleyball verbessern möchten. Lernen Sie die Techniken des Aufschlags, des Baggerns und des Pritschens. Der Kurs fördert Teamarbeit und Strategie im Spiel. Spieler aller Erfahrungsstufen sind willkommen. Wir legen einen Schwerpunkt auf Fair Play und Sportsgeist. Der Kurs findet auf einem Outdoor-Volleyballfeld statt, daher ist sportgerechte Kleidung erforderlich.",
             "kategorie": "Mannschaftssport",
             "zielgruppe": "Jugendliche",
-            "ort": "Sportplatz Nord",
+            "map": [
+                {
+                    "ort": "Sportparksee Grambke",
+                    "lng": 8.823768944538907,
+                    "lat": 53.05302664641226
+                }
+            ],
             "leitung": "Marie Weber",
             "pfadbild": "assets/img/volleyball.jpg",
             "preis": 35,
             "zeiten": [
                 {
                     "tag": "Montag & Mittwoch",
-                    "zeit": "16:00-17:30 Uhr"
+                    "zeit": "08:30-10:00 Uhr"
                 }
             ],
             "details": [
@@ -26,14 +32,20 @@
             "beschreibung": "Erkunden Sie die Natur mit unserem Mountainbiking-Kurs. Lernen Sie, wie Sie sicher und effizient auf verschiedenen Geländen fahren. Der Kurs richtet sich an mittelständige Fahrer, die ihre Fähigkeiten verbessern möchten. Jede Woche erkunden wir neue Pfade und lernen dabei verschiedene Fahrtechniken. Es ist eine großartige Möglichkeit, Fitness zu verbessern und die schöne Landschaft zu genießen. Eigene Mountainbikes sind willkommen, aber es stehen auch Leihräder zur Verfügung.",
             "kategorie": "Outdoor",
             "zielgruppe": "Mittleres Niveau",
-            "ort": "Waldpark Trails",
+            "map": [
+                {
+                    "ort": "Sportgarten Bremen",
+                    "lng": 8.780455064080604,
+                    "lat": 53.025984648026366
+                }
+            ],
             "leitung": "Lukas Berg",
             "pfadbild": "assets/img/mountainbike.jpg",
             "preis": 60,
             "zeiten": [
                 {
                     "tag": "Samstag",
-                    "zeit": "09:00-12:00 Uhr"
+                    "zeit": "10:00-12:00 Uhr"
                 }
             ],
             "details": [
@@ -46,7 +58,13 @@
             "beschreibung": "Verbessern Sie Ihre Fitness mit unserem Kraft- und Konditionstraining. Der Kurs bietet eine Kombination aus Gewichtstraining und Herz-Kreislauf-Übungen. Es ist perfekt für alle, die ihre allgemeine Fitness verbessern möchten. Jede Sitzung wird von einem erfahrenen Trainer geleitet, der individuelle Anleitung bietet. Der Kurs ist für alle Fitnessstufen geeignet. Bringen Sie Sportkleidung und eine Wasserflasche mit.",
             "kategorie": "Fitness",
             "zielgruppe": "Alle Niveaus",
-            "ort": "City Gym",
+            "map": [
+                {
+                    "ort": "Sportzentrum Uni Bremen",
+                    "lng": 8.784389172457328,
+                    "lat": 53.06555350434862
+                }
+            ],
             "leitung": "Nina Krämer",
             "pfadbild": "assets/img/gym.jpg",
             "preis": 50,
@@ -71,7 +89,13 @@
             "beschreibung": "Erleben Sie die Welt des Straßenfußballs in unserem dynamischen Workshop. Perfektionieren Sie Ihre Dribbling-Fähigkeiten und lernen Sie trickreiche Spielzüge. Der Kurs ist offen für alle Altersgruppen und Niveaus. Wir konzentrieren uns auf Spaß und Kreativität im Spiel. Die Teilnehmer sollten bequeme Sportschuhe und Kleidung mitbringen. Der Workshop bietet eine großartige Gelegenheit, neue Leute kennenzulernen und Teamfähigkeiten zu entwickeln.",
             "kategorie": "Ballsport",
             "zielgruppe": "Alle Altersgruppen",
-            "ort": "Stadtpark Fußballplatz",
+            "map": [
+                {
+                    "ort": "Paulaner's im Wehrschloss (Sports Bar)",
+                    "lng": 8.80740053335145,
+                    "lat": 53.053859648640554
+                }
+            ],
             "leitung": "Marco Fischer",
             "pfadbild": "assets/img/strassenfussball.jpg",
             "preis": 30,
@@ -88,11 +112,17 @@
         },
         {
             "nummer": 205,
-            "titel": "Tanzfitness für Anfänger",
+            "titel": "Tanzfitness",
             "beschreibung": "Kombinieren Sie Tanz und Fitness in diesem energiegeladenen Kurs. Ideal für Anfänger, die Spaß an Bewegung haben wollen. Keine Vorkenntnisse erforderlich. Lernen Sie einfache Tanzschritte zu moderner Musik. Verbessern Sie Ihre Koordination und Ausdauer. Der Kurs fördert auch den sozialen Austausch und die Freude an der Bewegung.",
             "kategorie": "Tanz",
             "zielgruppe": "Anfänger",
-            "ort": "Tanzstudio City",
+            "map": [
+                {
+                    "ort": "Bremen Arena (Sports & Concerts)",
+                    "lng": 8.781887166654858,
+                    "lat": 53.06800654401983
+                }
+            ],
             "leitung": "Elena Schwarz",
             "pfadbild": "assets/img/tanz.jpg",
             "preis": 40,
@@ -109,11 +139,17 @@
         },
         {
             "nummer": 206,
-            "titel": "Kickboxen für Einsteiger",
+            "titel": "Kickboxen",
             "beschreibung": "Lernen Sie die Grundlagen des Kickboxens in einer sicheren und unterstützenden Umgebung. Dieser Kurs ist ideal für Anfänger. Verbessern Sie Ihre Fitness, Kraft und Flexibilität. Lernen Sie Selbstverteidigungstechniken. Der Kurs wird von erfahrenen Trainern geleitet. Sportkleidung und eine Flasche Wasser sind mitzubringen.",
             "kategorie": "Kampfsport",
             "zielgruppe": "Anfänger",
-            "ort": "Kampfsportzentrum West",
+            "map": [
+                {
+                    "ort": "Weserstadion (Football Stadium)",
+                    "lng": 8.827217558601486,
+                    "lat": 53.04782852812362
+                }
+            ],
             "leitung": "David Neuer",
             "pfadbild": "assets/img/kickboxen.jpg",
             "preis": 55,
@@ -129,11 +165,17 @@
         },
         {
             "nummer": 207,
-            "titel": "Schwimmkurs für Erwachsene",
+            "titel": "Schwimmkurs",
             "beschreibung": "Erlernen Sie das Schwimmen oder verbessern Sie Ihre Technik in unserem Schwimmkurs für Erwachsene. Der Kurs ist für alle Niveaus geeignet. Erfahrene Trainer bieten individuelle Anleitung. Verbessern Sie Ihre Wassersicherheit und Fitness. Der Kurs findet im städtischen Schwimmbad statt. Bringen Sie Badekleidung und ein Handtuch mit.",
             "kategorie": "Wassersport",
             "zielgruppe": "Erwachsene",
-            "ort": "Städtisches Schwimmbad",
+            "map": [
+                {
+                    "ort": "Eissporthalle Paradice Bremen",
+                    "lng": 8.838466959919826,
+                    "lat": 53.02633160783868
+                }
+            ],
             "leitung": "Sarah Lang",
             "pfadbild": "assets/img/schwimmen.jpg",
             "preis": 50,
@@ -153,7 +195,13 @@
             "beschreibung": "Steigern Sie Ihre Fitness mit unserem Outdoor Cross-Training Kurs. Der Kurs ist eine Mischung aus Lauf-, Kraft- und Ausdauertraining. Er findet in verschiedenen Outdoor-Locations statt. Geeignet für alle Fitnessstufen. Erleben Sie die Natur, während Sie trainieren. Bringen Sie Sportschuhe, bequeme Kleidung und eine Wasserflasche mit.",
             "kategorie": "Outdoor",
             "zielgruppe": "Alle Niveaus",
-            "ort": "Stadtpark",
+            "map": [
+                {
+                    "ort": "Waller Heerstraße Skatepark",
+                    "lng": 8.829714074715604,
+                    "lat": 53.02021003055139
+                }
+            ],
             "leitung": "Tom Winter",
             "pfadbild": "assets/img/cross-training.jpg",
             "preis": 45,
@@ -169,11 +217,17 @@
         },
         {
             "nummer": 209,
-            "titel": "Pilates für Fortgeschrittene",
+            "titel": "Pilates",
             "beschreibung": "Vertiefen Sie Ihre Pilates-Praxis in unserem Kurs für Fortgeschrittene. Entwickeln Sie Ihre Technik und Kraft weiter. Der Kurs fokussiert auf fortgeschrittene Übungen. Eine vorherige Pilates-Erfahrung ist erforderlich. Kleingruppentraining sorgt für individuelle Betreuung. Bringen Sie eine Matte und bequeme Kleidung mit.",
             "kategorie": "Fitness",
             "zielgruppe": "Fortgeschrittene",
-            "ort": "Fitnessstudio Zentral",
+            "map": [
+                {
+                    "ort": "Bremen Sports Complex (Leichtathletik)",
+                    "lng": 8.817791901445934,
+                    "lat": 53.03033726968246
+                }
+            ],
             "leitung": "Laura Meier",
             "pfadbild": "assets/img/pilates.jpg",
             "preis": 60,
@@ -194,11 +248,17 @@
         },
         {
             "nummer": 210,
-            "titel": "Golf für Anfänger",
+            "titel": "Golf",
             "beschreibung": "Lernen Sie Golf in einer entspannten und freundlichen Atmosphäre. Dieser Kurs richtet sich an Anfänger ohne Vorkenntnisse. Lernen Sie die Grundlagen des Golfsports kennen. Verbessern Sie Ihre Schlagtechnik und das Spielverständnis. Der Kurs findet auf einem örtlichen Golfplatz statt. Golfschläger können geliehen werden.",
             "kategorie": "Outdoor",
             "zielgruppe": "Anfänger",
-            "ort": "Golfplatz Greenfield",
+            "map": [
+                {
+                    "ort": "Tennis-Club Bremen",
+                    "lng": 8.795904340260407,
+                    "lat": 53.05568986564411
+                }
+            ],
             "leitung": "Peter Schwarz",
             "pfadbild": "assets/img/golf.jpg",
             "preis": 70,
@@ -218,11 +278,17 @@
         },
         {
             "nummer": 211,
-            "titel": "Bogenschießen für alle",
+            "titel": "Bogenschießen",
             "beschreibung": "Erlernen Sie die Kunst des Bogenschießens in unserem Kurs. Geeignet für Anfänger und Fortgeschrittene. Lernen Sie Technik, Zielen und Sicherheit. Der Kurs findet in einer ruhigen Waldumgebung statt. Eine großartige Möglichkeit, Konzentration und Körperbeherrschung zu verbessern. Bogen und Pfeile werden gestellt.",
             "kategorie": "Präzisionssport",
             "zielgruppe": "Alle Niveaus",
-            "ort": "Bogenplatz Waldpark",
+            "map": [
+                {
+                    "ort": "Turn- und Sportverein Bremen",
+                    "lng": 8.835384809413972,
+                    "lat": 53.05278970096723
+                }
+            ],
             "leitung": "Julia Stein",
             "pfadbild": "assets/img/bogenschiessen.jpg",
             "preis": 55,
@@ -238,11 +304,17 @@
         },
         {
             "nummer": 213,
-            "titel": "Basketball-Workshop für Anfänger",
+            "titel": "Basketball-Workshop",
             "beschreibung": "In diesem Basketball-Workshop für Anfänger lernen Sie die Grundlagen des Basketballs. Von Dribbling über Korbwürfe bis hin zur Verteidigung. Der Kurs ist ideal für Neueinsteiger, die das Spiel erlernen möchten. Erleben Sie die Dynamik und den Spaß am Basketball in einem teamorientierten Umfeld. Bitte bringen Sie geeignete Sportschuhe und bequeme Kleidung mit. Der Kurs findet in einer Innenhalle statt, daher ist Hallenschuhpflicht.",
             "kategorie": "Mannschaftssport",
             "zielgruppe": "Anfänger",
-            "ort": "Sporthalle Zentral",
+            "map": [
+                {
+                    "ort": "Bremen Fitness Center",
+                    "lng": 8.793894630733451,
+                    "lat": 53.02470315956559
+                }
+            ],
             "leitung": "Tom Müller",
             "pfadbild": "assets/img/basketball.jpg",
             "preis": 40,
@@ -259,11 +331,17 @@
         },
         {
             "nummer": 214,
-            "titel": "Fußballtraining für Kinder",
+            "titel": "Fußballtraining",
             "beschreibung": "Unser Fußballtraining für Kinder ist eine großartige Möglichkeit, die Grundlagen des Fußballs zu erlernen. Der Kurs konzentriert sich auf Spielfähigkeiten, Teamarbeit und Fairplay. Kinder lernen Dribbling, Schießen und Pässe in einer unterhaltsamen und sicheren Umgebung. Der Kurs ist für Kinder aller Erfahrungsstufen geeignet. Wir fördern ein positives und freundliches Umfeld, in dem Kinder Spaß am Fußball haben können. Bitte bringen Sie Fußballschuhe und Schienbeinschoner mit.",
             "kategorie": "Mannschaftssport",
             "zielgruppe": "Kinder",
-            "ort": "Sportplatz Süd",
+            "map": [
+                {
+                    "ort": "Bremen Rowing Club",
+                    "lng": 8.833817088257108,
+                    "lat": 53.0380049088871
+                }
+            ],
             "leitung": "Lena Schmidt",
             "pfadbild": "assets/img/fussball.jpg",
             "preis": 30,
@@ -279,11 +357,17 @@
         },
         {
             "nummer": 214,
-            "titel": "Yoga für Einsteiger",
+            "titel": "Yoga",
             "beschreibung": "Entdecken Sie die Welt des Yogas in diesem Einsteigerkurs. Lernen Sie die Grundlagen der verschiedenen Yogastellungen und Atemtechniken. Dieser Kurs ist ideal für alle, die Stress abbauen und Flexibilität verbessern möchten. Keine Vorerfahrung ist nötig, da der Kurs Schritt für Schritt durch die Grundlagen führt. Erleben Sie die beruhigende Wirkung von Yoga auf Körper und Geist. Bringen Sie eine Yoga-Matte und bequeme Kleidung mit.",
             "kategorie": "Entspannung",
             "zielgruppe": "Einsteiger",
-            "ort": "Yoga Studio Zentrum",
+            "map": [
+                {
+                    "ort": "Bremen Martial Arts Academy",
+                    "lng": 8.838180836289876,
+                    "lat": 53.07198339192893
+                }
+            ],
             "leitung": "Sophie Lang",
             "pfadbild": "assets/img/yoga.jpg",
             "preis": 45,

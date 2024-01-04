@@ -358,7 +358,7 @@
                 ]
             }
         }</script>
-<!-- 
+    <!-- 
 
     <link as="script" crossorigin="anonymous" data-ignore="1"
         href="https://www.uni-bremen.de/fileadmin/uploads/sg_cookie_optin/siteroot-1/cookieOptin.js" rel="preload" />
@@ -839,12 +839,12 @@
                     ------------------------------------------------>
                     <div id="sideNavBar" class="filter-sidenav">
                         <h5 class="title-filter">Filters</h5>
-                        <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+                        <a id="closeNav" class="closebtn">&times;</a>
                         <!--search button-->
                         <div class="sample nine">
                             <input id="search-input" class="search_input" type="text" name="search"
                                 placeholder="Search Course">
-                            <button onclick="suche()" type="submit" class="btn btn-search">
+                            <button id="searchCourse-btn" type="submit" class="btn btn-search">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
@@ -860,7 +860,7 @@
                                 <div class="accordion-panel">
                                     <form>
                                         <!-- Ballsportarten -->
-                                        <input type="checkbox" id="kategorie1" name="kategorie" value="Ballsportarten">
+                                        <input type="checkbox" id="kategorie1" name="kategorie" value="Ballsport">
                                         <label for="kategorie1">Ballsportarten</label>
 
                                         <!-- Wassersport -->
@@ -869,7 +869,7 @@
 
                                         <!-- Fitness und Gymnastik -->
                                         <input type="checkbox" id="kategorie3" name="kategorie"
-                                            value="Fitness und Gymnastik">
+                                            value="Fitness">
                                         <label for="kategorie3">Fitness</label>
 
                                         <!-- Racketsportarten -->
@@ -882,7 +882,7 @@
                                         <label for="kategorie5">Laufsportarten</label>
 
                                         <!-- Kampfsportarten -->
-                                        <input type="checkbox" id="kategorie6" name="kategorie" value="Kampfsportarten">
+                                        <input type="checkbox" id="kategorie6" name="kategorie" value="Kampfsport">
                                         <label for="kategorie6">Kampfsportarten</label>
 
                                         <!-- Wintersportarten -->
@@ -896,12 +896,12 @@
 
                                         <!-- Outdoorsportarten -->
                                         <input type="checkbox" id="kategorie9" name="kategorie"
-                                            value="Outdoorsportarten">
+                                            value="Outdoor">
                                         <label for="kategorie9">Outdoorsportarten</label>
 
                                         <!-- Mannschaftssportarten -->
                                         <input type="checkbox" id="kategorie10" name="kategorie"
-                                            value="Mannschaftssportarten">
+                                            value="Mannschaftssport">
                                         <label for="kategorie10">Mannschaftssportarten</label>
 
                                         <!-- Weitere Kategorien nach Bedarf hinzufügen -->
@@ -938,19 +938,19 @@
                                 <button class="accordion">Kurszeitraum</button>
                                 <div class="accordion-panel">
                                     <form>
-                                        <input type="checkbox" id="zeit1" name="zeit" value="vor_10_uhr">
+                                        <input type="checkbox" id="zeit1" name="zeit" value="vor 10 Uhr">
                                         <label for="zeit1">vor 10 Uhr</label>
 
-                                        <input type="checkbox" id="zeit2" name="zeit" value="10-13_uhr">
+                                        <input type="checkbox" id="zeit2" name="zeit" value="10-13 Uhr">
                                         <label for="zeit2">10-13 Uhr</label>
 
-                                        <input type="checkbox" id="zeit3" name="zeit" value="13-15_uhr">
+                                        <input type="checkbox" id="zeit3" name="zeit" value="13-15 Uhr">
                                         <label for="zeit3">13-15 Uhr</label>
 
-                                        <input type="checkbox" id="zeit4" name="zeit" value="15-18_uhr">
+                                        <input type="checkbox" id="zeit4" name="zeit" value="15-18 Uhr">
                                         <label for="zeit4">15-18 Uhr</label>
 
-                                        <input type="checkbox" id="zeit5" name="zeit" value="nach_18_uhr">
+                                        <input type="checkbox" id="zeit5" name="zeit" value="nach 18 Uhr">
                                         <label for="zeit5">nach 18 Uhr</label>
                                     </form>
 
@@ -983,13 +983,13 @@
                                 <button class="accordion">Angebotdetails</button>
                                 <div class="accordion-panel">
                                     <form>
-                                        <input type="checkbox" id="detail1" name="detail1"
+                                        <input type="checkbox" id="detail1" name="detail"
                                             value="auch anmeldefreie Angebote anzeigen">
                                         <label for="detail1">auch anmeldefreie Angebote anzeigen</label>
-                                        <input type="checkbox" id="detail2" name="detail2"
+                                        <input type="checkbox" id="detail2" name="detail"
                                             value="auch ausgebuchte Angebote anzeigen">
                                         <label for="detail2">auch ausgebuchte Angebote anzeigen</label>
-                                        <input type="checkbox" id="detail3" name="detail3"
+                                        <input type="checkbox" id="detail3" name="detail"
                                             value="nur Angebote in barrierefreien Räumen/Orten anzeigen">
                                         <label for="detail3">nur Angebote in barrierefreien Räumen/Orten
                                             anzeigen</label>
@@ -1023,7 +1023,7 @@
 
                         <div class="filter-sort-btns-wrapper">
                             <!--filter btn-->
-                            <button class='fl-filter-btn' onclick="toggleNav()">
+                            <button id="openNav" class='fl-filter-btn'>
                                 <svg class='fl-filter-icon' xmlns="http://www.w3.org/2000/svg" height="24"
                                     viewBox="0 0 24 24" width="24">
                                     <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
@@ -1031,6 +1031,7 @@
                                 </svg>
                                 <span class='fl-filters-active empty'>0</span>Filters
                             </button>
+                 
                             <!--sort btn and dropdown-->
                             <div class='sort-menu-container'>
                                 <!--sort btn -->
@@ -1079,7 +1080,12 @@
                                     </ul>
                                 </div>
                             </div>
+
+
+
                         </div>
+
+
                     </div>
 
                     <!---------------------------------------------
@@ -1166,16 +1172,14 @@
         </section>
     </footer>
 
-    <!--to top-->
-    <button class="scroll btn btn-link typo3-search-exclude up" type="button"><span aria-hidden="true"
-            class="css-arrow"></span><span aria-hidden="true" class="css-arrow"></span><span
-            class="sr-only pageDown">Zum Seitenende springen</span><span class="sr-only pageUp">Zum Seitenanfang
-            springen</span></button>
+    <!--scroll to top-->
+    <button class="scroll btn scroll-to-top-btn  " type="button">
+        <span aria-hidden="true" class="css-arrow"></span>
+        <span aria-hidden="true" class="css-arrow"></span>
+    </button>
 
     <script data-condition-uri="https://www.uni-bremen.de/hospo/sportangebot/powermail_cond"
         id="powermail_conditions_container"></script>
-  
-
 
 
 
@@ -1184,11 +1188,10 @@
 
     <!--my js script-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-<!-- 
+    <!-- 
     
 -->
-<script src="index.js"></script>
-    <script type="module" src="./js/modules/mapbox/index.js"></script>
+    <script type="module" src="./js/index.js"></script>
 </body>
 
 </html>

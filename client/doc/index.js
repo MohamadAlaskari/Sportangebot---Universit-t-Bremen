@@ -26,15 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/*
-search fuktion in sidenavebar
-*/
-async function suche() {
-  var suchbegriff = await document.getElementById("search-input").value;
-  console.log("searchInput: ", suchbegriff);
-  document.getElementById("search-input").value = "";
-  return suchbegriff;
-}
+
 
 /* ------------------
 =======> Sidebar-Related Functions
@@ -70,6 +62,17 @@ function initializeAccordions() {
     accordion.addEventListener("click", () => toggleAccordionPanel(accordion));
   });
 }
+
+/*
+search fuktion in sidenavebar
+*/
+async function search_course() {
+  var suchbegriff = await document.getElementById("search-input").value;
+  console.log("searchInput: ", suchbegriff);
+  document.getElementById("search-input").value = "";
+  return suchbegriff;
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   initializePriceRange();
@@ -541,4 +544,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
         "block";
     });
   });
+});
+
+
+
+// JavaScript for the scroll to top button
+document.querySelector('.scroll-to-top-btn').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
