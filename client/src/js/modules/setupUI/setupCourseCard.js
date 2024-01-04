@@ -77,7 +77,7 @@ function createCourseCard(kurs) {
                     </div>
   
                     <div class="card-course-info">
-                        <span><i class="fa-solid fa-location-dot"></i>  ${kurs.ort} </span>
+                        <span><i class="fa-solid fa-location-dot"></i>  ${kurs.map[0].ort} </span>
                          
                       </div>
                   </div>

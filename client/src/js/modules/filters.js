@@ -67,7 +67,7 @@ function updateFiltersOnChange(onFiltersChanged) {
     });
   });
 }
-
+/*
 function filterKurse(data, filters) {
   if (!data || !data.kurse) {
     console.error("Keine Kursdaten zum Filtern verfügbar.");
@@ -118,6 +118,60 @@ function filterKurse(data, filters) {
       withinPriceRange &&
       matchesDetails
     );
+  });
+}
+*/
+
+function filterKurse(data, filters) {
+  // Überprüfen, ob gültige Daten und Filter vorhanden sind
+  if (!data || !data.kurse || !filters) {
+    console.error("Ungültige Daten oder Filter.");
+    return [];
+  }
+
+  function convertTimeToWindow(time) {
+    const hour = parseInt(time.split(':')[0]);   // Extracts the hour from the time string (e.g., "10:00")
+
+    // Converts the specific time to a general time window
+    if (hour < 10) return 'vor 10 Uhr';
+    if (hour >= 10 && hour < 13) return '10-13 Uhr';
+    if (hour >= 13 && hour < 15) return '13-15 Uhr';
+    if (hour >= 15 && hour < 18) return '15-18 Uhr';
+    return 'nach 18 Uhr';
+  }
+
+  return data.kurse.filter(kurs => {
+    // Kategorie-Filter
+    const matchesCategory = !filters.categories || filters.categories.length === 0 || filters.categories.includes(kurs.kategorie);
+
+    // Days-Filter
+    const matchesDay = !filters.days || filters.days.length === 0 || kurs.zeiten.some(zeit => filters.days.includes(zeit.tag));
+
+    // Times-Filter: Hier prüfen wir, ob irgendeine der kurs.zeiten mit den ausgewählten Zeiten übereinstimmt
+    const matchesTime = !filters.times || filters.times.length === 0 || kurs.zeiten.some(zeit => {
+      // Converts start time of each course time to a general time window
+      const timeWindow = convertTimeToWindow(zeit.zeit.split('-')[0].trim());
+      return filters.times.includes(timeWindow);
+    });
+    // Preis-Filter
+    const withinPriceRange = (!filters.price || !filters.price.min || kurs.preis >= filters.price.min) &&
+      (!filters.price || !filters.price.max || kurs.preis <= filters.price.max);
+
+    // Details-Filter
+    const matchesDetails = !filters.details || filters.details.length === 0 || filters.details.every((detailFilter) => {
+      if (detailFilter === "auch anmeldefreie Angebote anzeigen") {
+        return kurs.details.includes("Anmeldefrei");
+      } else if (detailFilter === "auch ausgebuchte Angebote anzeigen") {
+        return kurs.details.includes("Ausgebucht");
+      } else if (
+        detailFilter === "nur Angebote in barrierefreien Räumen/Orten anzeigen"
+      ) {
+        return kurs.details.includes("Barrierefrei");
+      }
+      return true;
+    });
+
+    return matchesCategory && matchesDay && matchesTime && withinPriceRange && matchesDetails;
   });
 }
 
