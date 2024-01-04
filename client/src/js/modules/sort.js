@@ -12,7 +12,7 @@ function currentSortOption() {
         });
     });
 
-    return selectedValue; // Gibt den ausgewählten Wert zurück
+    return selectedValue;
 }
 
 function updateSortText(selectedOption) {
@@ -27,8 +27,23 @@ function updateSortText(selectedOption) {
 
 
 
-const sort = () => {
-    currentSortOption();
+function sortKurse(kurse, sortValue) {
+    let sortedKurse = [...kurse]; // Erstellen einer Kopie des Arrays
+
+    if (sortValue === "Niedriger Preis") {
+        sortedKurse.sort((a, b) => a.preis - b.preis);
+    } else if (sortValue === "Höchster Preis") {
+        sortedKurse.sort((a, b) => b.preis - a.preis);
+    } else if (sortValue === "Kategorie") {
+        sortedKurse.sort((a, b) => a.kategorie.localeCompare(b.kategorie));
+    } else if (sortValue === "alpha") {
+        sortedKurse.sort((a, b) => a.titel.localeCompare(b.titel));
+    }
+    // Keine Sortierung für 'none'
+
+    return sortedKurse;
 }
 
-export { sort };
+
+
+export { currentSortOption, sortKurse };

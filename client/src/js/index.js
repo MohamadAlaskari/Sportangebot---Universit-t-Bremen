@@ -1,67 +1,62 @@
 import { setupUI } from "./modules/setupUI/setupUI.js";
-import { sort } from "./modules/sort.js";
+import { currentSortOption, sortKurse } from "./modules/sort.js";
 import { updateFiltersOnChange } from "./modules/filters.js";
 import { loadKurseData } from "./modules/data.js";
 import { filterKurse } from "./modules/filters.js";
 import { createCourseCard } from "./modules/setupUI/setupCourseCard.js";
-//import { getSearchInputValue } from './search_course.js';
 
-
-//let currentSearchValue = "";
 let currentFilters = {};
-
+let currentSortValue = "";
 
 async function init() {
-  try {
-    const kurse = await loadKurseData();
-    console.log('Geladene Kursdaten: ', kurse);
+    try {
+        const kurse = await loadKurseData();
+        console.log('Geladene Kursdaten: ', kurse);
 
-    setupUI();
-    sort();
+        setupUI();
+       // setupSortListener(); // Funktion zum Einrichten des Sortier-Listeners
 
-    // Kurse filtern
-    const gefilterteKurse = filterKurse(kurse, currentFilters);
-    console.log('Gefilterte Kurse:', gefilterteKurse);
+        updateCourses(kurse);
 
-    updateFiltersOnChange((newFilters) => {
-      currentFilters = newFilters;
-      console.log("Current Filters: ", currentFilters);
+        updateFiltersOnChange((newFilters) => {
+            currentFilters = newFilters;
+            updateCourses(kurse);
+        });
 
-      const gefilterteKurse = filterKurse(kurse, currentFilters);
-      console.log('gefilterte Kurse: ', filterKurse(kurse, currentFilters));
-
-      renderCourses(gefilterteKurse);
-    });
-
-    renderCourses(gefilterteKurse);
-
-    // Kurse filtern
-
-
-
-  } catch (error) {
-    console.error("Fehler beim Initialisieren der Anwendung:", error);
-    // Geeignete Fehlerbehandlung durchführen
-  }
+    } catch (error) {
+        console.error("Fehler beim Initialisieren der Anwendung:", error);
+    }
 }
 
+// Einrichten des Sortier-Listeners
+function setupSortListener() {
+    const sortDropdown = document.querySelector(".sortDropdown");
+    sortDropdown.addEventListener("change", () => {
+        currentSortValue = currentSortOption(); // Aktualisiere die aktuelle Sortieroption
+        updateCourses(kurse); // Aktualisiere und rendere die Kurse basierend auf der neuen Sortierung
+    });
+}
+
+// Hilfsfunktion zum Filtern, Sortieren und Rendern der Kurse
+function updateCourses(kurse) {
+    let gefilterteKurse = filterKurse(kurse, currentFilters);
+   // let sortedKurse = sortKurse(gefilterteKurse, currentSortValue);
+    renderCourses(gefilterteKurse);
+}
+
+// Rendern der Kurskarten
+function renderCourses(courses) {
+    const coursesContainer = document.querySelector(".coursecards-container");
+    coursesContainer.innerHTML = "";
+
+    if (courses.length === 0) {
+        coursesContainer.innerHTML = '<h5 class="no-courses-message">Keine Kurse gefunden.</h5>';
+    } else {
+        courses.forEach((kurs) => {
+            const courseCard = createCourseCard(kurs);
+            coursesContainer.innerHTML += courseCard;
+        });
+    }
+}
 
 init();
-
-
-function renderCourses(courses) {
-  const coursesContainer = document.querySelector(".coursecards-container");
-  coursesContainer.innerHTML = ""; // Leeren des Containers vor dem Hinzufügen neuer Karten
-
-  if (courses.length === 0) {
-    // Zeige eine Nachricht an, wenn keine Kurse gefunden wurden
-    coursesContainer.innerHTML =
-      '<h5 class="no-courses-message">Keine Kurse gefunden.</h5>';
-  } else {
-    // Rendern der Kurskarten, wenn Kurse vorhanden sind
-    courses.forEach((kurs) => {
-      const courseCard = createCourseCard(kurs);
-      coursesContainer.innerHTML += courseCard;
-    });
-  }
-}
