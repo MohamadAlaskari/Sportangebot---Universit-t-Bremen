@@ -11,9 +11,11 @@ let currentSortValue = "";
 async function init() {
     try {
         const data = await loadKurseData();
-        const courses = data.kurse;
+        const courses = data.courses;
+
         console.log('Geladene courses: ', courses);
-        setupUI();
+
+        setupUI(addresses(courses));
 
         setupSortListener(courses); // Funktion zum Einrichten des Sortier-Listeners
 
@@ -50,6 +52,18 @@ function updateCourses(courses) {
     console.log('sortedKurse: ', sortedKurse)
 
 }
+
+
+const addresses = (courses) => {
+    const addresses = [];
+    courses.forEach(course => {
+        if (course.address) { // Sicherstellen, dass das Kursobjekt eine Adresse hat
+            addresses.push(course.address);
+        }
+    });
+    return addresses;
+};
+
 
 // Rendern der Kurskarten
 

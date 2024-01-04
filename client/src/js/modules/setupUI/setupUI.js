@@ -48,12 +48,12 @@ const toggleSortDropMenu = () => {
 
 
 
-function setupUI() {
+function setupUI(addresses) {
     toggleNav();
     toggleAccordion();
     toggleSortDropMenu();
 
-    map();
+    map(addresses);
 
 }
 

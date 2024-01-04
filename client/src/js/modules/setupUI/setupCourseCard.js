@@ -19,6 +19,28 @@ document.addEventListener("click", function (event) {
     }
 });
 
+function createZeitenStrings(zeiten) {
+    if (zeiten.length === 0) {
+        return `<span>Keine Zeiten angegeben</span>`;
+    }
+    return zeiten.map(zeit =>
+        `<div>
+            <div><i class="fa-solid fa-calendar-days course-info-icon"></i>${zeit.tag}</div>
+            <span><i class="fa-regular fa-clock course-info-icon"></i>${zeit.zeit}</span>
+        </div >`
+    ).join("<br>");
+}
+
+function createCourseLink(details) {
+    if (details.includes("Ausgebucht")) {
+        return '<p class="card-actions ausgebucht">Kurs Ausgebucht</p>';
+    } else if (details.includes("Anmeldefrei")) {
+        return '<p class="card-actions"><b><a href="#" class="book-course">Kurs Buchen <i class="fa fa-chevron-down"></i></a></b></p>';
+    }
+    return '<p class="card-actions ausgebucht">Kurs Ausgebucht</p>';
+}
+
+
 function createCourseCard(kurs) {
     // Bestimmen, ob ein "Mehr lesen"-Link benötigt wird
     const limit = 70;
@@ -50,7 +72,7 @@ function createCourseCard(kurs) {
                 <hr>
                 <div class="course-info">
                     <div class="course-time">${zeitenStrings}</div><br>
-                    <div class="course-location"><i class="fa-solid fa-location-dot course-info-icon"></i>${kurs.map[0].ort}</div>
+                    <div class="course-location"><i class="fa-solid fa-location-dot course-info-icon"></i>${kurs.address.ort}</div>
                     <br>
                     <div class="course-tutor-details-price">
 
@@ -68,27 +90,6 @@ function createCourseCard(kurs) {
             </div>
         </div>
     `;
-}
-
-function createZeitenStrings(zeiten) {
-    if (zeiten.length === 0) {
-        return `<span>Keine Zeiten angegeben</span>`;
-    }
-    return zeiten.map(zeit =>
-        `<div>
-            <div><i class="fa-solid fa-calendar-days course-info-icon"></i>${zeit.tag}</div>
-            <span><i class="fa-regular fa-clock course-info-icon"></i>${zeit.zeit}</span>
-        </div >`
-    ).join("<br>");
-}
-
-function createCourseLink(details) {
-    if (details.includes("Ausgebucht")) {
-        return '<p class="card-actions ausgebucht">Kurs Ausgebucht</p>';
-    } else if (details.includes("Anmeldefrei")) {
-        return '<p class="card-actions"><b><a href="#" class="book-course">Kurs Buchen <i class="fa fa-chevron-down"></i></a></b></p>';
-    }
-    return '<p class="card-actions ausgebucht">Kurs Ausgebucht</p>';
 }
 
 function renderCourses(courses) {
