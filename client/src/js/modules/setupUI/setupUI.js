@@ -65,7 +65,7 @@ const toggleSearchMenu = () => {
     }
 };
 
-
+document.getElementById('searchCourseBtn').addEventListener('click', toggleSearchMenu)
 document.getElementById('openSearchMenu').addEventListener('click', toggleSearchMenu);
 document.getElementById('closeSearchMenu').addEventListener('click', toggleSearchMenu);
 

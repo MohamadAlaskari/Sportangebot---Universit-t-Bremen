@@ -1,28 +1,18 @@
-/*function searchCourse() {
-    return new Promise((resolve, reject) => {
-        const searchCourse_btn = document.getElementById('searchCourse-btn');
+function searchCourse(courses, query) {
+    // Trim the query to remove leading/trailing whitespace
+    const trimmedQuery = query.trim();
 
-        searchCourse_btn.onclick = () => {
-            const searchInputValue = document.getElementById("search-input").value;
-            document.getElementById("search-input").value = "";
-            
+    if (!trimmedQuery) return courses; // If no query after trim, return all courses
 
-            if (searchInputValue.trim() === "") {
-                reject(new Error("Das Eingabefeld ist leer."));
-            } else {
-                resolve(searchInputValue);
-            }
-        };
+    return courses.filter(course => {
+        // Convert the fields and the query to lowercase for case-insensitive comparison
+        const titleLower = course.titel.toLowerCase();
+        const descriptionLower = course.beschreibung.toLowerCase();
+        const queryLower = trimmedQuery.toLowerCase();
+
+        // Check if the query is in the title or description
+        return titleLower.includes(queryLower) || descriptionLower.includes(queryLower);
     });
-}*/
-
-function getSearchInputValue() {
-    const searchInput = document.getElementById("search-input");
-    const searchInputValue = searchInput.value;
-    searchInput.value = ""; // Bereinigen des Suchfeldes
-    return searchInputValue.trim();
 }
 
-export { getSearchInputValue };
-
-//export { searchCourse };
+export { searchCourse };

@@ -3,16 +3,19 @@ import { setupUI } from "./modules/setupUI/setupUI.js";
 import { sortKurse, getSelectedSortValue } from "./modules/sort.js";
 import { updateFiltersOnChange } from "./modules/filters.js";
 import { filterKurse } from "./modules/filters.js";
+import { searchCourse } from "./modules/search_course.js";
 import { renderCourses } from "./modules/setupUI/setupCourseCard.js";
 
 
 let currentFilters = {};
 let currentSortValue = "";
+let currentSearchValue = "";
 
 async function init() {
     try {
         const data = await loadKurseData();
         const courses = data.courses;
+
 
         console.log('Geladene courses: ', courses);
 
@@ -26,8 +29,29 @@ async function init() {
         });
 
 
-    
-          
+        // Select all search buttons
+        const searchButtons = document.querySelectorAll('.searchCourseBtn');
+
+        searchButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Find the search input within the same container
+                const searchContainer = this.parentElement;
+                const searchInput = searchContainer.querySelector('.searchCourseInput');
+                const searchQuery = searchInput.value.trim();
+
+                console.log('Search Query: ', searchQuery);
+
+                // Perform the search and render the results
+                const foundCourses = searchCourse(courses, searchQuery);
+                renderCourses(foundCourses);
+
+                // Optionally clear the input field
+                searchInput.value = '';
+            });
+        });
+
+
+
 
     } catch (error) {
         console.error("Fehler beim Initialisieren der Anwendung:", error);
