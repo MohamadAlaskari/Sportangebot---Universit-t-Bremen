@@ -833,14 +833,16 @@
                     ------------------------------------------------>
                 <div class="main-section">
 
-
                     <!---------------------------------------------
                     +++++++++++   filter sideNavBar   +++++++++++
                     ------------------------------------------------>
                     <div id="sideNavBar" class="filter-sidenav">
                         <h5 class="title-filter">Filters</h5>
                         <a id="closeNav" class="closebtn">&times;</a>
-                        <!--search button-->
+
+                        <!---------------------------------------------
+                        ///////////////   search button   ///////////////
+                        ------------------------------------------------>
                         <div class="sample nine">
                             <input id="search-input" class="search_input" type="text" name="search"
                                 placeholder="Search Course">
@@ -849,11 +851,10 @@
                             </button>
                         </div>
 
+                        <!---------------------------------------------
+                        ///////////////   Accordion    ///////////////
+                        ------------------------------------------------>
                         <div class="content">
-
-                            <!---------------------------------------------
-                            ///////////////   Accordion    ///////////////
-                            ------------------------------------------------>
                             <div class="accordion_container">
 
                                 <button class="accordion">Sportkategorien</button>
@@ -868,8 +869,7 @@
                                         <label for="kategorie2">Wassersport</label>
 
                                         <!-- Fitness und Gymnastik -->
-                                        <input type="checkbox" id="kategorie3" name="kategorie"
-                                            value="Fitness">
+                                        <input type="checkbox" id="kategorie3" name="kategorie" value="Fitness">
                                         <label for="kategorie3">Fitness</label>
 
                                         <!-- Racketsportarten -->
@@ -895,8 +895,7 @@
                                         <label for="kategorie8">Radsport</label>
 
                                         <!-- Outdoorsportarten -->
-                                        <input type="checkbox" id="kategorie9" name="kategorie"
-                                            value="Outdoor">
+                                        <input type="checkbox" id="kategorie9" name="kategorie" value="Outdoor">
                                         <label for="kategorie9">Outdoorsportarten</label>
 
                                         <!-- Mannschaftssportarten -->
@@ -1031,7 +1030,7 @@
                                 </svg>
                                 <span class='fl-filters-active empty'>0</span>Filters
                             </button>
-                 
+
                             <!--sort btn and dropdown-->
                             <div class='sort-menu-container'>
                                 <!--sort btn -->
@@ -1102,9 +1101,9 @@
     </div>
 
 
-
-
-    <!--footer-->
+    <!---------------------------------------------
+        ++++++++++++++   footer    ++++++++++++++++
+    ------------------------------------------------>
 
     <footer class="typo3-search-exclude" id="footer">
         <section class="section footer-section footer-section-content">
@@ -1172,11 +1171,21 @@
         </section>
     </footer>
 
-    <!--scroll to top-->
+
+    <!---------------------------------------------
+        ++++++++++++++   scroll to top    ++++++++++++++++
+    ------------------------------------------------>
+
     <button class="scroll btn scroll-to-top-btn  " type="button">
         <span aria-hidden="true" class="css-arrow"></span>
         <span aria-hidden="true" class="css-arrow"></span>
     </button>
+
+
+
+    <!---------------------------------------------
+        ++++++++++++++  scripts   ++++++++++++++++
+    ------------------------------------------------>
 
     <script data-condition-uri="https://www.uni-bremen.de/hospo/sportangebot/powermail_cond"
         id="powermail_conditions_container"></script>
@@ -1186,11 +1195,10 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <!--my js script-->
+    <!--Mapbox script-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-    <!-- 
-    
--->
+
+    <!-- my script (index.js) -->
     <script type="module" src="./js/index.js"></script>
 </body>
 
