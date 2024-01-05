@@ -5,6 +5,7 @@ import { updateFiltersOnChange } from "./modules/filters.js";
 import { filterKurse } from "./modules/filters.js";
 import { renderCourses } from "./modules/setupUI/setupCourseCard.js";
 
+
 let currentFilters = {};
 let currentSortValue = "";
 
@@ -23,6 +24,10 @@ async function init() {
             currentFilters = newFilters;
             updateCourses(courses);
         });
+
+
+    
+          
 
     } catch (error) {
         console.error("Fehler beim Initialisieren der Anwendung:", error);

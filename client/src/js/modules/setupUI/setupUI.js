@@ -1,5 +1,9 @@
 import { map } from '../mapbox/index.js';
 
+
+
+
+
 const toggleNav = () => {
     const sideNavBar = document.getElementById("sideNavBar");
     const closeNav = document.getElementById("closeNav");
@@ -45,14 +49,30 @@ const toggleSortDropMenu = () => {
     });
 }
 
+const toggleSearchMenu = () => {
+    var searchMenuContainer = document.querySelector('.search-menu-container');
+    var searchLayout = document.querySelector('.search-lyout');
+
+    // Überprüfen, ob die display-Eigenschaft bereits 'block' ist
+    if (searchMenuContainer.style.display === 'block') {
+        // Zurücksetzen auf Standardwerte
+        searchMenuContainer.style.display = 'none';
+        searchLayout.style.right = '-100%';
+    } else {
+        // Ändern der Eigenschaften wie vorher beschrieben
+        searchMenuContainer.style.display = 'block';
+        searchLayout.style.right = '0px';
+    }
+};
 
 
+document.getElementById('openSearchMenu').addEventListener('click', toggleSearchMenu);
+document.getElementById('closeSearchMenu').addEventListener('click', toggleSearchMenu);
 
 function setupUI(addresses) {
     toggleNav();
     toggleAccordion();
     toggleSortDropMenu();
-
     map(addresses);
 
 }

@@ -5,6 +5,7 @@
 
 .filter-sort-btns-wrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .filter-sort-btns-wrapper>*~* {
