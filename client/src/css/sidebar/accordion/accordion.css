@@ -68,7 +68,8 @@ input[type=checkbox]+label:before {
     padding-bottom: 0.3em;
     margin-right: 0.2em;
     vertical-align: bottom;
-    color: #ffffff00;
+    color: hsla(0, 0%, 100%, 0);
+    
     transition: .2s;
 }
 
@@ -83,11 +84,14 @@ input[type=checkbox]:checked+label:before {
 
 input[type=checkbox]:disabled+label:before {
     transform: scale(1);
-    color: #fff;
-    
+    border-color: #aaa;
 }
 
-
+input[type=checkbox]:checked:disabled+label:before {
+    transform: scale(1);
+    background-color: #d50c2f;
+    border-color: #d50c2f;
+}
 
 
 
