@@ -37,6 +37,9 @@ function updateSelectedPreis() {
     }
   };
 }
+export function updateSelectedAddresses(mapAddresses = []) {
+  return { addressess: mapAddresses };
+}
 
 // Main function that compiles all individual filter values into a single object.
 function getSelectedFilters() {
@@ -47,22 +50,34 @@ function getSelectedFilters() {
     ...updateSelectedTimes(),
     ...updateSelectedPreis(),
     ...updateSelectedDetails(),
+    ...updateSelectedAddresses(),
   };
 }
 
 // Function that adds event listeners to filter inputs and updates filters on change.
 function updateFiltersOnChange(onFiltersChanged) {
   const filterInputs = document.querySelectorAll(
-    'input[name="kategorie"], input[name="tag"], input[name="zeit"], input[name^="detail"], .range-min, .range-max'
+      'input[name="kategorie"], input[name="tag"], input[name="zeit"], input[name^="detail"], .range-min, .range-max'
   );
+
+  // Aktualisieren der Filter basierend auf der aktuellen Auswahl
   const currentFilters = getSelectedFilters();
   onFiltersChanged(currentFilters);
 
+  // Listener für Filtereingaben
   filterInputs.forEach(input => {
-    input.addEventListener('change', () => {
+      input.addEventListener('change', () => {
+          const currentFilters = getSelectedFilters();
+          onFiltersChanged(currentFilters);
+      });
+  });
+
+  // Event-Listener für Klickereignisse auf der Karte hinzufügen
+  document.getElementById('map').addEventListener('click', () => {
+      
+
       const currentFilters = getSelectedFilters();
       onFiltersChanged(currentFilters);
-    });
   });
 }
 
@@ -115,9 +130,9 @@ function filterKurse(courses, filters) {
       return true;
     });
 
-    // Hier prüfen Sie, ob der Kurs den gesetzten Filterkriterien entspricht
+    const matchesAddress = !filters.addresses || filters.addresses.length === 0 || filters.addresses.includes(kurs.address.ort);
 
-    return matchesCategory && matchesDay && matchesTime && withinPriceRange && matchesDetails;
+    return matchesCategory && matchesDay && matchesTime && withinPriceRange && matchesDetails && matchesAddress;;
   });
 }
 
