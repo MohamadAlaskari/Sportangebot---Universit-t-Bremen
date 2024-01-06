@@ -28,8 +28,8 @@ function updateSelectedDetails() {
 
 // Function to retrieve the selected price range.
 function updateSelectedPreis() {
-  const minPrice = document.querySelector(".input-min").value;
-  const maxPrice = document.querySelector(".input-max").value;
+  const minPrice = document.querySelector(".range-min").value;
+  const maxPrice = document.querySelector(".range-max").value;
   return {
     price: {
       min: minPrice,
@@ -46,14 +46,14 @@ function getSelectedFilters() {
     ...updateSelectedDays(),
     ...updateSelectedTimes(),
     ...updateSelectedPreis(),
-    ...updateSelectedDetails()
+    ...updateSelectedDetails(),
   };
 }
 
 // Function that adds event listeners to filter inputs and updates filters on change.
 function updateFiltersOnChange(onFiltersChanged) {
   const filterInputs = document.querySelectorAll(
-    'input[name="kategorie"], input[name="tag"], input[name="zeit"], input[name^="detail"], .input-min, .input-max'
+    'input[name="kategorie"], input[name="tag"], input[name="zeit"], input[name^="detail"], .range-min, .range-max'
   );
   const currentFilters = getSelectedFilters();
   onFiltersChanged(currentFilters);
@@ -114,6 +114,8 @@ function filterKurse(courses, filters) {
       }
       return true;
     });
+
+    // Hier prüfen Sie, ob der Kurs den gesetzten Filterkriterien entspricht
 
     return matchesCategory && matchesDay && matchesTime && withinPriceRange && matchesDetails;
   });

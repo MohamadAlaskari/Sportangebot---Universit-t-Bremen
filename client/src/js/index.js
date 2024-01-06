@@ -1,7 +1,7 @@
 import { loadKurseData } from "./modules/data.js";
 import { getMaxMinPrice } from "./modules/utils/utils.js";
 import { setupUI } from "./modules/setupUI/setupUI.js";
-import { updateFiltersOnChange ,filterKurse } from "./modules/filters.js";
+import { updateFiltersOnChange, filterKurse } from "./modules/filters.js";
 import { sortKurse, getSelectedSortValue } from "./modules/sort.js";
 import { renderCourses } from "./modules/courseCard.js";
 import { map } from "./modules/mapbox/mapIndex.js";
@@ -16,14 +16,15 @@ async function init() {
     try {
         const data = await loadKurseData();
         const courses = data.courses;
-        
-        
+
+
         console.log('Geladene courses: ', courses);
-        
+
         setupUI(getMaxMinPrice(courses));
         map(addresses(courses));
-        
+
         setupSortListener(courses); // Funktion zum Einrichten des Sortier-Listeners
+
 
         updateFiltersOnChange((newFilters) => {
             currentFilters = newFilters;

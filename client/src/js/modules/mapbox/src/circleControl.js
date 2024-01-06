@@ -72,12 +72,12 @@ function updateCircle(map, coordinates, radiusInMeters, addresses) {
     currentCircleRadius = radiusInMeters;
 
     // Konsolenausgaben für Debugging-Zwecke
-    console.log("Kreiszentrum:", currentCircleCenter);
-    console.log("Radius (Pixel):", pixelRadius);
+    //console.log("Kreiszentrum:", currentCircleCenter);
+    //console.log("Radius (Pixel):", pixelRadius);
 
     // Finden und Loggen der Adressen im Kreis
     const addressesInCircle = findAddressesInCircle(addresses);
-    console.log('Adressen im Kreis: ', addressesInCircle);
+   // console.log('Adressen im Kreis: ', addressesInCircle);
 }
 
 
@@ -92,7 +92,7 @@ function findAddressesInCircle(addresses) {
         const to = turf.point(address.lnglat);
         const distance = turf.distance(from, to, { units: 'kilometers' });
 
-        console.log(`Distanz zu ${address.ort}:`, distance);
+        //console.log(`Distanz zu ${address.ort}:`, distance);
 
         return distance <= currentCircleRadius / 1000; // change from km to m
     });
