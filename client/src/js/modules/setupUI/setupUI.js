@@ -82,11 +82,13 @@ const toggleSearchMenuMobile = () => {
 document.getElementById('openSearchMenuMobile').addEventListener('click', toggleSearchMenuMobile);
 document.getElementById('closeSearchMenuMobile').addEventListener('click', toggleSearchMenuMobile);
 
-
+/************
+ +++++ Price Methodes
+ **************/
 function syncPriceValues(minInput, minRange, maxInput, maxRange) {
     function adjustValues() {
         let minValue = parseInt(minInput.value, 10);
-        let maxValue = parseInt(maxInput.value,10);
+        let maxValue = parseInt(maxInput.value, 10);
         const MIN_MAX_DIFFERENCE = 5;
 
 
@@ -131,37 +133,43 @@ function updateSliderProgress(minInput, maxInput, minRange, maxRange) {
     const progressElement = document.querySelector('.slider .progress');
     if (progressElement) {
         const minPercent = ((parseInt(minInput.value, 10) - parseInt(minRange.min, 10)) /
-                            (parseInt(minRange.max, 10) - parseInt(minRange.min, 10))) * 100;
+            (parseInt(minRange.max, 10) - parseInt(minRange.min, 10))) * 100;
         const maxPercent = ((parseInt(maxInput.value, 10) - parseInt(minRange.min, 10)) /
-                            (parseInt(maxRange.max, 10) - parseInt(minRange.min, 10))) * 100;
+            (parseInt(maxRange.max, 10) - parseInt(minRange.min, 10))) * 100;
 
         progressElement.style.left = `${minPercent}%`;
         progressElement.style.width = `${maxPercent - minPercent}%`;
     }
 }
 
-
-
 function setupPrice(minPrice, maxPrice) {
-
+    // Retrieve price input fields and sliders from the DOM
     const inputMin = document.querySelector(".input-min");
     const inputMax = document.querySelector(".input-max");
     const rangeMin = document.querySelector(".range-min");
     const rangeMax = document.querySelector(".range-max");
-    
-// Überprüfen, ob alle Elemente vorhanden sind
+
+    // Check if all elements are present
     if (inputMin && inputMax && rangeMin && rangeMax) {
+        // Set values and limits for the input fields and sliders
         inputMin.value = rangeMin.value = minPrice;
         inputMax.value = rangeMax.value = maxPrice;
 
+        // Set the input fields to readonly to prevent the user from typing in them
+        inputMin.setAttribute('readonly', true);
+        inputMax.setAttribute('readonly', true);
+
+        // Set minimum and maximum values for the sliders to define the range
         rangeMin.min = minPrice;
         rangeMin.max = maxPrice;
         rangeMax.min = minPrice;
         rangeMax.max = maxPrice;
 
-        syncPriceValues(inputMin, rangeMin, inputMax, rangeMax);
+        // Call the synchronization function for the price values
+       syncPriceValues(inputMin, rangeMin, inputMax, rangeMax);
     }
 }
+
 
 function setupUI(addresses, [minPrice, maxPrice]) {
     toggleNav();

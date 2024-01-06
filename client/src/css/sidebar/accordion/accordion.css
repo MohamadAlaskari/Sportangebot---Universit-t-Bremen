@@ -79,7 +79,7 @@ input[type=checkbox]+label:active:before {
 input[type=checkbox]:checked+label:before {
     background-color: #d50c2f;
     color: #fff;
-    border: none;
+
 }
 
 input[type=checkbox]:disabled+label:before {
@@ -114,14 +114,16 @@ input[type=checkbox]:checked:disabled+label:before {
     width: 100%;
     height: 100%;
     outline: none;
-    font-size: 19px;
+    font-size: 2em;
     margin-left: 12px;
     border-radius: 5px;
     text-align: center;
-    border: 1px solid #999;
+    border: none;
     -moz-appearance: textfield;
     outline: none !important;
     outline-offset: 0px !important;
+    color:  #d50c2f;
+    font-weight: bolder;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -190,4 +192,3 @@ input[type="range"]::-moz-range-thumb {
     -moz-appearance: none;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
 }
-
