@@ -82,23 +82,6 @@ const toggleSearchMenuMobile = () => {
 document.getElementById('openSearchMenuMobile').addEventListener('click', toggleSearchMenuMobile);
 document.getElementById('closeSearchMenuMobile').addEventListener('click', toggleSearchMenuMobile);
 
-function setmaxMinPrice(minPrice, maxPrice) {
-    const inputMinPrice = document.querySelector(".input-min");
-    const inputMaxPrice = document.querySelector(".input-max");
-    const rangeMinPrice = document.querySelector(".range-min");
-    const rangeMaxPrice = document.querySelector(".range-max");
-
-    inputMinPrice.value = minPrice;
-    inputMaxPrice.value = maxPrice;
-
-    rangeMinPrice.value = minPrice;
-    rangeMinPrice.setAttribute('min', minPrice);
-
-    rangeMaxPrice.value = maxPrice;
-    rangeMaxPrice.setAttribute('max', maxPrice);
-
-}
-
 
 function syncPriceValues(minInput, minRange, maxInput, maxRange) {
     function adjustValues() {
@@ -144,8 +127,6 @@ function syncPriceValues(minInput, minRange, maxInput, maxRange) {
 
 }
 
-
-
 function updateSliderProgress(minInput, maxInput, minRange, maxRange) {
     const progressElement = document.querySelector('.slider .progress');
     if (progressElement) {
@@ -161,36 +142,34 @@ function updateSliderProgress(minInput, maxInput, minRange, maxRange) {
 
 
 
+function setupPrice(minPrice, maxPrice) {
+
+    const inputMin = document.querySelector(".input-min");
+    const inputMax = document.querySelector(".input-max");
+    const rangeMin = document.querySelector(".range-min");
+    const rangeMax = document.querySelector(".range-max");
+    
+// Überprüfen, ob alle Elemente vorhanden sind
+    if (inputMin && inputMax && rangeMin && rangeMax) {
+        inputMin.value = rangeMin.value = minPrice;
+        inputMax.value = rangeMax.value = maxPrice;
+
+        rangeMin.min = minPrice;
+        rangeMin.max = maxPrice;
+        rangeMax.min = minPrice;
+        rangeMax.max = maxPrice;
+
+        syncPriceValues(inputMin, rangeMin, inputMax, rangeMax);
+    }
+}
 
 function setupUI(addresses, [minPrice, maxPrice]) {
     toggleNav();
     toggleAccordion();
     toggleSortDropMenu();
     map(addresses);
-    setmaxMinPrice(minPrice, maxPrice);
 
-    // Die Input- und Range-Elemente für Preiseinstellungen initialisieren
-    const inputMin = document.querySelector(".input-min");
-    const inputMax = document.querySelector(".input-max");
-    const rangeMin = document.querySelector(".range-min");
-    const rangeMax = document.querySelector(".range-max");
-
-    // Stellen Sie sicher, dass die Elemente existieren
-    if (inputMin && inputMax && rangeMin && rangeMax) {
-        // Setzen der Werte auf die Startpreise
-        inputMin.value = rangeMin.value = minPrice;
-        inputMax.value = rangeMax.value = maxPrice;
-
-        // Setzen der Minimal- und Maximalwerte der Slider
-        rangeMin.min = minPrice;
-        rangeMin.max = maxPrice;
-        rangeMax.min = minPrice;
-        rangeMax.max = maxPrice;
-
-        // Die Slider-Inputs mit den Startwerten synchronisieren
-        syncPriceValues(inputMin, rangeMin, inputMax, rangeMax, minPrice, maxPrice);
-    }
-
+    setupPrice(minPrice, maxPrice);
 }
 
 export { setupUI };
