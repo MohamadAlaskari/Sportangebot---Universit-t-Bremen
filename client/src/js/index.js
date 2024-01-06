@@ -4,7 +4,7 @@ import { setupUI } from "./modules/setupUI/setupUI.js";
 import { updateFiltersOnChange ,filterKurse } from "./modules/filters.js";
 import { sortKurse, getSelectedSortValue } from "./modules/sort.js";
 import { renderCourses } from "./modules/courseCard.js";
-import { map } from "./modules/mapbox/index.js";
+import { map } from "./modules/mapbox/mapIndex.js";
 import { searchCourse } from "./modules/search_course.js";
 
 

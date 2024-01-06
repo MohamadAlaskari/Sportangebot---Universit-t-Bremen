@@ -1,26 +1,47 @@
 
 let currentCircleCenter = null;
-let currentCircleRadius = 60;
+let currentCircleRadius = 10000;
 
-let currentRadius = 60;
 let currentCircle;
 
-export function addCircleControl(map) {
-    map.on('click', function(e) {
-        updateCircle(map, e.lngLat, currentRadius);
+function metersToPixelsAtMaxZoom(meters, latitude, map) {
+    const earthCircumference = 40075017; // Umfang der Erde in Metern
+    const latitudeRadians = latitude * (Math.PI / 180); // Umrechnung von Grad in Radianten
+    const metersPerPx = (earthCircumference * Math.cos(latitudeRadians)) / Math.pow(2, map.getZoom() + 8);
+    return meters / metersPerPx;
+}
+
+
+export function addCircleControl(map, addresses) {
+    map.on('click', function (e) {
+        updateCircle(map, e.lngLat, currentCircleRadius, addresses);
     });
 
-    document.getElementById('radiusInput').addEventListener('input', function() {
-        currentRadius = parseInt(this.value);
+    map.on('zoomend', function () {
+        if (currentCircleCenter) {
+            updateCircle(map, currentCircleCenter, currentCircleRadius, addresses);
+        }
+    });
+
+    document.getElementById('radiusInput').addEventListener('input', function () {
+        currentCircleRadius = parseInt(this.value) * 1000;
+        if (currentCircleCenter) {
+            updateCircle(map, currentCircleCenter, currentCircleRadius, addresses);
+        }
     });
 }
 
-function updateCircle(map, coordinates, radius) {
-    if (currentCircle) {
+
+function updateCircle(map, coordinates, radiusInMeters, addresses) {
+    // Überprüfen, ob der Layer und die Quelle existieren, bevor sie entfernt werden
+    if (map.getLayer('circle-layer')) {
         map.removeLayer('circle-layer');
+    }
+    if (map.getSource('circle-source')) {
         map.removeSource('circle-source');
     }
 
+    // Hinzufügen einer neuen Quelle für den Kreis
     map.addSource('circle-source', {
         'type': 'geojson',
         'data': {
@@ -32,36 +53,48 @@ function updateCircle(map, coordinates, radius) {
         }
     });
 
+    // Hinzufügen des Kreises als neue Ebene
+    const pixelRadius = metersToPixelsAtMaxZoom(radiusInMeters, coordinates.lat, map);
     map.addLayer({
         'id': 'circle-layer',
         'type': 'circle',
         'source': 'circle-source',
         'paint': {
-            'circle-radius': radius,
+            'circle-radius': pixelRadius,
             'circle-color': 'red',
             'circle-opacity': 0.5
         }
     });
 
+    // Aktualisieren der Variablen für das Kreiszentrum und den Radius
     currentCircle = true;
+    currentCircleCenter = coordinates;
+    currentCircleRadius = radiusInMeters;
 
-     // Speichern des Mittelpunkts und des Radius
-     currentCircleCenter = coordinates;
-     currentCircleRadius = radius;
+    // Konsolenausgaben für Debugging-Zwecke
+    console.log("Kreiszentrum:", currentCircleCenter);
+    console.log("Radius (Pixel):", pixelRadius);
+
+    // Finden und Loggen der Adressen im Kreis
+    const addressesInCircle = findAddressesInCircle(addresses);
+    console.log('Adressen im Kreis: ', addressesInCircle);
 }
 
 
+
 // Neue Funktion, um Adressen im Kreis zu finden
-export function findAddressesInCircle(addresses) {
-    if (!currentCircleCenter) return [];
+function findAddressesInCircle(addresses) {
+
+    if (!currentCircleCenter) return addresses;
 
     const addressesInCircle = addresses.filter((address) => {
         const from = turf.point([currentCircleCenter.lng, currentCircleCenter.lat]);
-        const to = turf.point(address.lngLat);
+        const to = turf.point(address.lnglat);
         const distance = turf.distance(from, to, { units: 'kilometers' });
 
-        return distance <= currentCircleRadius / 1000; // Radius in Kilometern
-    });
+        console.log(`Distanz zu ${address.ort}:`, distance);
 
+        return distance <= currentCircleRadius / 1000; // change from km to m
+    });
     return addressesInCircle;
 }
