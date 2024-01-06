@@ -175,7 +175,7 @@ function setupPrice(minPrice, maxPrice) {
 function updateButtonClassOnScroll() {
     const button = document.getElementById('scrollBtn');
 
-    if (window.pageYOffset > 100) {
+    if (window.pageYOffset > 1000) {
         // Benutzer hat weiter als 100 Pixel nach unten gescrollt
         button.classList.add('up');
         button.classList.remove('down');
@@ -191,7 +191,7 @@ window.addEventListener('scroll', updateButtonClassOnScroll);
 
 // Event-Listener für den Button, um nach oben oder unten zu scrollen
 document.getElementById('scrollBtn').addEventListener('click', () => {
-    if (window.pageYOffset > 100) {
+    if (window.pageYOffset > 1000) {
         // Scrollen Sie zur Oberseite der Seite
         window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
