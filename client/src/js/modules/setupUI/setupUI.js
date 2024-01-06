@@ -166,10 +166,20 @@ function setupPrice(minPrice, maxPrice) {
         rangeMax.max = maxPrice;
 
         // Call the synchronization function for the price values
-       syncPriceValues(inputMin, rangeMin, inputMax, rangeMax);
+        syncPriceValues(inputMin, rangeMin, inputMax, rangeMax);
     }
 }
 
+// scrollToTop
+function scrollToTop() {
+    // Wenn Sie an den Anfang der Seite scrollen wollen:
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function scrollToButton() {
+    // Wenn Sie an den Anfang der Seite scrollen wollen:
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+}
+document.getElementById('scrollBtn').addEventListener('click', scrollToButton);
 
 function setupUI(addresses, [minPrice, maxPrice]) {
     toggleNav();
