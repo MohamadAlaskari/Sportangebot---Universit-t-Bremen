@@ -64,10 +64,30 @@ const toggleSearchMenu = () => {
         searchLayout.style.right = '0px';
     }
 };
-
 document.getElementById('searchCourseBtn').addEventListener('click', toggleSearchMenu)
 document.getElementById('openSearchMenu').addEventListener('click', toggleSearchMenu);
 document.getElementById('closeSearchMenu').addEventListener('click', toggleSearchMenu);
+
+const toggleSearchMenuMobile = () => {
+    var searchMenuContainer = document.querySelector('.search-menu-containerMobile');
+    var searchLayout = document.querySelector('.search-lyoutMobile');
+
+    // Überprüfen, ob die display-Eigenschaft bereits 'block' ist
+    if (searchMenuContainer.style.display === 'block') {
+        // Zurücksetzen auf Standardwerte
+        searchMenuContainer.style.display = 'none';
+        searchLayout.style.right = '-100%';
+    } else {
+        // Ändern der Eigenschaften wie vorher beschrieben
+        searchMenuContainer.style.display = 'block';
+        searchLayout.style.right = '0px';
+    }
+};
+
+
+document.getElementById('openSearchMenuMobile').addEventListener('click', toggleSearchMenuMobile);
+document.getElementById('closeSearchMenuMobile').addEventListener('click', toggleSearchMenuMobile);
+
 
 function setupUI(addresses) {
     toggleNav();

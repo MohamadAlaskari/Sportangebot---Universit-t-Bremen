@@ -440,20 +440,29 @@
                     width="1593"><button class="navbar-toggle collapsed" data-target=".navbar-collapse"
                     data-toggle="collapse" type="button"><span class="sr-only">Navigation umschalten</span><span
                         class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                <div id="mobile-search"><i aria-controls="mobileSearchFlyout" aria-haspopup="true" aria-label="Suche"
-                        class="fa fa-search" role="button" tabindex="0"></i>
-                    <div class="search-container">
-                        <div class="search-flyout" id="mobileSearchFlyout">
-                            <div class="search-title">Suche</div>
-                            <form action="/suchen" data-suggest="/suchen?type=7384" data-suggest-header="Top Treffer"
-                                id="tx-solr-search-form-pi-results2" method="get" role="search"><label class="sr-only"
-                                    for="q-mobile"> Suchbegriff </label><input autocomplete="off"
-                                    class="tx-solr-q js-solr-q tx-solr-suggest" id="q-mobile" name="q" type="text"
-                                    value=""> Platzhalter: Sternchen (*) <input class="tx-solr-submit submit"
-                                    type="submit" value="Suche starten"></form>
+
+                <!---------------------------------------- ------------------
+                    +++++++++++++++++    mobile-search  ++++++++++++++++++++
+                -------------------------------------------------------------->
+
+                <div id="mobile-search">
+                    <i id="openSearchMenuMobile" class="fa fa-search"></i>
+                    <div class="search-menu-containerMobile">
+                        <div class="search-lyoutMobile " id="searchlyoutt">
+                            <i id="closeSearchMenuMobile" class="closebtn">&times;</i>
+                            <h2 class="search-title">Suche</h2>
+                            <div>
+                                <input type="text" name="searchCourse" id="searchCourseInput" class="searchCourseInput"
+                                    placeholder="Search...">
+                                <input id="searchCourseBtn" class="tx-solr-submit submit searchCourseBtn" type="submit"
+                                    value="Suche starten">
+                            </div>
                         </div>
                     </div>
-                </div><span class="navbar-header-border-bottom"></span>
+
+                </div>
+
+                <span class="navbar-header-border-bottom"></span>
             </div>
             <div class="lightblue-container">
                 <div class="lightblue-bar">
@@ -696,18 +705,17 @@
                         ++++++++++++++++++  Search Menu ++++++++++++++++++ 
                     ------------------------------------------------------------>
                     <li id="search" style="order: 3;">
-                        <i id="openSearchMenu" class="fa fa-search " role="button" tabindex="0"></i>
+                        <i id="openSearchMenu" class="fa fa-search "></i>
                         <div class="search-menu-container">
                             <div class="search-lyout" id="searchlyout">
                                 <i id="closeSearchMenu" class="closebtn">&times;</i>
-
                                 <h2 class="search-title">Suche</h2>
                                 <div>
-                                  <input type="text" name="searchCourse" id="searchCourseInput" class="searchCourseInput" placeholder="Search...">
-                                    <input id="searchCourseBtn" class="tx-solr-submit submit searchCourseBtn" type="submit" value="Suche starten">
+                                    <input type="text" name="searchCourse" id="searchCourseInput"
+                                        class="searchCourseInput" placeholder="Search...">
+                                    <input id="searchCourseBtn" class="tx-solr-submit submit searchCourseBtn"
+                                        type="submit" value="Suche starten">
                                 </div>
-
-                               
                             </div>
                         </div>
                     </li>
@@ -749,8 +757,8 @@
                             ///////////////   search button   ///////////////
                             ------------------------------------------------>
                             <div class="sample nine">
-                                <input id="search-input" class="search_input searchCourseInput" type="text" name="search"
-                                    placeholder="Search Course">
+                                <input id="search-input" class="search_input searchCourseInput" type="text"
+                                    name="search" placeholder="Search Course">
                                 <button id="searchCourse-btn" type="submit" class="btn btn-search searchCourseBtn">
                                     <i class="fa fa-search"></i>
                                 </button>
