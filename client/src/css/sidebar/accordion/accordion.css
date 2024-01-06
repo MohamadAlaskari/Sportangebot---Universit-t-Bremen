@@ -86,11 +86,7 @@ input[type=checkbox]:disabled+label:before {
     
 }
 
-input[type=checkbox]:checked:disabled+label:before {
-    transform: scale(1);
-    background-color: #d50c2f;
-    border-color: #d50c2f;
-}
+
 
 
 
