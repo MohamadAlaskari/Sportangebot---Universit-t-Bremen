@@ -171,15 +171,36 @@ function setupPrice(minPrice, maxPrice) {
 }
 
 // scrollToTop
-function scrollToTop() {
-    // Wenn Sie an den Anfang der Seite scrollen wollen:
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+function updateButtonClassOnScroll() {
+    const button = document.getElementById('scrollBtn');
+
+    if (window.pageYOffset > 100) {
+        // Benutzer hat weiter als 100 Pixel nach unten gescrollt
+        button.classList.add('up');
+        button.classList.remove('down');
+    } else {
+        // Benutzer ist nahe am oberen Rand der Seite
+        button.classList.add('down');
+        button.classList.remove('up');
+    }
 }
-function scrollToButton() {
-    // Wenn Sie an den Anfang der Seite scrollen wollen:
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-}
-document.getElementById('scrollBtn').addEventListener('click', scrollToButton);
+
+// Event-Listener für das Scrollen, um die Button-Klassen zu aktualisieren
+window.addEventListener('scroll', updateButtonClassOnScroll);
+
+// Event-Listener für den Button, um nach oben oder unten zu scrollen
+document.getElementById('scrollBtn').addEventListener('click', () => {
+    if (window.pageYOffset > 100) {
+        // Scrollen Sie zur Oberseite der Seite
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        // Scrollen Sie zum unteren Ende der Seite
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+});
+
+
 
 function setupUI(addresses, [minPrice, maxPrice]) {
     toggleNav();
