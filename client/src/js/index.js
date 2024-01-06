@@ -1,15 +1,15 @@
 import { loadKurseData } from "./modules/data.js";
+import { getMaxMinPrice } from "./modules/utils/utils.js";
 import { setupUI } from "./modules/setupUI/setupUI.js";
 import { sortKurse, getSelectedSortValue } from "./modules/sort.js";
 import { updateFiltersOnChange } from "./modules/filters.js";
 import { filterKurse } from "./modules/filters.js";
 import { searchCourse } from "./modules/search_course.js";
-import { renderCourses } from "./modules/setupUI/setupCourseCard.js";
+import { renderCourses } from "./modules/courseCard.js";
 
 
 let currentFilters = {};
 let currentSortValue = "";
-let currentSearchValue = "";
 
 async function init() {
     try {
@@ -17,9 +17,10 @@ async function init() {
         const courses = data.courses;
 
 
+
         console.log('Geladene courses: ', courses);
 
-        setupUI(addresses(courses));
+        setupUI(addresses(courses), getMaxMinPrice(courses) );
 
         setupSortListener(courses); // Funktion zum Einrichten des Sortier-Listeners
 
@@ -38,15 +39,17 @@ async function init() {
                 const searchContainer = this.parentElement;
                 const searchInput = searchContainer.querySelector('.searchCourseInput');
                 const searchQuery = searchInput.value.trim();
-
-                console.log('Search Query: ', searchQuery);
-
+                
                 // Perform the search and render the results
                 const foundCourses = searchCourse(courses, searchQuery);
                 renderCourses(foundCourses);
-
-                // Optionally clear the input field
+                
+                // clear the input field
                 searchInput.value = '';
+
+                console.log('Search Query: ', searchQuery);
+                console.log('foundCourses: ', foundCourses);
+
             });
         });
 

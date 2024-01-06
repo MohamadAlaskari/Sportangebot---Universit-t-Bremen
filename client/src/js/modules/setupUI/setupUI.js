@@ -1,9 +1,6 @@
 import { map } from '../mapbox/index.js';
 
 
-
-
-
 const toggleNav = () => {
     const sideNavBar = document.getElementById("sideNavBar");
     const closeNav = document.getElementById("closeNav");
@@ -14,7 +11,6 @@ const toggleNav = () => {
     document.getElementById('searchCourse-btn').addEventListener('click', () => { sideNavBar.classList.toggle("sideNavBar-active"); })
 
 }
-
 
 const toggleAccordion = () => {
 
@@ -34,8 +30,6 @@ const toggleAccordion = () => {
         accordion.addEventListener("click", () => toggleAccordionPanel(accordion));
     });
 }
-
-
 
 const toggleSortDropMenu = () => {
     const wrapper = document.querySelector(".sort-menu-container");
@@ -64,7 +58,8 @@ const toggleSearchMenu = () => {
         searchLayout.style.right = '0px';
     }
 };
-document.getElementById('searchCourseBtn').addEventListener('click', toggleSearchMenu)
+
+document.getElementById('searchCourseBtn').addEventListener('click', toggleSearchMenu);
 document.getElementById('openSearchMenu').addEventListener('click', toggleSearchMenu);
 document.getElementById('closeSearchMenu').addEventListener('click', toggleSearchMenu);
 
@@ -84,16 +79,85 @@ const toggleSearchMenuMobile = () => {
     }
 };
 
-
 document.getElementById('openSearchMenuMobile').addEventListener('click', toggleSearchMenuMobile);
 document.getElementById('closeSearchMenuMobile').addEventListener('click', toggleSearchMenuMobile);
 
+function setmaxMinPrice(minPrice, maxPrice) {
+    const inputMinPrice = document.querySelector(".input-min");
+    const inputMaxPrice = document.querySelector(".input-max");
+    const rangeMinPrice = document.querySelector(".range-min");
+    const rangeMaxPrice = document.querySelector(".range-max");
 
-function setupUI(addresses) {
+    inputMinPrice.value = minPrice;
+    inputMaxPrice.value = maxPrice;
+
+    rangeMinPrice.value = minPrice;
+    rangeMinPrice.setAttribute('min', minPrice);
+
+    rangeMaxPrice.value = maxPrice;
+    rangeMaxPrice.setAttribute('max', maxPrice);
+
+}
+
+function syncPriceValues(minInput, minRange, maxInput, maxRange) {
+    function adjustValues() {
+        let minValue = parseInt(minInput.value, 10);
+        let maxValue = parseInt(maxInput.value, 10);
+        const MIN_MAX_DIFFERENCE = 5;
+
+        if (maxValue - minValue < MIN_MAX_DIFFERENCE) {
+            if (maxValue - MIN_MAX_DIFFERENCE >= minRange.min) {
+                minValue = maxValue - MIN_MAX_DIFFERENCE;
+            } else if (minValue + MIN_MAX_DIFFERENCE <= maxRange.max) {
+                maxValue = minValue + MIN_MAX_DIFFERENCE;
+            }
+            minInput.value = minRange.value = minValue;
+            maxInput.value = maxRange.value = maxValue;
+        }
+    }
+
+
+    minInput.addEventListener('input', () => {
+        minRange.value = minInput.value;
+        adjustValues();
+    });
+
+    minRange.addEventListener('input', () => {
+        minInput.value = minRange.value;
+        adjustValues();
+    });
+
+    maxInput.addEventListener('input', () => {
+        maxRange.value = maxInput.value;
+        adjustValues();
+    });
+
+    maxRange.addEventListener('input', () => {
+        maxInput.value = maxRange.value;
+        adjustValues();
+    });
+}
+
+
+function initSync() {
+    const inputMin = document.querySelector(".input-min");
+    const rangeMin = document.querySelector(".range-min");
+    const inputMax = document.querySelector(".input-max");
+    const rangeMax = document.querySelector(".range-max");
+
+    syncPriceValues(inputMin, rangeMin, inputMax, rangeMax);
+}
+
+
+
+
+function setupUI(addresses, [minPrice, maxPrice]) {
     toggleNav();
     toggleAccordion();
     toggleSortDropMenu();
     map(addresses);
+    setmaxMinPrice(minPrice, maxPrice);
+    initSync();
 
 }
 

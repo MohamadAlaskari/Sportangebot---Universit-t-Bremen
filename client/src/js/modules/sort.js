@@ -46,7 +46,7 @@ function sortKurse(courses, sortValue) {
             break;
         default:
             console.warn("Unbekannte Sortieroption: ", sortValue);
-            // Keine Aktion, behält die Liste in ihrer aktuellen Reihenfolge
+           
             break;
     }
 
