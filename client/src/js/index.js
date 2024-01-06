@@ -1,11 +1,12 @@
 import { loadKurseData } from "./modules/data.js";
 import { getMaxMinPrice } from "./modules/utils/utils.js";
 import { setupUI } from "./modules/setupUI/setupUI.js";
+import { updateFiltersOnChange ,filterKurse } from "./modules/filters.js";
 import { sortKurse, getSelectedSortValue } from "./modules/sort.js";
-import { updateFiltersOnChange } from "./modules/filters.js";
-import { filterKurse } from "./modules/filters.js";
-import { searchCourse } from "./modules/search_course.js";
 import { renderCourses } from "./modules/courseCard.js";
+import { map } from "./modules/mapbox/index.js";
+import { searchCourse } from "./modules/search_course.js";
+
 
 
 let currentFilters = {};
@@ -15,13 +16,13 @@ async function init() {
     try {
         const data = await loadKurseData();
         const courses = data.courses;
-
-
-
+        
+        
         console.log('Geladene courses: ', courses);
-
-        setupUI(addresses(courses), getMaxMinPrice(courses) );
-
+        
+        setupUI(getMaxMinPrice(courses));
+        map(addresses(courses));
+        
         setupSortListener(courses); // Funktion zum Einrichten des Sortier-Listeners
 
         updateFiltersOnChange((newFilters) => {
@@ -39,11 +40,11 @@ async function init() {
                 const searchContainer = this.parentElement;
                 const searchInput = searchContainer.querySelector('.searchCourseInput');
                 const searchQuery = searchInput.value.trim();
-                
+
                 // Perform the search and render the results
                 const foundCourses = searchCourse(courses, searchQuery);
                 renderCourses(foundCourses);
-                
+
                 // clear the input field
                 searchInput.value = '';
 

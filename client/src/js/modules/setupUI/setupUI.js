@@ -1,4 +1,4 @@
-import { map } from '../mapbox/index.js';
+
 
 
 const toggleNav = () => {
@@ -202,11 +202,11 @@ document.getElementById('scrollBtn').addEventListener('click', () => {
 
 
 
-function setupUI(addresses, [minPrice, maxPrice]) {
+function setupUI( [minPrice, maxPrice]) {
     toggleNav();
     toggleAccordion();
     toggleSortDropMenu();
-    map(addresses);
+  
 
     setupPrice(minPrice, maxPrice);
 }
