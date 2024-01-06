@@ -68,7 +68,7 @@ input[type=checkbox]+label:before {
     padding-bottom: 0.3em;
     margin-right: 0.2em;
     vertical-align: bottom;
-    color: transparent;
+    color: #ffffff00;
     transition: .2s;
 }
 
