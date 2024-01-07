@@ -45,7 +45,7 @@ function sortKurse(courses, sortValue) {
             sortedKurse.sort((a, b) => a.titel.localeCompare(b.titel));
             break;
         default:
-            console.warn("Unbekannte Sortieroption: ", sortValue);
+            console.warn("noch keine Sortieroption: ", sortValue);
            
             break;
     }

@@ -1,10 +1,10 @@
 import { loadKurseData } from "./modules/data.js";
 import { getMaxMinPrice } from "./modules/utils/utils.js";
 import { setupUI } from "./modules/setupUI/setupUI.js";
-import { updateFiltersOnChange, filterKurse ,updateSelectedAddresses} from "./modules/filters.js";
+import { updateFiltersOnChange, filterKurse, updateSelectedAddresses } from "./modules/filters.js";
 import { sortKurse, getSelectedSortValue } from "./modules/sort.js";
 import { renderCourses } from "./modules/courseCard.js";
-import { map } from "./modules/mapbox/mapIndex.js";
+import { map, currentMapAddresses } from "./modules/mapbox/mapIndex.js";
 import { searchCourse } from "./modules/search_course.js";
 
 
@@ -24,13 +24,14 @@ async function init() {
         map(addresses(courses));
 
         setupSortListener(courses); // Funktion zum Einrichten des Sortier-Listeners
-
-        
-        updateSelectedAddresses(addresses(courses))
+        console.log('currentMapAddresses von indexjs vor updateFiltersOnChange: ', currentMapAddresses)
         updateFiltersOnChange((newFilters) => {
-            currentFilters = newFilters;
+            console.log('currentMapAddresses von indexjs nach updateFiltersOnChange:: ', currentMapAddresses)
+            currentFilters = { ...currentFilters, ...newFilters };
             updateCourses(courses);
-        });
+        }, currentMapAddresses);
+
+
 
 
         // Select all search buttons

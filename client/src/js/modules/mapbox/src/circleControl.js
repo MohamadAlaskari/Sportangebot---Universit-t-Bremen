@@ -3,6 +3,8 @@ let currentCircleCenter = null;
 let currentCircleRadius = 10000;
 
 let currentCircle;
+export let currentMapAddresses = [];
+
 
 function metersToPixelsAtMaxZoom(meters, latitude, map) {
     const earthCircumference = 40075017; // Umfang der Erde in Metern
@@ -14,19 +16,19 @@ function metersToPixelsAtMaxZoom(meters, latitude, map) {
 
 export function addCircleControl(map, addresses) {
     map.on('click', function (e) {
-        updateCircle(map, e.lngLat, currentCircleRadius, addresses);
+        currentMapAddresses = updateCircle(map, e.lngLat, currentCircleRadius, addresses);
     });
 
     map.on('zoomend', function () {
         if (currentCircleCenter) {
-            updateCircle(map, currentCircleCenter, currentCircleRadius, addresses);
+            currentMapAddresses = updateCircle(map, currentCircleCenter, currentCircleRadius, addresses);
         }
     });
 
     document.getElementById('radiusInput').addEventListener('input', function () {
         currentCircleRadius = parseInt(this.value) * 1000;
         if (currentCircleCenter) {
-            updateCircle(map, currentCircleCenter, currentCircleRadius, addresses);
+            currentMapAddresses = updateCircle(map, currentCircleCenter, currentCircleRadius, addresses);
         }
     });
 }
@@ -71,15 +73,16 @@ function updateCircle(map, coordinates, radiusInMeters, addresses) {
     currentCircleCenter = coordinates;
     currentCircleRadius = radiusInMeters;
 
+    
+    // Finden und Loggen der Adressen im Kreis
+    currentMapAddresses = findAddressesInCircle(addresses);
+  //  console.warn('Adressen im Kreis: ', currentMapAddresses);
+    
+    return currentMapAddresses
     // Konsolenausgaben für Debugging-Zwecke
     //console.log("Kreiszentrum:", currentCircleCenter);
     //console.log("Radius (Pixel):", pixelRadius);
-
-    // Finden und Loggen der Adressen im Kreis
-    const addressesInCircle = findAddressesInCircle(addresses);
-   // console.log('Adressen im Kreis: ', addressesInCircle);
 }
-
 
 
 // Neue Funktion, um Adressen im Kreis zu finden

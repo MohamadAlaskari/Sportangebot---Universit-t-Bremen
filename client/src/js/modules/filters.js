@@ -37,47 +37,48 @@ function updateSelectedPreis() {
     }
   };
 }
-export function updateSelectedAddresses(mapAddresses = []) {
-  return { addressess: mapAddresses };
+export function updateSelectedAddresses(mapAddresses) {
+  console.log('updateSelectedAddresses - mapAddresses:', mapAddresses);
+  return { addresses: mapAddresses || [] };
 }
 
-// Main function that compiles all individual filter values into a single object.
-function getSelectedFilters() {
-  return {
 
-    ...updateSelectedKategorie(),
-    ...updateSelectedDays(),
-    ...updateSelectedTimes(),
-    ...updateSelectedPreis(),
-    ...updateSelectedDetails(),
-    ...updateSelectedAddresses(),
+// Main function that compiles all individual filter values into a single object.
+function getSelectedFilters(mapAddresses) {
+  console.log('getSelectedFilters - mapAddresses:', mapAddresses);
+  return {
+      ...updateSelectedKategorie(),
+      ...updateSelectedDays(),
+      ...updateSelectedTimes(),
+      ...updateSelectedPreis(),
+      ...updateSelectedDetails(),
+      ...updateSelectedAddresses(mapAddresses),
   };
 }
 
+
 // Function that adds event listeners to filter inputs and updates filters on change.
-function updateFiltersOnChange(onFiltersChanged) {
+function updateFiltersOnChange(onFiltersChanged, mapAddresses) {
   const filterInputs = document.querySelectorAll(
       'input[name="kategorie"], input[name="tag"], input[name="zeit"], input[name^="detail"], .range-min, .range-max'
   );
 
   // Aktualisieren der Filter basierend auf der aktuellen Auswahl
-  const currentFilters = getSelectedFilters();
+  const currentFilters = getSelectedFilters(mapAddresses);
   onFiltersChanged(currentFilters);
 
   // Listener für Filtereingaben
   filterInputs.forEach(input => {
       input.addEventListener('change', () => {
-          const currentFilters = getSelectedFilters();
+          const currentFilters = getSelectedFilters(mapAddresses);
           onFiltersChanged(currentFilters);
       });
   });
 
   // Event-Listener für Klickereignisse auf der Karte hinzufügen
   document.getElementById('map').addEventListener('click', () => {
-      
-
-      const currentFilters = getSelectedFilters();
-      onFiltersChanged(currentFilters);
+    const currentFilters = getSelectedFilters(mapAddresses);
+    onFiltersChanged(currentFilters);
   });
 }
 
@@ -101,6 +102,7 @@ function filterKurse(courses, filters) {
   }
 
   return courses.filter(kurs => {
+  
     // Kategorie-Filter
     const matchesCategory = !filters.categories || filters.categories.length === 0 || filters.categories.includes(kurs.kategorie);
 

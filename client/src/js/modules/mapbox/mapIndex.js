@@ -3,7 +3,7 @@ import { addMapControls } from './src/controls/mapControls.js';
 import { addFullscreenControl } from './src/controls/fullscreenControl.js';
 import { addGeolocateControl } from './src/controls/geolocateControl.js';
 import { addMarkers } from './src/markers.js';
-import { addCircleControl } from './src/circleControl.js';
+import { addCircleControl, currentMapAddresses } from './src/circleControl.js';
 
 const map = (addresses) => {
 
@@ -12,7 +12,8 @@ const map = (addresses) => {
     addMapControls(map);
     addGeolocateControl(map);
     addMarkers(map, addresses);
-    addCircleControl(map, addresses);
+   addCircleControl(map, addresses);
+  // console.warn('vonmap Adresses: ' , currentMapAddresses)
 
 }
-export { map }
+export { map , currentMapAddresses}

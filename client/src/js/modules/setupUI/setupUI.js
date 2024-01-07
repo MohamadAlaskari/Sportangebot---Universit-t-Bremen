@@ -200,14 +200,10 @@ document.getElementById('scrollBtn').addEventListener('click', () => {
     }
 });
 
-
-
-function setupUI( [minPrice, maxPrice]) {
+function setupUI([minPrice, maxPrice]) {
     toggleNav();
     toggleAccordion();
     toggleSortDropMenu();
-  
-
     setupPrice(minPrice, maxPrice);
 }
 
