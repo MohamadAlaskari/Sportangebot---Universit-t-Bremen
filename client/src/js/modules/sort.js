@@ -1,13 +1,15 @@
 
 function updateSortText(selectedOption) {
     const sortBtnText = document.querySelector(".sort-btn__text");
-    
+
     if (selectedOption && selectedOption.value !== "none") {
         sortBtnText.textContent = selectedOption.nextElementSibling.textContent;
+        sortBtnText.style.color = '#c60c2b';
+
     } else {
         sortBtnText.textContent = "Sortieren";
     }
-    
+
     const wrapper = document.querySelector(".sort-menu-container");
     wrapper.classList.remove("open");
 }
@@ -46,7 +48,7 @@ function sortKurse(courses, sortValue) {
             break;
         default:
             console.warn("noch keine Sortieroption: ", sortValue);
-           
+
             break;
     }
 
