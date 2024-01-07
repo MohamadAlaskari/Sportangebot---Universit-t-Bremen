@@ -4,7 +4,6 @@ function updateSortText(selectedOption) {
 
     if (selectedOption && selectedOption.value !== "none") {
         sortBtnText.textContent = selectedOption.nextElementSibling.textContent;
-        sortBtnText.style.color = '#c60c2b';
 
     } else {
         sortBtnText.textContent = "Sortieren";
