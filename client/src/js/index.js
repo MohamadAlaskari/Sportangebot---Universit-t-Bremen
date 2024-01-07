@@ -28,6 +28,7 @@ async function init() {
         updateFiltersOnChange((newFilters) => {
             console.log('currentMapAddresses von indexjs nach updateFiltersOnChange:: ', currentMapAddresses)
             currentFilters = { ...currentFilters, ...newFilters };
+            updateFilterCountDisplay(currentFilters)
             updateCourses(courses);
         }, currentMapAddresses);
 
@@ -99,6 +100,37 @@ const addresses = (courses) => {
     });
     return addresses;
 };
+
+//filter btn bla bla 
+function updateFilterCountDisplay(currentFilters) {
+    const filterActiveElement = document.getElementById('filterActive');
+    
+    let activeFilterCount = 0;
+    Object.keys(currentFilters).forEach(key => {
+        if (key === 'price') {
+            // Zählt separat für Mindest- und Höchstpreis, wenn sie von den Standardwerten abweichen
+            const { min, max } = currentFilters[key];
+            if (min && min !== '10') {
+                activeFilterCount += 1;
+            }
+            if (max && max !== '100') {
+                activeFilterCount += 1;
+            }
+        } else if (Array.isArray(currentFilters[key]) && currentFilters[key].length > 0) {
+            // Zählt die aktiven Filter in anderen Kategorien
+            activeFilterCount += currentFilters[key].length;
+        }
+    });
+
+    // Aktualisierung des Anzeigeelements
+    if (activeFilterCount > 0) {
+        filterActiveElement.classList.remove('empty');
+        filterActiveElement.textContent = `${activeFilterCount}`;
+    } else {
+        filterActiveElement.classList.add('empty');
+        filterActiveElement.textContent = '0';
+    }
+}
 
 
 // Rendern der Kurskarten
