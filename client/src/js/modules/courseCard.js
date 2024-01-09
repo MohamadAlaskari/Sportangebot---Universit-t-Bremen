@@ -46,7 +46,7 @@ function createCourseCard(kurs) {
     const limit = 70;
     const moreTextNeeded = kurs.beschreibung.length > limit;
     const shortDescription = moreTextNeeded ? kurs.beschreibung.substring(0, limit) + "..." : kurs.beschreibung;
-    const moreText = moreTextNeeded ? kurs.beschreibung.substring(limit) : "";
+    const moreText = moreTextNeeded ? kurs.beschreibung : "";
     const readMoreLink = moreTextNeeded ? `<a href="#" class="more-link" data-id="${kurs.nummer}">Mehr lesen</a>` : "";
 
     // Erstellen von Zeichenketten für die Zeitangaben
