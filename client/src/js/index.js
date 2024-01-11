@@ -79,7 +79,7 @@ function setupSortListener(courses) {
 function updateCourses(courses) {
     let gefilterteKurse = filterKurse(courses, currentFilters);
     let sortedKurse = sortKurse(gefilterteKurse, currentSortValue);
-
+    anzahl(courses, gefilterteKurse)
     renderCourses(sortedKurse);
 
     //consol.log
@@ -104,7 +104,7 @@ const addresses = (courses) => {
 //filter btn bla bla 
 function updateFilterCountDisplay(currentFilters) {
     const filterActiveElement = document.getElementById('filterActive');
-    
+
     let activeFilterCount = 0;
     Object.keys(currentFilters).forEach(key => {
         if (key === 'price') {
@@ -132,7 +132,13 @@ function updateFilterCountDisplay(currentFilters) {
     }
 }
 
+function anzahl(courses, gefilterteKurse) {
+    const gesamtCourses = document.getElementById('gesamtCourses');
+    const findedCourses = document.getElementById('findedCourses');
+    gesamtCourses.innerHTML = courses.length;
+    findedCourses.innerHTML = gefilterteKurse.length;
 
+}
 // Rendern der Kurskarten
 
 init();
