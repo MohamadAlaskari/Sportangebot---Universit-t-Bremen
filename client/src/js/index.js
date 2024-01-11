@@ -133,10 +133,9 @@ function updateFilterCountDisplay(currentFilters) {
 }
 
 function anzahl(courses, gefilterteKurse) {
-    const gesamtCourses = document.getElementById('gesamtCourses');
-    const findedCourses = document.getElementById('findedCourses');
-    gesamtCourses.innerHTML = courses.length;
-    findedCourses.innerHTML = gefilterteKurse.length;
+    const anzahl = document.getElementById('anzahl');
+    anzahl.innerHTML =`${courses.length} von ${gefilterteKurse.length} Angeboten gefunden` ;
+
 
 }
 // Rendern der Kurskarten
