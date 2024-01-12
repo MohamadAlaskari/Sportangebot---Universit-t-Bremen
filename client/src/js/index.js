@@ -134,8 +134,7 @@ function updateFilterCountDisplay(currentFilters) {
 
 function anzahl(courses, gefilterteKurse) {
     const anzahl = document.getElementById('anzahl');
-    anzahl.innerHTML =`${gefilterteKurse.length} von ${courses.length} Angeboten gefunden` ;
-
+    anzahl.innerHTML = `${gefilterteKurse.length} von ${courses.length} Angeboten gefunden`; 
 
 }
 // Rendern der Kurskarten
