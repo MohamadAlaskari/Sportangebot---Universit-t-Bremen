@@ -37,28 +37,39 @@ async function init() {
 
         // Select all search buttons
         const searchButtons = document.querySelectorAll('.searchCourseBtn');
-
         searchButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                // Find the search input within the same container
-                const searchContainer = this.parentElement;
-                const searchInput = searchContainer.querySelector('.searchCourseInput');
-                const searchQuery = searchInput.value.trim();
-
-                // Perform the search and render the results
-                const foundCourses = searchCourse(courses, searchQuery);
-                anzahl(courses, foundCourses)
-
-                renderCourses(foundCourses);
-
-                // clear the input field
-                searchInput.value = '';
-
-                console.log('Search Query: ', searchQuery);
-                console.log('foundCourses: ', foundCourses);
-
+            button.addEventListener('click', searchFunction);
+        
+            // Find the search input within the same container
+            const searchContainer = button.parentElement;
+            const searchInput = searchContainer.querySelector('.searchCourseInput');
+        
+            // Adding event listener for 'Enter' key on the search input
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.keyCode === 13) { // 13 is the Enter key
+                    searchFunction.call(button);
+                }
             });
         });
+        
+        function searchFunction() {
+            const searchContainer = this.parentElement;
+            const searchInput = searchContainer.querySelector('.searchCourseInput');
+            const searchQuery = searchInput.value.trim();
+        
+            // Perform the search and render the results
+            const foundCourses = searchCourse(courses, searchQuery);
+            anzahl(courses, foundCourses)
+        
+            renderCourses(foundCourses);
+        
+            // clear the input field
+            searchInput.value = '';
+        
+            console.log('Search Query: ', searchQuery);
+            console.log('foundCourses: ', foundCourses);
+        }
+        
 
 
 
