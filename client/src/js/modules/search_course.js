@@ -8,10 +8,13 @@ function searchCourse(courses, query) {
         // Convert the fields and the query to lowercase for case-insensitive comparison
         const titleLower = course.titel.toLowerCase();
         const descriptionLower = course.beschreibung.toLowerCase();
+        const categorieLower = course.kategorie.toLowerCase();
+        const zielgruppeLower = course.zielgruppe.toLowerCase();
+
         const queryLower = trimmedQuery.toLowerCase();
 
         // Check if the query is in the title or description
-        return titleLower.includes(queryLower) || descriptionLower.includes(queryLower);
+        return titleLower.includes(queryLower) || descriptionLower.includes(queryLower) || categorieLower.includes(queryLower)|| zielgruppeLower.includes(queryLower);
     });
 }
 

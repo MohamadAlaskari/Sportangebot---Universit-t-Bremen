@@ -47,6 +47,8 @@ async function init() {
 
                 // Perform the search and render the results
                 const foundCourses = searchCourse(courses, searchQuery);
+                anzahl(courses, foundCourses)
+
                 renderCourses(foundCourses);
 
                 // clear the input field
