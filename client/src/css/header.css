@@ -1,0 +1,735 @@
+/* ============================================
+   Header & Navbar Styles
+   ============================================ */
+
+/* Header Container */
+header.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Meta Navigation (Hilfsnavigation) */
+.meta-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.meta-menu li {
+    margin: 0;
+}
+
+.meta-menu a {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.meta-menu a:hover {
+    color: #00326d;
+}
+
+.meta-menu img {
+    vertical-align: middle;
+}
+
+/* Language Menu */
+.tx-srlanguagemenu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.tx-srlanguagemenu .CUR {
+    font-weight: bold;
+    color: #00326d;
+}
+
+.tx-srlanguagemenu .linked-language {
+    color: #666;
+}
+
+.tx-srlanguagemenu .linked-language:hover {
+    color: #00326d;
+}
+
+/* Navbar Header */
+.navbar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    position: relative;
+}
+
+.navbar-header-main {
+    width: 100%;
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.navbar-brand img {
+    max-height: 60px;
+    width: auto;
+    height: auto;
+}
+
+.navbar-header img[alt="Logo Hochschulsport"] {
+    max-height: 80px;
+    width: auto;
+    margin-left: 20px;
+}
+
+/* Navbar Toggle Button (Mobile) */
+.navbar-toggle {
+    border: none;
+    background: transparent;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    display: none;
+}
+
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover .icon-bar {
+    background-color: #00326d;
+}
+
+.navbar-header-border-bottom {
+    display: none;
+}
+
+/* Lightblue Bar */
+.lightblue-container {
+    background-color: #d5e3f3;
+    padding: 12px 0;
+    width: 100%;
+}
+
+.lightblue-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.lightblue-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #00326d;
+    text-align: left;
+}
+
+/* Main Navigation */
+.navbar-collapse {
+    background-color: #00326d;
+    padding: 0;
+    width: 100%;
+}
+
+.navbar-main {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background-color: #00326d;
+    width: 100%;
+    justify-content: center;
+}
+
+.navbar-main-wrap2,
+.navbar-main-wrap {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.navbar-inner-wrap2,
+.navbar-inner-wrap {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar-inner-wrap2 li,
+.navbar-inner-wrap li {
+    margin: 0;
+}
+
+.navbar-inner-wrap2 button,
+.navbar-inner-wrap button {
+    background: transparent;
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    color: #fff;
+    cursor: default;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 400;
+    pointer-events: none;
+}
+
+.navbar-inner-wrap2 button:hover,
+.navbar-inner-wrap button:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+.navbar-inner-wrap2 li.active button,
+.navbar-inner-wrap li.active button {
+    color: #fff;
+    background-color: #d50c2f;
+    font-weight: 600;
+}
+
+/* Dropdown Menus */
+.dropdown-wrap {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 300px;
+    display: none !important;
+}
+
+.dropdown-wrap.lightblue {
+    background-color: #d5e3f3;
+}
+
+.dropdown.active .dropdown-wrap {
+    display: none !important;
+}
+
+.overflow-wrap {
+    padding: 20px;
+}
+
+.nav-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-close:hover {
+    color: #00326d;
+}
+
+.overview {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.overview a {
+    color: #00326d;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.overview a:hover {
+    color: #d50c2f;
+}
+
+.dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.toggleWrap a {
+    display: block;
+    padding: 10px 0;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.toggleWrap a:hover {
+    color: #00326d;
+    padding-left: 10px;
+}
+
+/* Mobile Search */
+#mobile-search {
+    position: relative;
+    margin-left: auto;
+}
+
+#openSearchMenuMobile {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+#openSearchMenuMobile:hover {
+    color: #00326d;
+}
+
+.search-menu-containerMobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: none;
+}
+
+.search-menu-containerMobile.active {
+    display: block;
+}
+
+.search-lyoutMobile {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    min-width: 400px;
+    max-width: 90%;
+}
+
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    color: #666;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.closebtn:hover {
+    color: #00326d;
+}
+
+.searchCourseInput {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.searchCourseInput:focus {
+    outline: none;
+    border-color: #00326d;
+    box-shadow: 0 0 0 3px rgba(0, 50, 109, 0.1);
+}
+
+.searchCourseInput::placeholder {
+    color: #999;
+}
+
+.searchCourseBtn {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: #00326d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+}
+
+.searchCourseBtn:hover {
+    background-color: #002147;
+    box-shadow: 0 4px 8px rgba(0, 50, 109, 0.2);
+}
+
+.searchCourseBtn:active {
+    transform: translateY(1px);
+}
+
+/* Desktop Search */
+#search {
+    position: relative;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+#openSearchMenu {
+    font-size: 20px;
+    color: #fff;
+    cursor: default;
+    padding: 15px 20px;
+    display: inline-block;
+    pointer-events: none;
+}
+
+#openSearchMenu:hover {
+    color: #fff;
+    background-color: transparent;
+}
+
+.search-menu-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #d5e3f3;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 450px;
+    display: none;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.search-menu-container.active {
+    display: block;
+}
+
+.search-lyout {
+    padding: 0;
+    background-color: #d5e3f3;
+}
+
+/* Search Header */
+.search-lyout .search-title {
+    background-color: #d5e3f3;
+    color: #00326d;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    padding: 20px 50px 20px 30px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 50, 109, 0.1);
+}
+
+.search-lyout .closebtn {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.search-lyout .closebtn:hover {
+    color: #00326d;
+}
+
+/* Search Form Container */
+.search-lyout > div {
+    background-color: #d5e3f3;
+    padding: 30px;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb-section {
+    background-color: #f5f5f5;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.breadcrumb li {
+    margin: 0;
+}
+
+.breadcrumb li::after {
+    content: " / ";
+    color: #999;
+    margin-left: 10px;
+}
+
+.breadcrumb li:last-child::after {
+    content: "";
+}
+
+.breadcrumb a {
+    color: #00326d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #d50c2f;
+}
+
+.breadcrumb li.active span {
+    color: #666;
+}
+
+/* Page Title (Wintersemester 2023/2024) */
+.bs_head_small {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00326d;
+    margin: 30px 0 20px 0;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #d5e3f3;
+}
+
+/* Mobile Tabs */
+.tabs-mobile {
+    display: none;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tab {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    color: #00326d;
+    border-bottom-color: #00326d;
+    background-color: #fff;
+}
+
+.tab:hover {
+    color: #00326d;
+}
+
+/* Scroll Buttons */
+.scroll-left,
+.scroll-right {
+    display: none;
+}
+
+.scroll-left button,
+.scroll-right button {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.scroll-left button img,
+.scroll-right button img {
+    width: 20px;
+    height: auto;
+}
+
+/* Quick Menu */
+.quickdown {
+    position: relative;
+}
+
+.quick-toggle {
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    cursor: default;
+    pointer-events: none;
+}
+
+.quick-toggle:hover {
+    color: #fff;
+    background-color: transparent;
+}
+
+.quick-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px;
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quickdown:hover .quick-menu {
+    display: none !important;
+}
+
+.quickdown {
+    pointer-events: none;
+}
+
+.quick-menu li {
+    margin: 0;
+}
+
+.quick-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.quick-menu a:hover {
+    background-color: #f5f5f5;
+    color: #00326d;
+    padding-left: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        display: none;
+    }
+
+    .navbar-collapse.collapse {
+        display: block;
+    }
+
+    .navbar-main {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .navbar-inner-wrap2,
+    .navbar-inner-wrap {
+        flex-direction: column;
+    }
+
+    .navbar-inner-wrap2 button,
+    .navbar-inner-wrap button {
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+    
+    .navbar-inner-wrap2 li.active button,
+    .navbar-inner-wrap li.active button {
+        background-color: #d50c2f;
+        color: #fff;
+    }
+
+    .dropdown-wrap {
+        position: static;
+        box-shadow: none;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .tabs-mobile {
+        display: flex;
+    }
+
+    .meta-menu {
+        justify-content: center;
+        font-size: 12px;
+    }
+
+    .navbar-header img[alt="Logo Hochschulsport"] {
+        max-height: 50px;
+    }
+
+    .bs_head_small {
+        font-size: 22px;
+        margin: 20px 0 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .meta-menu {
+        gap: 10px;
+        font-size: 11px;
+    }
+
+    .navbar-brand img {
+        max-height: 40px;
+    }
+
+    .navbar-header img[alt="Logo Hochschulsport"] {
+        max-height: 40px;
+    }
+
+    .bs_head_small {
+        font-size: 18px;
+    }
+
+    .search-lyoutMobile {
+        min-width: 90%;
+        padding: 20px;
+    }
+}
+
